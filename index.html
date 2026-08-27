@@ -6,7 +6,7 @@
     <title>CT FAMILY Shop</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <!-- ШРИФТ ТОЛЬКО ДЛЯ CT FAMILY -->
+    <!-- ШРИФТ DynaPuff -->
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -27,7 +27,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0a0a0a;
             color: #ffffff;
-            padding: 30px 16px 40px;
+            padding: 16px 16px 40px;  /* ← уменьшил отступ сверху */
             display: flex;
             justify-content: center;
             min-height: 100vh;
@@ -41,25 +41,25 @@
         /* ===== НАЗВАНИЕ СВЕРХУ ===== */
         .brand {
             text-align: center;
-            padding: 10px 0 30px;
+            padding: 6px 0 24px;  /* ← уменьшил отступы */
         }
 
         .brand-title {
             font-family: 'DynaPuff', cursive;
             font-weight: 800;
-            font-size: 52px;
+            font-size: 58px;  /* ← увеличил */
             color: #ffffff;
             letter-spacing: 2px;
             line-height: 1.1;
         }
 
-        /* ===== SHOP — ОБЫЧНЫЙ ШРИФТ, ПОБОЛЬШЕ ===== */
+        /* ===== SHOP — DynaPuff, крупнее ===== */
         .brand-sub {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'DynaPuff', cursive;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 28px;  /* ← увеличил */
             color: #d5d5dd;
-            margin-top: 2px;
+            margin-top: 0px;
             letter-spacing: 6px;
             text-transform: uppercase;
         }
@@ -67,7 +67,7 @@
         /* ===== КАТЕГОРИИ (горизонтальный скролл) ===== */
         .category-scroll {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             overflow-x: auto;
             padding-bottom: 12px;
             scrollbar-width: none;
@@ -80,10 +80,10 @@
 
         .category-card {
             flex: 0 0 auto;
-            width: 110px;
+            width: 120px;  /* ← увеличил */
             background: #141414;
-            border-radius: 20px;
-            padding: 16px 8px 14px;
+            border-radius: 22px;  /* ← увеличил */
+            padding: 18px 8px 16px;  /* ← увеличил */
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -93,7 +93,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 96px;
+            min-height: 110px;  /* ← увеличил */
         }
 
         .category-card:active {
@@ -103,26 +103,24 @@
         }
 
         .category-icon {
-            font-size: 34px;
+            font-size: 40px;  /* ← увеличил */
             line-height: 1;
             margin-bottom: 4px;
         }
 
-        /* ===== НАЗВАНИЕ КАТЕГОРИИ — DynaPuff ===== */
         .category-name {
             font-family: 'DynaPuff', cursive;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 15px;  /* ← увеличил */
             color: #f0f0f0;
             letter-spacing: 0.3px;
             line-height: 1.2;
         }
 
-        /* ===== КОЛИЧЕСТВО ТОВАРОВ — ОБЫЧНЫЙ ШРИФТ ===== */
         .category-count {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
-            font-size: 11px;
+            font-size: 12px;  /* ← увеличил */
             color: #7777aa;
             margin-top: 2px;
         }
@@ -135,7 +133,7 @@
         .popular-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 22px;  /* ← увеличил */
             color: #ffffff;
             letter-spacing: 0.5px;
             margin-bottom: 14px;
@@ -143,8 +141,8 @@
 
         .popular-placeholder {
             background: #141414;
-            border-radius: 20px;
-            padding: 40px 20px;
+            border-radius: 22px;  /* ← увеличил */
+            padding: 44px 20px;
             text-align: center;
             border: 1px dashed rgba(255, 255, 255, 0.06);
         }
@@ -152,7 +150,7 @@
         .popular-placeholder p {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 15px;  /* ← увеличил */
             color: #555577;
             letter-spacing: 0.5px;
         }
@@ -160,22 +158,25 @@
         /* ===== АДАПТИВ ===== */
         @media (max-width: 380px) {
             .brand-title {
-                font-size: 38px;
+                font-size: 44px;
             }
             .brand-sub {
-                font-size: 20px;
+                font-size: 22px;
                 letter-spacing: 4px;
             }
             .category-card {
-                width: 90px;
-                min-height: 80px;
-                padding: 12px 6px 10px;
+                width: 100px;
+                min-height: 90px;
+                padding: 14px 6px 12px;
             }
             .category-icon {
-                font-size: 28px;
+                font-size: 32px;
             }
             .category-name {
-                font-size: 11px;
+                font-size: 13px;
+            }
+            .popular-title {
+                font-size: 18px;
             }
         }
     </style>
