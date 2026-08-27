@@ -27,7 +27,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0a0a0a;
             color: #ffffff;
-            padding: 16px 16px 40px;  /* ← уменьшил отступ сверху */
+            padding: 70px 16px 40px;
             display: flex;
             justify-content: center;
             min-height: 100vh;
@@ -38,33 +38,32 @@
             width: 100%;
         }
 
-        /* ===== НАЗВАНИЕ СВЕРХУ ===== */
+        /* ===== НАЗВАНИЕ ===== */
         .brand {
             text-align: center;
-            padding: 6px 0 24px;  /* ← уменьшил отступы */
+            padding: 6px 0 24px;
         }
 
         .brand-title {
             font-family: 'DynaPuff', cursive;
             font-weight: 800;
-            font-size: 58px;  /* ← увеличил */
+            font-size: 58px;
             color: #ffffff;
             letter-spacing: 2px;
             line-height: 1.1;
         }
 
-        /* ===== SHOP — DynaPuff, крупнее ===== */
         .brand-sub {
             font-family: 'DynaPuff', cursive;
             font-weight: 700;
-            font-size: 28px;  /* ← увеличил */
+            font-size: 28px;
             color: #d5d5dd;
             margin-top: 0px;
             letter-spacing: 6px;
             text-transform: uppercase;
         }
 
-        /* ===== КАТЕГОРИИ (горизонтальный скролл) ===== */
+        /* ===== КАТЕГОРИИ ===== */
         .category-scroll {
             display: flex;
             gap: 12px;
@@ -80,10 +79,10 @@
 
         .category-card {
             flex: 0 0 auto;
-            width: 120px;  /* ← увеличил */
+            width: 120px;
             background: #141414;
-            border-radius: 22px;  /* ← увеличил */
-            padding: 18px 8px 16px;  /* ← увеличил */
+            border-radius: 22px;
+            padding: 24px 8px 20px;  /* ← увеличил вертикальные отступы */
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -93,7 +92,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 110px;  /* ← увеличил */
+            min-height: 140px;  /* ← увеличил высоту */
         }
 
         .category-card:active {
@@ -103,15 +102,15 @@
         }
 
         .category-icon {
-            font-size: 40px;  /* ← увеличил */
+            font-size: 44px;  /* ← увеличил */
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .category-name {
             font-family: 'DynaPuff', cursive;
             font-weight: 700;
-            font-size: 15px;  /* ← увеличил */
+            font-size: 16px;  /* ← увеличил */
             color: #f0f0f0;
             letter-spacing: 0.3px;
             line-height: 1.2;
@@ -120,12 +119,12 @@
         .category-count {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
-            font-size: 12px;  /* ← увеличил */
+            font-size: 12px;
             color: #7777aa;
             margin-top: 2px;
         }
 
-        /* ===== БЛОК "ПОПУЛЯРНОЕ" ===== */
+        /* ===== ПОПУЛЯРНОЕ ===== */
         .popular-section {
             margin-top: 32px;
         }
@@ -133,7 +132,7 @@
         .popular-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 700;
-            font-size: 22px;  /* ← увеличил */
+            font-size: 22px;
             color: #ffffff;
             letter-spacing: 0.5px;
             margin-bottom: 14px;
@@ -141,7 +140,7 @@
 
         .popular-placeholder {
             background: #141414;
-            border-radius: 22px;  /* ← увеличил */
+            border-radius: 22px;
             padding: 44px 20px;
             text-align: center;
             border: 1px dashed rgba(255, 255, 255, 0.06);
@@ -150,13 +149,16 @@
         .popular-placeholder p {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
-            font-size: 15px;  /* ← увеличил */
+            font-size: 15px;
             color: #555577;
             letter-spacing: 0.5px;
         }
 
         /* ===== АДАПТИВ ===== */
         @media (max-width: 380px) {
+            body {
+                padding: 60px 12px 30px;
+            }
             .brand-title {
                 font-size: 44px;
             }
@@ -166,17 +168,46 @@
             }
             .category-card {
                 width: 100px;
-                min-height: 90px;
-                padding: 14px 6px 12px;
+                min-height: 120px;  /* ← увеличил */
+                padding: 18px 6px 14px;
             }
             .category-icon {
-                font-size: 32px;
+                font-size: 34px;
             }
             .category-name {
-                font-size: 13px;
+                font-size: 14px;
             }
             .popular-title {
                 font-size: 18px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            body {
+                padding: 60px 16px 30px;
+            }
+            .brand-title {
+                font-size: 44px;
+            }
+            .brand-sub {
+                font-size: 22px;
+            }
+            .category-card {
+                width: 100px;
+                min-height: 120px;
+                padding: 18px 6px 14px;
+            }
+            .category-icon {
+                font-size: 34px;
+            }
+            .category-name {
+                font-size: 14px;
+            }
+            .popular-section {
+                margin-top: 24px;
+            }
+            .popular-placeholder {
+                padding: 30px 16px;
             }
         }
     </style>
@@ -185,13 +216,11 @@
 
     <div class="app">
 
-        <!-- ===== НАЗВАНИЕ ===== -->
         <div class="brand">
             <div class="brand-title">CT FAMILY</div>
             <div class="brand-sub">Shop</div>
         </div>
 
-        <!-- ===== КАТЕГОРИИ ===== -->
         <div class="category-scroll">
 
             <div class="category-card" onclick="selectCategory('Telegram')">
@@ -232,7 +261,6 @@
 
         </div>
 
-        <!-- ===== ПОПУЛЯРНОЕ ===== -->
         <div class="popular-section">
             <div class="popular-title">⭐ Популярное</div>
             <div class="popular-placeholder">
