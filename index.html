@@ -16,61 +16,54 @@
         body {
             min-height: 100vh;
             background: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Arial Black', 'Impact', 'Porkys', sans-serif;
-            padding: 20px 16px;
+            font-family: 'Impact', 'Arial Black', 'Porkys', sans-serif;
+            padding: 20px 16px 40px;
         }
 
         .app {
-            width: 100%;
             max-width: 420px;
-            background: #121212;
-            border-radius: 32px;
-            padding: 40px 16px 32px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            margin: 0 auto;
         }
 
-        /* ----- CT FAMILY (как Porky's) ----- */
+        /* ===== НАЗВАНИЕ СВЕРХУ ===== */
         .brand {
             text-align: center;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .brand-title {
             font-family: 'Impact', 'Arial Black', 'Porkys', sans-serif;
             font-weight: 900;
-            font-size: 48px;
-            letter-spacing: 12px;
+            font-size: 52px;
+            letter-spacing: 14px;
             color: #ffffff;
             text-transform: uppercase;
             transform: scaleX(1.06);
             line-height: 1.1;
-            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.04);
         }
 
         .brand-sub {
             font-family: 'Arial', 'Helvetica', sans-serif;
             font-weight: 400;
             font-size: 16px;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             color: #d5d5dd;
             text-transform: uppercase;
-            margin-top: 2px;
+            margin-top: 0px;
             text-align: center;
         }
 
         .spacer {
-            height: 32px;
+            height: 28px;
         }
 
-        /* ----- КАТЕГОРИИ (горизонтальный скролл) ----- */
+        /* ===== КАТЕГОРИИ (горизонтальный скролл) ===== */
         .category-scroll {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
@@ -79,13 +72,12 @@
             display: none;
         }
 
-        /* ----- КАРТОЧКА КАТЕГОРИИ ----- */
         .category-card {
             flex: 0 0 auto;
             width: 110px;
-            background: #1e1e1e;
+            background: #1a1a1a;
             border-radius: 20px;
-            padding: 16px 10px 14px;
+            padding: 16px 8px 14px;
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -95,19 +87,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100px;
+            min-height: 96px;
         }
 
         .category-card:active {
             transform: scale(0.94);
-            background: #282828;
+            background: #262626;
             border-color: rgba(255, 255, 255, 0.08);
         }
 
         .category-icon {
-            font-size: 36px;
+            font-size: 34px;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .category-name {
@@ -123,19 +115,50 @@
             font-family: 'Arial', 'Helvetica', sans-serif;
             font-weight: 400;
             font-size: 10px;
-            color: #8888aa;
+            color: #7777aa;
             margin-top: 2px;
         }
 
+        /* ===== БЛОК "ПОПУЛЯРНОЕ" (пока заглушка) ===== */
+        .popular-section {
+            margin-top: 32px;
+        }
+
+        .popular-title {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .popular-placeholder {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px dashed rgba(255, 255, 255, 0.06);
+        }
+
+        .popular-placeholder p {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #555577;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 380px) {
             .brand-title {
-                font-size: 34px;
-                letter-spacing: 8px;
+                font-size: 36px;
+                letter-spacing: 10px;
             }
             .category-card {
                 width: 90px;
                 min-height: 80px;
-                padding: 12px 8px 10px;
+                padding: 12px 6px 10px;
             }
             .category-icon {
                 font-size: 28px;
@@ -144,7 +167,7 @@
                 font-size: 11px;
             }
             .app {
-                padding: 28px 12px 24px;
+                padding: 12px 8px 20px;
             }
         }
     </style>
@@ -153,6 +176,7 @@
 
     <div class="app">
 
+        <!-- ===== НАЗВАНИЕ СВЕРХУ ===== -->
         <div class="brand">
             <div class="brand-title">CT FAMILY</div>
             <div class="brand-sub">Shop</div>
@@ -160,7 +184,7 @@
 
         <div class="spacer"></div>
 
-        <!-- Горизонтальный скролл категорий -->
+        <!-- ===== КАТЕГОРИИ (горизонтальный скролл) ===== -->
         <div class="category-scroll">
 
             <div class="category-card" onclick="selectCategory('Telegram')">
@@ -199,6 +223,14 @@
                 <div class="category-count">0 товаров</div>
             </div>
 
+        </div>
+
+        <!-- ===== БЛОК "ПОПУЛЯРНОЕ" (ПОКА ПУСТО) ===== -->
+        <div class="popular-section">
+            <div class="popular-title">⭐ Популярное</div>
+            <div class="popular-placeholder">
+                <p>Товары появятся позже</p>
+            </div>
         </div>
 
     </div>
