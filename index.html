@@ -76,7 +76,7 @@
         /* ===== КАТЕГОРИИ ===== */
         .category-scroll {
             display: flex;
-            gap: 6px;  /* ← уменьшил gap */
+            gap: 6px;
             overflow-x: auto;
             padding-bottom: 4px;
             scrollbar-width: none;
@@ -90,10 +90,10 @@
         /* ===== ПРЯМОУГОЛЬНЫЕ КНОПКИ ===== */
         .category-card {
             flex: 0 0 auto;
-            width: 92px;
-            background: #262626;  /* ← добавил фон, чтобы было видно */
-            border-radius: 12px;  /* ← почти прямоугольные */
-            padding: 10px 4px 10px;
+            width: 82px;  /* ← уже */
+            background: #262626;
+            border-radius: 12px;
+            padding: 14px 4px 12px;  /* ← больше вертикальных отступов */
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -101,7 +101,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 82px;
+            min-height: 96px;  /* ← выше */
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
@@ -111,8 +111,8 @@
         }
 
         .category-icon {
-            width: 44px;
-            height: 44px;
+            width: 42px;  /* ← чуть меньше */
+            height: 42px;
             border-radius: 10px;
             object-fit: cover;
             margin-bottom: 4px;
@@ -122,7 +122,7 @@
         .category-name {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 11px;  /* ← чуть меньше */
             color: #f0f0f0;
             letter-spacing: 0.2px;
             line-height: 1.2;
@@ -183,14 +183,14 @@
                 border-radius: 22px;
             }
             .category-card {
-                width: 78px;
-                min-height: 72px;
-                padding: 8px 3px 8px;
+                width: 72px;
+                min-height: 84px;
+                padding: 12px 3px 10px;
                 border-radius: 10px;
             }
             .category-icon {
-                width: 38px;
-                height: 38px;
+                width: 36px;
+                height: 36px;
             }
             .category-name {
                 font-size: 10px;
@@ -214,16 +214,16 @@
                 padding: 10px 10px 8px;
             }
             .category-card {
-                width: 82px;
-                min-height: 74px;
-                padding: 8px 3px 8px;
+                width: 74px;
+                min-height: 86px;
+                padding: 12px 3px 10px;
             }
             .category-icon {
-                width: 40px;
-                height: 40px;
+                width: 38px;
+                height: 38px;
             }
             .category-name {
-                font-size: 11px;
+                font-size: 10px;
             }
             .popular-section {
                 margin-top: 20px;
