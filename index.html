@@ -79,10 +79,10 @@
 
         .category-card {
             flex: 0 0 auto;
-            width: 100px;  /* ← уменьшил */
+            width: 100px;
             background: #141414;
-            border-radius: 18px;  /* ← уменьшил */
-            padding: 14px 6px 12px;  /* ← уменьшил */
+            border-radius: 18px;
+            padding: 14px 6px 12px;
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -92,7 +92,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100px;  /* ← уменьшил */
+            min-height: 100px;
         }
 
         .category-card:active {
@@ -102,15 +102,18 @@
         }
 
         .category-icon {
-            font-size: 32px;  /* ← уменьшил */
-            line-height: 1;
-            margin-bottom: 4px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-bottom: 6px;
+            background: #1a1a1a;
         }
 
         .category-name {
             font-family: 'DynaPuff', cursive;
             font-weight: 700;
-            font-size: 13px;  /* ← уменьшил */
+            font-size: 13px;
             color: #f0f0f0;
             letter-spacing: 0.2px;
             line-height: 1.2;
@@ -119,7 +122,7 @@
         .category-count {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
-            font-size: 10px;  /* ← уменьшил */
+            font-size: 10px;
             color: #7777aa;
             margin-top: 2px;
         }
@@ -172,7 +175,8 @@
                 padding: 12px 4px 10px;
             }
             .category-icon {
-                font-size: 28px;
+                width: 40px;
+                height: 40px;
             }
             .category-name {
                 font-size: 11px;
@@ -198,7 +202,8 @@
                 padding: 12px 4px 10px;
             }
             .category-icon {
-                font-size: 28px;
+                width: 42px;
+                height: 42px;
             }
             .category-name {
                 font-size: 12px;
@@ -224,37 +229,37 @@
         <div class="category-scroll">
 
             <div class="category-card" onclick="selectCategory('Telegram')">
-                <div class="category-icon">📱</div>
+                <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
                 <div class="category-name">Telegram</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
             <div class="category-card" onclick="selectCategory('Brawl Stars')">
-                <div class="category-icon">⚔️</div>
+                <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
                 <div class="category-name">Brawl Stars</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
             <div class="category-card" onclick="selectCategory('Roblox')">
-                <div class="category-icon">🎮</div>
+                <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
                 <div class="category-name">Roblox</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
             <div class="category-card" onclick="selectCategory('Clash Royale')">
-                <div class="category-icon">👑</div>
+                <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
                 <div class="category-name">Clash Royale</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
             <div class="category-card" onclick="selectCategory('Clash of Clans')">
-                <div class="category-icon">🏰</div>
+                <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
                 <div class="category-name">Clash of Clans</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
             <div class="category-card" onclick="selectCategory('Standoff 2')">
-                <div class="category-icon">🔫</div>
+                <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
                 <div class="category-name">Standoff 2</div>
                 <div class="category-count">0 товаров</div>
             </div>
