@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>CT FAMILY Shop</title>
-
-    <!-- Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
-        /* ----- ОБНУЛЕНИЕ ----- */
         * {
             margin: 0;
             padding: 0;
@@ -26,63 +23,69 @@
             padding: 20px 16px;
         }
 
-        /* ----- КОНТЕЙНЕР ----- */
         .app {
             width: 100%;
             max-width: 420px;
             background: #121212;
             border-radius: 32px;
-            padding: 40px 20px 32px;
+            padding: 40px 16px 32px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
         }
 
-        /* ----- CT FAMILY ----- */
+        /* ----- CT FAMILY (как Porky's) ----- */
         .brand {
             text-align: center;
             margin-bottom: 2px;
         }
 
         .brand-title {
-            font-family: 'Arial Black', 'Impact', 'Porkys', sans-serif;
+            font-family: 'Impact', 'Arial Black', 'Porkys', sans-serif;
             font-weight: 900;
-            font-size: 44px;
-            letter-spacing: 10px;
+            font-size: 48px;
+            letter-spacing: 12px;
             color: #ffffff;
             text-transform: uppercase;
-            transform: scaleX(1.04);
+            transform: scaleX(1.06);
             line-height: 1.1;
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
         }
 
-        /* ----- Shop ----- */
         .brand-sub {
             font-family: 'Arial', 'Helvetica', sans-serif;
             font-weight: 400;
             font-size: 16px;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             color: #d5d5dd;
             text-transform: uppercase;
             margin-top: 2px;
             text-align: center;
         }
 
-        /* ----- ОТСТУП ----- */
         .spacer {
-            height: 36px;
+            height: 32px;
         }
 
-        /* ----- СЕТКА: 2 колонки ----- */
-        .category-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* ----- КАТЕГОРИИ (горизонтальный скролл) ----- */
+        .category-scroll {
+            display: flex;
             gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-scroll::-webkit-scrollbar {
+            display: none;
         }
 
         /* ----- КАРТОЧКА КАТЕГОРИИ ----- */
         .category-card {
+            flex: 0 0 auto;
+            width: 110px;
             background: #1e1e1e;
             border-radius: 20px;
-            padding: 18px 8px 14px;
+            padding: 16px 10px 14px;
             text-align: center;
             cursor: pointer;
             transition: all 0.12s ease;
@@ -101,47 +104,47 @@
             border-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* ----- ИКОНКА ----- */
         .category-icon {
-            font-size: 38px;
+            font-size: 36px;
             line-height: 1;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.05));
+            margin-bottom: 6px;
         }
 
-        /* ----- НАЗВАНИЕ ----- */
         .category-name {
             font-family: 'Arial', 'Helvetica', sans-serif;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 13px;
             color: #f0f0f0;
             letter-spacing: 0.2px;
             line-height: 1.2;
         }
 
-        /* ----- КОЛИЧЕСТВО ТОВАРОВ (опционально) ----- */
         .category-count {
             font-family: 'Arial', 'Helvetica', sans-serif;
             font-weight: 400;
-            font-size: 11px;
+            font-size: 10px;
             color: #8888aa;
             margin-top: 2px;
         }
 
-        /* ----- АДАПТИВ ----- */
         @media (max-width: 380px) {
             .brand-title {
-                font-size: 32px;
-                letter-spacing: 6px;
+                font-size: 34px;
+                letter-spacing: 8px;
+            }
+            .category-card {
+                width: 90px;
+                min-height: 80px;
+                padding: 12px 8px 10px;
             }
             .category-icon {
-                font-size: 30px;
+                font-size: 28px;
             }
             .category-name {
-                font-size: 13px;
+                font-size: 11px;
             }
             .app {
-                padding: 28px 14px 24px;
+                padding: 28px 12px 24px;
             }
         }
     </style>
@@ -150,54 +153,46 @@
 
     <div class="app">
 
-        <!-- Логотип -->
         <div class="brand">
             <div class="brand-title">CT FAMILY</div>
             <div class="brand-sub">Shop</div>
         </div>
 
-        <!-- Отступ -->
         <div class="spacer"></div>
 
-        <!-- Категории -->
-        <div class="category-grid">
+        <!-- Горизонтальный скролл категорий -->
+        <div class="category-scroll">
 
-            <!-- Telegram -->
             <div class="category-card" onclick="selectCategory('Telegram')">
                 <div class="category-icon">📱</div>
                 <div class="category-name">Telegram</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
-            <!-- Brawl Stars -->
             <div class="category-card" onclick="selectCategory('Brawl Stars')">
                 <div class="category-icon">⚔️</div>
                 <div class="category-name">Brawl Stars</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
-            <!-- Roblox -->
             <div class="category-card" onclick="selectCategory('Roblox')">
                 <div class="category-icon">🎮</div>
                 <div class="category-name">Roblox</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
-            <!-- Clash Royale -->
             <div class="category-card" onclick="selectCategory('Clash Royale')">
                 <div class="category-icon">👑</div>
                 <div class="category-name">Clash Royale</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
-            <!-- Clash of Clans -->
             <div class="category-card" onclick="selectCategory('Clash of Clans')">
                 <div class="category-icon">🏰</div>
                 <div class="category-name">Clash of Clans</div>
                 <div class="category-count">0 товаров</div>
             </div>
 
-            <!-- Standoff 2 -->
             <div class="category-card" onclick="selectCategory('Standoff 2')">
                 <div class="category-icon">🔫</div>
                 <div class="category-name">Standoff 2</div>
@@ -222,4 +217,4 @@
     </script>
 
 </body>
-  </html>
+</html>
