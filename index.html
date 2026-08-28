@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
+        /* ============================================================
+                   ЧАСТЬ 1: ОБНУЛЕНИЕ И БАЗОВЫЕ СТИЛИ
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -38,9 +41,10 @@
             width: 100%;
         }
 
-        /* ============================================
-                   ГЛАВНАЯ СТРАНИЦА
-                   ============================================ */
+
+        /* ============================================================
+                   ЧАСТЬ 1: ГЛАВНАЯ СТРАНИЦА
+                   ============================================================ */
         #page-main {
             display: block;
         }
@@ -49,6 +53,10 @@
             display: none;
         }
 
+
+        /* ============================================================
+                   ЧАСТЬ 1: БРЕНД (CT FAMILY + Shop)
+                   ============================================================ */
         .brand {
             text-align: center;
             padding: 6px 0 20px;
@@ -73,7 +81,10 @@
             text-transform: uppercase;
         }
 
-        /* ===== ТАБЛЕТКА ДЛЯ КАТЕГОРИЙ ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 1: ТАБЛЕТКА С КАТЕГОРИЯМИ
+                   ============================================================ */
         .category-wrapper {
             background: #1a1a1a;
             border-radius: 28px;
@@ -96,6 +107,10 @@
             display: none;
         }
 
+
+        /* ============================================================
+                   ЧАСТЬ 1: КАРТОЧКА КАТЕГОРИИ
+                   ============================================================ */
         .category-card {
             flex: 0 0 auto;
             width: 88px;
@@ -144,7 +159,10 @@
             margin-top: 1px;
         }
 
-        /* ===== КНОПКА "ПРЕДЛОЖЕНИЯ" ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 1: КНОПКА "ПРЕДЛОЖЕНИЯ"
+                   ============================================================ */
         .category-card.more {
             background: #1a1a1a;
             border: 1px dashed rgba(255, 255, 255, 0.15);
@@ -193,7 +211,10 @@
             margin-top: 0px;
         }
 
-        /* ===== ПОПУЛЯРНОЕ ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 1: ПОПУЛЯРНОЕ
+                   ============================================================ */
         .popular-section {
             margin-top: 28px;
         }
@@ -223,9 +244,10 @@
             letter-spacing: 0.5px;
         }
 
-        /* ============================================
-                   СТРАНИЦА КАТЕГОРИИ
-                   ============================================ */
+
+        /* ============================================================
+                   ЧАСТЬ 2: СТРАНИЦА КАТЕГОРИИ
+                   ============================================================ */
         #page-category {
             display: none;
         }
@@ -234,12 +256,15 @@
             display: block;
         }
 
-        /* ===== ШАПКА КАТЕГОРИИ С РАЗДЕЛИТЕЛЕМ ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 2: ШАПКА КАТЕГОРИИ
+                   ============================================================ */
         .category-header-wrapper {
             background: #1a1a1a;
             border-radius: 24px;
             padding: 12px 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             border: 1px solid rgba(255, 255, 255, 0.06);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -250,7 +275,6 @@
             gap: 14px;
         }
 
-        /* ===== СТРЕЛКА НАЗАД (ТЁМНАЯ) ===== */
         .back-btn {
             background: #1f1f1f;
             border: none;
@@ -309,20 +333,151 @@
             text-overflow: ellipsis;
         }
 
-        /* ===== ТОВАРЫ (пустое место) ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 2: ФИЛЬТРЫ (ТАБЛЕТКИ)
+                   ============================================================ */
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-chip {
+            flex: 0 0 auto;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: #1f1f1f;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #8888aa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            white-space: nowrap;
+        }
+
+        .filter-chip:active {
+            transform: scale(0.94);
+        }
+
+        .filter-chip.active {
+            background: #2a2a2a;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 2: ПОИСК
+                   ============================================================ */
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            outline: none;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box::placeholder {
+            color: #555577;
+        }
+
+        .search-box:focus {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 2: ТОВАРЫ
+                   ============================================================ */
         .category-products {
-            margin-top: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-card {
+            background: #1f1f1f;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.12s ease;
+        }
+
+        .product-card:active {
+            transform: scale(0.97);
+            background: #2a2a2a;
+        }
+
+        .product-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #141414;
+            flex-shrink: 0;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-name {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: #f0f0f0;
+        }
+
+        .product-desc {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #8888aa;
+            margin-top: 2px;
+        }
+
+        .product-price {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #d5d5dd;
+            flex-shrink: 0;
         }
 
         .empty-products {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             color: #555577;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 15px;
         }
 
-        /* ===== АДАПТИВ ===== */
+
+        /* ============================================================
+                   ЧАСТЬ 2: АДАПТИВ
+                   ============================================================ */
         @media (max-width: 380px) {
             body {
                 padding: 60px 12px 30px;
@@ -392,6 +547,27 @@
             .category-header-title {
                 font-size: 18px;
             }
+            .filter-chip {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .search-box {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
+            .product-card {
+                padding: 12px 14px;
+            }
+            .product-img {
+                width: 44px;
+                height: 44px;
+            }
+            .product-name {
+                font-size: 13px;
+            }
+            .product-price {
+                font-size: 14px;
+            }
         }
 
         @media (max-height: 700px) {
@@ -450,16 +626,23 @@
             .category-header-title {
                 font-size: 20px;
             }
+            .filter-chip {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .search-box {
+                font-size: 14px;
+                padding: 10px 14px;
+            }
         }
     </style>
 </head>
 <body>
+        <div class="app">
 
-    <div class="app">
-
-        <!-- ==========================================
-        ГЛАВНАЯ СТРАНИЦА
-        ========================================== -->
+        <!-- ============================================================
+        ЧАСТЬ 2: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
+        ============================================================ -->
         <div id="page-main">
 
             <div class="brand">
@@ -536,12 +719,13 @@
 
         </div>
 
-        <!-- ==========================================
-        СТРАНИЦА КАТЕГОРИИ
-        ========================================== -->
+
+        <!-- ============================================================
+        ЧАСТЬ 2: СТРАНИЦА КАТЕГОРИИ (РАЗМЕТКА)
+        ============================================================ -->
         <div id="page-category">
 
-            <!-- Шапка с разделителем -->
+            <!-- Шапка -->
             <div class="category-header-wrapper">
                 <div class="category-header">
                     <button class="back-btn" onclick="closeCategory()">
@@ -556,7 +740,15 @@
                 </div>
             </div>
 
-            <!-- Список товаров (пусто) -->
+            <!-- Фильтры -->
+            <div class="filters" id="filtersContainer">
+                <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
+            </div>
+
+            <!-- Поиск -->
+            <input class="search-box" id="searchInput" type="text" placeholder="🔍 Поиск по названию..." oninput="filterProducts()">
+
+            <!-- Товары -->
             <div class="category-products" id="categoryProducts">
                 <div class="empty-products">Товаров пока нет</div>
             </div>
@@ -565,13 +757,44 @@
 
     </div>
 
+
+    <!-- ============================================================
+    ЧАСТЬ 2: JAVASCRIPT
+    ============================================================ -->
     <script>
+        // ============================================================
+        // ЧАСТЬ 2: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
+        // ============================================================
         const tg = window.Telegram.WebApp;
         tg.expand();
         tg.requestFullscreen();
 
-        // ===== ОТКРЫТЬ КАТЕГОРИЮ =====
+
+        // ============================================================
+        // ЧАСТЬ 2: ДАННЫЕ ТОВАРОВ (ПУСТО)
+        // Товары будут добавляться сюда позже
+        // ============================================================
+        const productsData = {
+            'Telegram': [],
+            'Brawl Stars': [],
+            'Roblox': [],
+            'Clash Royale': [],
+            'Clash of Clans': [],
+            'Standoff 2': []
+        };
+
+        let currentCategory = '';
+        let currentFilter = 'all';
+        let currentProducts = [];
+
+
+        // ============================================================
+        // ЧАСТЬ 2: ОТКРЫТЬ КАТЕГОРИЮ
+        // ============================================================
         function openCategory(name, icon) {
+            currentCategory = name;
+            currentFilter = 'all';
+
             document.getElementById('page-main').classList.add('hidden');
             const pageCat = document.getElementById('page-category');
             pageCat.classList.add('visible');
@@ -579,17 +802,96 @@
             document.getElementById('catHeaderIcon').src = icon;
             document.getElementById('catHeaderTitle').textContent = name;
 
-            const container = document.getElementById('categoryProducts');
-            container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
+            const products = productsData[name] || [];
+            currentProducts = products;
+
+            document.getElementById('searchInput').value = '';
+
+            renderProducts(products);
         }
 
-        // ===== ЗАКРЫТЬ КАТЕГОРИЮ =====
+
+        // ============================================================
+        // ЧАСТЬ 2: ЗАКРЫТЬ КАТЕГОРИЮ (ВЕРНУТЬСЯ НА ГЛАВНУЮ)
+        // ============================================================
         function closeCategory() {
             document.getElementById('page-main').classList.remove('hidden');
             document.getElementById('page-category').classList.remove('visible');
+            currentCategory = '';
+            currentProducts = [];
         }
 
-        // ===== КНОПКА "ПРЕДЛОЖЕНИЯ" =====
+
+        // ============================================================
+        // ЧАСТЬ 2: УСТАНОВИТЬ ФИЛЬТР
+        // ============================================================
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-chip').forEach(el => {
+                el.classList.toggle('active', el.dataset.filter === filter);
+            });
+            filterProducts();
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 2: ПОИСК + ФИЛЬТРАЦИЯ
+        // ============================================================
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            let filtered = currentProducts;
+
+            if (query) {
+                filtered = filtered.filter(p =>
+                    p.name.toLowerCase().includes(query)
+                );
+            }
+
+            renderProducts(filtered);
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 2: ОТРИСОВКА ТОВАРОВ
+        // ============================================================
+        function renderProducts(products) {
+            const container = document.getElementById('categoryProducts');
+
+            if (!products || products.length === 0) {
+                container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
+                return;
+            }
+
+            container.innerHTML = products.map(p => `
+                <div class="product-card" onclick="buyProduct('${p.name}', '${p.price}')">
+                    <img class="product-img" src="${document.getElementById('catHeaderIcon').src}" alt="${p.name}">
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-desc">${p.desc}</div>
+                    </div>
+                    <div class="product-price">${p.price}</div>
+                </div>
+            `).join('');
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 2: КУПИТЬ ТОВАР
+        // ============================================================
+        function buyProduct(name, price) {
+            tg.sendData(JSON.stringify({
+                action: 'buy',
+                product: name,
+                price: price,
+                category: currentCategory
+            }));
+            tg.showAlert(`Вы выбрали: ${name} — ${price}`);
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 2: КНОПКА "ПРЕДЛОЖЕНИЯ"
+        // ============================================================
         function openMore() {
             tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
         }
