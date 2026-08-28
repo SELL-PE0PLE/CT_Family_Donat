@@ -1,344 +1,983 @@
-/* ============================================================
-           ЧАСТЬ 1: ИКОНКИ (SVG)
-           ============================================================ */
-.icon-star {
-    width: 22px;
-    height: 22px;
-    stroke: #f59e0b;
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 4px;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CT FAMILY Shop</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-.icon-search {
-    width: 20px;
-    height: 20px;
-    stroke: #555577;
-    stroke-width: 2.5;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
+    <!-- ШРИФТ DynaPuff ТОЛЬКО ДЛЯ CT FAMILY -->
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700;800&display=swap" rel="stylesheet">
 
-.icon-arrow-back {
-    width: 26px;
-    height: 26px;
-    stroke: #9999aa;
-    stroke-width: 2.5;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+    <style>
+        /* ============================================================
+                   ЧАСТЬ 1: ОБНУЛЕНИЕ И БАЗОВЫЕ СТИЛИ
+                   ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-.icon-plus {
-    width: 28px;
-    height: 28px;
-    stroke: #8888aa;
-    stroke-width: 2.5;
-    fill: none;
-    stroke-linecap: round;
-}
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background: #0a0a0a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 70px 16px 40px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app {
+            max-width: 420px;
+            width: 100%;
+        }
 
 
-/* ============================================================
-           ЧАСТЬ 2: ПОИСК (С ИКОНКОЙ ВНУТРИ)
-           ============================================================ */
-.search-wrapper {
-    position: relative;
-    margin-bottom: 16px;
-}
+        /* ============================================================
+                   ЧАСТЬ 1: ГЛАВНАЯ СТРАНИЦА
+                   ============================================================ */
+        #page-main {
+            display: block;
+        }
 
-.search-box {
-    width: 100%;
-    padding: 14px 18px 14px 44px;  /* ← отступ слева под иконку */
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: #1a1a1a;
-    color: #ffffff;
-    font-size: 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    outline: none;
-    transition: border-color 0.2s;
-    min-height: 52px;
-}
+        #page-main.hidden {
+            display: none;
+        }
 
-.search-box::placeholder {
-    color: #555577;
-}
 
-.search-box:focus {
-    border-color: rgba(255, 255, 255, 0.15);
-}
-<div class="app">
+        /* ============================================================
+                   ЧАСТЬ 1: БРЕНД (CT FAMILY + Shop)
+                   ============================================================ */
+        .brand {
+            text-align: center;
+            padding: 6px 0 20px;
+        }
 
-    <!-- ============================================================
-    ГЛАВНАЯ СТРАНИЦА
-    ============================================================ -->
-    <div id="page-main">
+        .brand-title {
+            font-family: 'DynaPuff', cursive;
+            font-weight: 800;
+            font-size: 58px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
 
-        <div class="brand">
-            <div class="brand-title">CT FAMILY</div>
-            <div class="brand-sub">Shop</div>
-        </div>
+        .brand-sub {
+            font-family: 'DynaPuff', cursive;
+            font-weight: 700;
+            font-size: 28px;
+            color: #d5d5dd;
+            margin-top: 0px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
 
-        <div class="category-wrapper">
-            <div class="category-scroll">
 
-                <!-- Telegram -->
-                <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
-                    <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
-                    <div class="category-name">Telegram</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
+        /* ============================================================
+                   ЧАСТЬ 1: ТАБЛЕТКА С КАТЕГОРИЯМИ
+                   ============================================================ */
+        .category-wrapper {
+            background: #1a1a1a;
+            border-radius: 28px;
+            padding: 14px 14px 10px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
 
-                <!-- Brawl Stars -->
-                <div class="category-card" onclick="openCategory('Brawl Stars', 'https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg')">
-                    <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
-                    <div class="category-name">Brawl Stars</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
+        .category-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
 
-                <!-- Roblox -->
-                <div class="category-card" onclick="openCategory('Roblox', 'https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg')">
-                    <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
-                    <div class="category-name">Roblox</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
 
-                <!-- Clash Royale -->
-                <div class="category-card" onclick="openCategory('Clash Royale', 'https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg')">
-                    <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
-                    <div class="category-name">Clash Royale</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
 
-                <!-- Clash of Clans -->
-                <div class="category-card" onclick="openCategory('Clash of Clans', 'https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg')">
-                    <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
-                    <div class="category-name">Clash of Clans</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
+        /* ============================================================
+                   ЧАСТЬ 1: КАРТОЧКА КАТЕГОРИИ
+                   ============================================================ */
+        .category-card {
+            flex: 0 0 auto;
+            width: 88px;
+            background: #1f1f1f;
+            border-radius: 14px;
+            padding: 12px 4px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 96px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-                <!-- Standoff 2 -->
-                <div class="category-card" onclick="openCategory('Standoff 2', 'https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg')">
-                    <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
-                    <div class="category-name">Standoff 2</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
+        .category-card:active {
+            transform: scale(0.94);
+            background: #2a2a2a;
+        }
 
-                <!-- Ещё / Предложения (SVG вместо эмодзи) -->
-                <div class="category-card more" onclick="openMore()">
-                    <div class="more-icon">
-                        <svg class="icon-plus" viewBox="0 0 24 24">
-                            <line x1="12" y1="4" x2="12" y2="20" />
-                            <line x1="4" y1="12" x2="20" y2="12" />
-                        </svg>
+        .category-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 4px;
+            background: #141414;
+        }
+
+        .category-name {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: #f0f0f0;
+            letter-spacing: 0.2px;
+            line-height: 1.2;
+        }
+
+        .category-count {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 9px;
+            color: #7777aa;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+           <style>
+    /* ============================================================
+               ЧАСТЬ 2: КНОПКА "ПРЕДЛОЖЕНИЯ"
+               ============================================================ */
+    .category-card.more {
+        background: #1a1a1a;
+        border: 1px dashed rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+    }
+
+    .category-card.more:active {
+        background: #262626;
+    }
+
+    .more-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0px;
+    }
+
+    .more-icon svg {
+        width: 28px;
+        height: 28px;
+        stroke: #8888aa;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+    }
+
+    .more-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        color: #8888aa;
+        line-height: 1.2;
+    }
+
+    .more-sub {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 9px;
+        color: #555577;
+        margin-top: 0px;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 2: ПОПУЛЯРНОЕ
+               ============================================================ */
+    .popular-section {
+        margin-top: 28px;
+    }
+
+    .popular-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        margin-bottom: 14px;
+    }
+
+    .popular-placeholder {
+        background: #141414;
+        border-radius: 22px;
+        padding: 44px 20px;
+        text-align: center;
+        border: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .popular-placeholder p {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        color: #555577;
+        letter-spacing: 0.5px;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 2: ИКОНКИ (SVG)
+               ============================================================ */
+    .icon-star {
+        width: 22px;
+        height: 22px;
+        stroke: #f59e0b;
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+
+    .icon-search {
+        width: 20px;
+        height: 20px;
+        stroke: #555577;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .icon-arrow-back {
+        width: 26px;
+        height: 26px;
+        stroke: #9999aa;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .icon-plus {
+        width: 28px;
+        height: 28px;
+        stroke: #8888aa;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 2: СТРАНИЦА КАТЕГОРИИ
+               ============================================================ */
+    #page-category {
+        display: none;
+        padding-top: 8px;
+    }
+
+    #page-category.visible {
+        display: block;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 2: ШАПКА КАТЕГОРИИ
+               ============================================================ */
+    .category-header-wrapper {
+        background: #1a1a1a;
+        border-radius: 24px;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .back-btn {
+        background: #1f1f1f;
+        border: none;
+        border-radius: 14px;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        transition: all 0.12s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .back-btn:active {
+        transform: scale(0.92);
+        background: #2a2a2a;
+    }
+
+    .back-btn svg {
+        width: 26px;
+        height: 26px;
+        stroke: #9999aa;
+        stroke-width: 2.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .category-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .category-header-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        object-fit: cover;
+        background: #141414;
+        flex-shrink: 0;
+    }
+
+    .category-header-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #ffffff;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+           </style>
+               <style>
+        /* ============================================================
+                   ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
+                   ============================================================ */
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-chip {
+            flex: 0 0 auto;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: #1f1f1f;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #8888aa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            white-space: nowrap;
+        }
+
+        .filter-chip:active {
+            transform: scale(0.94);
+        }
+
+        .filter-chip.active {
+            background: #2a2a2a;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 3: ПОИСК
+                   ============================================================ */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 18px 14px 44px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+            min-height: 52px;
+        }
+
+        .search-box::placeholder {
+            color: #555577;
+        }
+
+        .search-box:focus {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 3: ТОВАРЫ
+                   ============================================================ */
+        .category-products {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-card {
+            background: #1f1f1f;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            transition: all 0.12s ease;
+        }
+
+        .product-card:active {
+            transform: scale(0.97);
+            background: #2a2a2a;
+        }
+
+        .product-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #141414;
+            flex-shrink: 0;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-name {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: #f0f0f0;
+        }
+
+        .product-desc {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #8888aa;
+            margin-top: 2px;
+        }
+
+        .product-price {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #d5d5dd;
+            flex-shrink: 0;
+        }
+
+        .empty-products {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555577;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 15px;
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 3: АДАПТИВ
+                   ============================================================ */
+        @media (max-width: 380px) {
+            body {
+                padding: 60px 12px 30px;
+            }
+            .brand-title {
+                font-size: 44px;
+            }
+            .brand-sub {
+                font-size: 22px;
+                letter-spacing: 4px;
+            }
+            .category-wrapper {
+                padding: 10px 10px 8px;
+                border-radius: 22px;
+            }
+            .category-scroll {
+                gap: 8px;
+            }
+            .category-card {
+                width: 76px;
+                min-height: 84px;
+                padding: 10px 3px 8px;
+                border-radius: 12px;
+            }
+            .category-card.more {
+                width: 76px;
+                min-height: 84px;
+                padding: 10px 3px 8px;
+            }
+            .category-icon {
+                width: 38px;
+                height: 38px;
+            }
+            .category-name {
+                font-size: 10px;
+            }
+            .more-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+            .more-text {
+                font-size: 11px;
+            }
+            .more-sub {
+                font-size: 8px;
+            }
+            .popular-title {
+                font-size: 18px;
+            }
+            .category-header-wrapper {
+                padding: 10px 12px;
+                border-radius: 20px;
+            }
+            .back-btn {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+            }
+            .back-btn svg {
+                width: 22px;
+                height: 22px;
+            }
+            .category-header-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .category-header-title {
+                font-size: 18px;
+            }
+            .filter-chip {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .search-box {
+                font-size: 14px;
+                padding: 12px 14px 12px 40px;
+                min-height: 46px;
+            }
+            .icon-search {
+                width: 18px;
+                height: 18px;
+                left: 12px;
+            }
+            .product-card {
+                padding: 12px 14px;
+            }
+            .product-img {
+                width: 44px;
+                height: 44px;
+            }
+            .product-name {
+                font-size: 13px;
+            }
+            .product-price {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            body {
+                padding: 60px 16px 30px;
+            }
+            .brand-title {
+                font-size: 44px;
+            }
+            .brand-sub {
+                font-size: 22px;
+            }
+            .category-wrapper {
+                padding: 10px 10px 8px;
+            }
+            .category-scroll {
+                gap: 8px;
+            }
+            .category-card {
+                width: 80px;
+                min-height: 88px;
+                padding: 10px 3px 8px;
+            }
+            .category-card.more {
+                width: 80px;
+                min-height: 88px;
+                padding: 10px 3px 8px;
+            }
+            .category-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .category-name {
+                font-size: 11px;
+            }
+            .more-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+            .more-text {
+                font-size: 11px;
+            }
+            .popular-section {
+                margin-top: 20px;
+            }
+            .popular-placeholder {
+                padding: 30px 16px;
+            }
+            .category-header-wrapper {
+                padding: 10px 14px;
+            }
+            .back-btn {
+                width: 44px;
+                height: 44px;
+            }
+            .category-header-title {
+                font-size: 20px;
+            }
+            .filter-chip {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .search-box {
+                font-size: 14px;
+                padding: 12px 14px 12px 40px;
+                min-height: 46px;
+            }
+            .icon-search {
+                width: 18px;
+                height: 18px;
+                left: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+               <div class="app">
+
+        <!-- ============================================================
+        ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
+        ============================================================ -->
+        <div id="page-main">
+
+            <div class="brand">
+                <div class="brand-title">CT FAMILY</div>
+                <div class="brand-sub">Shop</div>
+            </div>
+
+            <div class="category-wrapper">
+                <div class="category-scroll">
+
+                    <!-- Telegram -->
+                    <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
+                        <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
+                        <div class="category-name">Telegram</div>
+                        <div class="category-count">0 товаров</div>
                     </div>
-                    <div class="more-text">Ещё</div>
-                    <div class="more-sub">Предложения</div>
-                </div>
 
+                    <!-- Brawl Stars -->
+                    <div class="category-card" onclick="openCategory('Brawl Stars', 'https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
+                        <div class="category-name">Brawl Stars</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Roblox -->
+                    <div class="category-card" onclick="openCategory('Roblox', 'https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
+                        <div class="category-name">Roblox</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Clash Royale -->
+                    <div class="category-card" onclick="openCategory('Clash Royale', 'https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
+                        <div class="category-name">Clash Royale</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Clash of Clans -->
+                    <div class="category-card" onclick="openCategory('Clash of Clans', 'https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
+                        <div class="category-name">Clash of Clans</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Standoff 2 -->
+                    <div class="category-card" onclick="openCategory('Standoff 2', 'https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
+                        <div class="category-name">Standoff 2</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Ещё / Предложения -->
+                    <div class="category-card more" onclick="openMore()">
+                        <div class="more-icon">
+                            <svg class="icon-plus" viewBox="0 0 24 24">
+                                <line x1="12" y1="4" x2="12" y2="20" />
+                                <line x1="4" y1="12" x2="20" y2="12" />
+                            </svg>
+                        </div>
+                        <div class="more-text">Ещё</div>
+                        <div class="more-sub">Предложения</div>
+                    </div>
+
+                </div>
             </div>
+
+            <!-- Популярное -->
+            <div class="popular-section">
+                <div class="popular-title">
+                    <svg class="icon-star" viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    Популярное
+                </div>
+                <div class="popular-placeholder">
+                    <p>Товары появятся позже</p>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Популярное (SVG вместо ⭐) -->
-        <div class="popular-section">
-            <div class="popular-title">
-                <svg class="icon-star" viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+
+        <!-- ============================================================
+        ЧАСТЬ 4: СТРАНИЦА КАТЕГОРИИ (РАЗМЕТКА)
+        ============================================================ -->
+        <div id="page-category">
+
+            <!-- Шапка -->
+            <div class="category-header-wrapper">
+                <div class="category-header">
+                    <button class="back-btn" onclick="closeCategory()">
+                        <svg class="icon-arrow-back" viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+                    <div class="category-header-info">
+                        <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
+                        <span class="category-header-title" id="catHeaderTitle">Категория</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Фильтры -->
+            <div class="filters" id="filtersContainer">
+                <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
+            </div>
+
+            <!-- Поиск -->
+            <div class="search-wrapper">
+                <svg class="icon-search" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                Популярное
+                <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
             </div>
-            <div class="popular-placeholder">
-                <p>Товары появятся позже</p>
+
+            <!-- Товары -->
+            <div class="category-products" id="categoryProducts">
+                <div class="empty-products">Товаров пока нет</div>
             </div>
+
         </div>
 
     </div>
 
 
     <!-- ============================================================
-    СТРАНИЦА КАТЕГОРИИ
+    ЧАСТЬ 4: JAVASCRIPT
     ============================================================ -->
-    <div id="page-category">
-
-        <!-- Шапка -->
-        <div class="category-header-wrapper">
-            <div class="category-header">
-                <button class="back-btn" onclick="closeCategory()">
-                    <svg class="icon-arrow-back" viewBox="0 0 24 24">
-                        <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                </button>
-                <div class="category-header-info">
-                    <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
-                    <span class="category-header-title" id="catHeaderTitle">Категория</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Фильтры -->
-        <div class="filters" id="filtersContainer">
-            <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
-        </div>
-
-        <!-- Поиск (с SVG-иконкой) -->
-        <div class="search-wrapper">
-            <svg class="icon-search" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
-        </div>
-
-        <!-- Товары -->
-        <div class="category-products" id="categoryProducts">
-            <div class="empty-products">Товаров пока нет</div>
-        </div>
-
-    </div>
-
-</div>
-<script>
-    // ============================================================
-    // ЧАСТЬ 3: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
-    // ============================================================
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-    tg.requestFullscreen();
+    <script>
+        // ============================================================
+        // ЧАСТЬ 4: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
+        // ============================================================
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        tg.requestFullscreen();
 
 
-    // ============================================================
-    // ЧАСТЬ 3: ДАННЫЕ ТОВАРОВ (ПУСТО)
-    // ============================================================
-    const productsData = {
-        'Telegram': [],
-        'Brawl Stars': [],
-        'Roblox': [],
-        'Clash Royale': [],
-        'Clash of Clans': [],
-        'Standoff 2': []
-    };
+        // ============================================================
+        // ЧАСТЬ 4: ДАННЫЕ ТОВАРОВ (ПУСТО)
+        // ============================================================
+        const productsData = {
+            'Telegram': [],
+            'Brawl Stars': [],
+            'Roblox': [],
+            'Clash Royale': [],
+            'Clash of Clans': [],
+            'Standoff 2': []
+        };
 
-    let currentCategory = '';
-    let currentFilter = 'all';
-    let currentProducts = [];
-
-
-    // ============================================================
-    // ЧАСТЬ 3: ОТКРЫТЬ КАТЕГОРИЮ
-    // ============================================================
-    function openCategory(name, icon) {
-        currentCategory = name;
-        currentFilter = 'all';
-
-        document.getElementById('page-main').classList.add('hidden');
-        const pageCat = document.getElementById('page-category');
-        pageCat.classList.add('visible');
-
-        document.getElementById('catHeaderIcon').src = icon;
-        document.getElementById('catHeaderTitle').textContent = name;
-
-        const products = productsData[name] || [];
-        currentProducts = products;
-
-        document.getElementById('searchInput').value = '';
-
-        renderProducts(products);
-    }
+        let currentCategory = '';
+        let currentFilter = 'all';
+        let currentProducts = [];
 
 
-    // ============================================================
-    // ЧАСТЬ 3: ЗАКРЫТЬ КАТЕГОРИЮ
-    // ============================================================
-    function closeCategory() {
-        document.getElementById('page-main').classList.remove('hidden');
-        document.getElementById('page-category').classList.remove('visible');
-        currentCategory = '';
-        currentProducts = [];
-    }
+        // ============================================================
+        // ЧАСТЬ 4: ОТКРЫТЬ КАТЕГОРИЮ
+        // ============================================================
+        function openCategory(name, icon) {
+            currentCategory = name;
+            currentFilter = 'all';
 
+            document.getElementById('page-main').classList.add('hidden');
+            const pageCat = document.getElementById('page-category');
+            pageCat.classList.add('visible');
 
-    // ============================================================
-    // ЧАСТЬ 3: УСТАНОВИТЬ ФИЛЬТР
-    // ============================================================
-    function setFilter(filter) {
-        currentFilter = filter;
-        document.querySelectorAll('.filter-chip').forEach(el => {
-            el.classList.toggle('active', el.dataset.filter === filter);
-        });
-        filterProducts();
-    }
+            document.getElementById('catHeaderIcon').src = icon;
+            document.getElementById('catHeaderTitle').textContent = name;
 
+            const products = productsData[name] || [];
+            currentProducts = products;
 
-    // ============================================================
-    // ЧАСТЬ 3: ПОИСК + ФИЛЬТРАЦИЯ
-    // ============================================================
-    function filterProducts() {
-        const query = document.getElementById('searchInput').value.toLowerCase().trim();
-        let filtered = currentProducts;
+            document.getElementById('searchInput').value = '';
 
-        if (query) {
-            filtered = filtered.filter(p =>
-                p.name.toLowerCase().includes(query)
-            );
+            renderProducts(products);
         }
 
-        renderProducts(filtered);
-    }
 
-
-    // ============================================================
-    // ЧАСТЬ 3: ОТРИСОВКА ТОВАРОВ
-    // ============================================================
-    function renderProducts(products) {
-        const container = document.getElementById('categoryProducts');
-
-        if (!products || products.length === 0) {
-            container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
-            return;
+        // ============================================================
+        // ЧАСТЬ 4: ЗАКРЫТЬ КАТЕГОРИЮ
+        // ============================================================
+        function closeCategory() {
+            document.getElementById('page-main').classList.remove('hidden');
+            document.getElementById('page-category').classList.remove('visible');
+            currentCategory = '';
+            currentProducts = [];
         }
 
-        container.innerHTML = products.map(p => `
-            <div class="product-card" onclick="buyProduct('${p.name}', '${p.price}')">
-                <img class="product-img" src="${document.getElementById('catHeaderIcon').src}" alt="${p.name}">
-                <div class="product-info">
-                    <div class="product-name">${p.name}</div>
-                    <div class="product-desc">${p.desc}</div>
+
+        // ============================================================
+        // ЧАСТЬ 4: УСТАНОВИТЬ ФИЛЬТР
+        // ============================================================
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-chip').forEach(el => {
+                el.classList.toggle('active', el.dataset.filter === filter);
+            });
+            filterProducts();
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 4: ПОИСК + ФИЛЬТРАЦИЯ
+        // ============================================================
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            let filtered = currentProducts;
+
+            if (query) {
+                filtered = filtered.filter(p =>
+                    p.name.toLowerCase().includes(query)
+                );
+            }
+
+            renderProducts(filtered);
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 4: ОТРИСОВКА ТОВАРОВ
+        // ============================================================
+        function renderProducts(products) {
+            const container = document.getElementById('categoryProducts');
+
+            if (!products || products.length === 0) {
+                container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
+                return;
+            }
+
+            container.innerHTML = products.map(p => `
+                <div class="product-card" onclick="buyProduct('${p.name}', '${p.price}')">
+                    <img class="product-img" src="${document.getElementById('catHeaderIcon').src}" alt="${p.name}">
+                    <div class="product-info">
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-desc">${p.desc}</div>
+                    </div>
+                    <div class="product-price">${p.price}</div>
                 </div>
-                <div class="product-price">${p.price}</div>
-            </div>
-        `).join('');
-    }
+            `).join('');
+        }
 
 
-    // ============================================================
-    // ЧАСТЬ 3: КУПИТЬ ТОВАР
-    // ============================================================
-    function buyProduct(name, price) {
-        tg.sendData(JSON.stringify({
-            action: 'buy',
-            product: name,
-            price: price,
-            category: currentCategory
-        }));
-        tg.showAlert(`Вы выбрали: ${name} — ${price}`);
-    }
+        // ============================================================
+        // ЧАСТЬ 4: КУПИТЬ ТОВАР
+        // ============================================================
+        function buyProduct(name, price) {
+            tg.sendData(JSON.stringify({
+                action: 'buy',
+                product: name,
+                price: price,
+                category: currentCategory
+            }));
+            tg.showAlert(`Вы выбрали: ${name} — ${price}`);
+        }
 
 
-    // ============================================================
-    // ЧАСТЬ 3: КНОПКА "ПРЕДЛОЖЕНИЯ"
-    // ============================================================
-    function openMore() {
-        tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
-    }
-</script>
+        // ============================================================
+        // ЧАСТЬ 4: КНОПКА "ПРЕДЛОЖЕНИЯ"
+        // ============================================================
+        function openMore() {
+            tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
+        }
+    </script>
+
+</body>
+</html>
