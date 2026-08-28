@@ -161,7 +161,7 @@
     </style>
 </head>
 <body>
-           <style>
+    <style>
     /* ============================================================
                ЧАСТЬ 2: КНОПКА "ПРЕДЛОЖЕНИЯ"
                ============================================================ */
@@ -386,8 +386,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-           </style>
-               <style>
+    </style>
+        <style>
         /* ============================================================
                    ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
                    ============================================================ */
@@ -709,7 +709,7 @@
     </style>
 </head>
 <body>
-               <div class="app">
+        <div class="app">
 
         <!-- ============================================================
         ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
@@ -865,6 +865,20 @@
             'Standoff 2': []
         };
 
+
+        // ============================================================
+        // ЧАСТЬ 4: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
+        // ============================================================
+        const filtersData = {
+            'Telegram': ['Premium', 'Stars', 'Другое'],
+            'Brawl Stars': ['Пропуски', 'Гемы'],
+            'Roblox': ['Робуксы', 'Подписки'],
+            'Clash Royale': ['Пропуски', 'Гемы'],
+            'Clash of Clans': ['Пропуски', 'Гемы'],
+            'Standoff 2': ['Пропуски', 'Gold']
+        };
+
+
         let currentCategory = '';
         let currentFilter = 'all';
         let currentProducts = [];
@@ -884,8 +898,19 @@
             document.getElementById('catHeaderIcon').src = icon;
             document.getElementById('catHeaderTitle').textContent = name;
 
+            // Загружаем товары
             const products = productsData[name] || [];
             currentProducts = products;
+
+            // === ОБНОВЛЯЕМ ФИЛЬТРЫ ===
+            const filters = filtersData[name] || [];
+            const container = document.getElementById('filtersContainer');
+            
+            let html = `<div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>`;
+            filters.forEach(filter => {
+                html += `<div class="filter-chip" data-filter="${filter}" onclick="setFilter('${filter}')">${filter}</div>`;
+            });
+            container.innerHTML = html;
 
             document.getElementById('searchInput').value = '';
 
@@ -980,4 +1005,4 @@
     </script>
 
 </body>
-</html>
+                    </html>
