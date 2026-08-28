@@ -38,7 +38,17 @@
             width: 100%;
         }
 
-        /* ===== НАЗВАНИЕ ===== */
+        /* ============================================
+                   ГЛАВНАЯ СТРАНИЦА
+                   ============================================ */
+        #page-main {
+            display: block;
+        }
+
+        #page-main.hidden {
+            display: none;
+        }
+
         .brand {
             text-align: center;
             padding: 6px 0 20px;
@@ -73,7 +83,6 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
-        /* ===== КАТЕГОРИИ ===== */
         .category-scroll {
             display: flex;
             gap: 10px;
@@ -87,7 +96,6 @@
             display: none;
         }
 
-        /* ===== ПРЯМОУГОЛЬНЫЕ КНОПКИ ===== */
         .category-card {
             flex: 0 0 auto;
             width: 88px;
@@ -215,6 +223,87 @@
             letter-spacing: 0.5px;
         }
 
+        /* ============================================
+                   СТРАНИЦА КАТЕГОРИИ
+                   ============================================ */
+        #page-category {
+            display: none;
+        }
+
+        #page-category.visible {
+            display: block;
+        }
+
+        /* ===== ШАПКА КАТЕГОРИИ ===== */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 6px 0 24px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #d5d5dd;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: opacity 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn:active {
+            opacity: 0.5;
+        }
+
+        .back-btn svg {
+            width: 32px;
+            height: 32px;
+            stroke: #d5d5dd;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .category-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #141414;
+        }
+
+        .category-header-title {
+            font-family: 'DynaPuff', cursive;
+            font-weight: 700;
+            font-size: 26px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== ТОВАРЫ (пустое место) ===== */
+        .category-products {
+            margin-top: 4px;
+        }
+
+        .empty-products {
+            text-align: center;
+            padding: 60px 20px;
+            color: #555577;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 15px;
+        }
+
         /* ===== АДАПТИВ ===== */
         @media (max-width: 380px) {
             body {
@@ -265,6 +354,17 @@
             .popular-title {
                 font-size: 18px;
             }
+            .category-header-title {
+                font-size: 22px;
+            }
+            .category-header-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .back-btn svg {
+                width: 28px;
+                height: 28px;
+            }
         }
 
         @media (max-height: 700px) {
@@ -313,6 +413,9 @@
             .popular-placeholder {
                 padding: 30px 16px;
             }
+            .category-header-title {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -320,81 +423,108 @@
 
     <div class="app">
 
-        <!-- ===== НАЗВАНИЕ ===== -->
-        <div class="brand">
-            <div class="brand-title">CT FAMILY</div>
-            <div class="brand-sub">Shop</div>
-        </div>
+        <!-- ==========================================
+        ГЛАВНАЯ СТРАНИЦА
+        ========================================== -->
+        <div id="page-main">
 
-        <!-- ===== ТАБЛЕТКА С КАТЕГОРИЯМИ ===== -->
-        <div class="category-wrapper">
+            <div class="brand">
+                <div class="brand-title">CT FAMILY</div>
+                <div class="brand-sub">Shop</div>
+            </div>
 
-            <div class="category-scroll">
+            <div class="category-wrapper">
+                <div class="category-scroll">
 
-                <!-- Telegram -->
-                <div class="category-card" onclick="selectCategory('Telegram')">
-                    <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
-                    <div class="category-name">Telegram</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- Brawl Stars -->
-                <div class="category-card" onclick="selectCategory('Brawl Stars')">
-                    <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
-                    <div class="category-name">Brawl Stars</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- Roblox -->
-                <div class="category-card" onclick="selectCategory('Roblox')">
-                    <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
-                    <div class="category-name">Roblox</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- Clash Royale -->
-                <div class="category-card" onclick="selectCategory('Clash Royale')">
-                    <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
-                    <div class="category-name">Clash Royale</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- Clash of Clans -->
-                <div class="category-card" onclick="selectCategory('Clash of Clans')">
-                    <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
-                    <div class="category-name">Clash of Clans</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- Standoff 2 -->
-                <div class="category-card" onclick="selectCategory('Standoff 2')">
-                    <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
-                    <div class="category-name">Standoff 2</div>
-                    <div class="category-count">0 товаров</div>
-                </div>
-
-                <!-- ===== НОВАЯ КНОПКА "ПРЕДЛОЖЕНИЯ" ===== -->
-                <div class="category-card more" onclick="openMore()">
-                    <div class="more-icon">
-                        <svg viewBox="0 0 24 24">
-                            <line x1="12" y1="4" x2="12" y2="20" />
-                            <line x1="4" y1="12" x2="20" y2="12" />
-                        </svg>
+                    <!-- Telegram -->
+                    <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
+                        <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
+                        <div class="category-name">Telegram</div>
+                        <div class="category-count">0 товаров</div>
                     </div>
-                    <div class="more-text">Ещё</div>
-                    <div class="more-sub">Предложения</div>
-                </div>
 
+                    <!-- Brawl Stars -->
+                    <div class="category-card" onclick="openCategory('Brawl Stars', 'https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
+                        <div class="category-name">Brawl Stars</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Roblox -->
+                    <div class="category-card" onclick="openCategory('Roblox', 'https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
+                        <div class="category-name">Roblox</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Clash Royale -->
+                    <div class="category-card" onclick="openCategory('Clash Royale', 'https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
+                        <div class="category-name">Clash Royale</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Clash of Clans -->
+                    <div class="category-card" onclick="openCategory('Clash of Clans', 'https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
+                        <div class="category-name">Clash of Clans</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Standoff 2 -->
+                    <div class="category-card" onclick="openCategory('Standoff 2', 'https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg')">
+                        <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
+                        <div class="category-name">Standoff 2</div>
+                        <div class="category-count">0 товаров</div>
+                    </div>
+
+                    <!-- Ещё / Предложения -->
+                    <div class="category-card more" onclick="openMore()">
+                        <div class="more-icon">
+                            <svg viewBox="0 0 24 24">
+                                <line x1="12" y1="4" x2="12" y2="20" />
+                                <line x1="4" y1="12" x2="20" y2="12" />
+                            </svg>
+                        </div>
+                        <div class="more-text">Ещё</div>
+                        <div class="more-sub">Предложения</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="popular-section">
+                <div class="popular-title">⭐ Популярное</div>
+                <div class="popular-placeholder">
+                    <p>Товары появятся позже</p>
+                </div>
             </div>
 
         </div>
 
-        <!-- ===== ПОПУЛЯРНОЕ ===== -->
-        <div class="popular-section">
-            <div class="popular-title">⭐ Популярное</div>
-            <div class="popular-placeholder">
-                <p>Товары появятся позже</p>
+        <!-- ==========================================
+        СТРАНИЦА КАТЕГОРИИ
+        ========================================== -->
+        <div id="page-category">
+
+            <!-- Шапка -->
+            <div class="category-header">
+                <button class="back-btn" onclick="closeCategory()">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                </button>
+                <div class="category-header-info">
+                    <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
+                    <span class="category-header-title" id="catHeaderTitle">Категория</span>
+                </div>
             </div>
+
+            <!-- Список товаров (пусто) -->
+            <div class="category-products" id="categoryProducts">
+                <div class="empty-products">Товаров пока нет</div>
+            </div>
+
         </div>
 
     </div>
@@ -404,18 +534,35 @@
         tg.expand();
         tg.requestFullscreen();
 
-        function selectCategory(name) {
-            tg.sendData(JSON.stringify({
-                action: 'category',
-                category: name
-            }));
-            tg.showAlert(`Вы выбрали категорию: ${name}`);
+        // ===== ОТКРЫТЬ КАТЕГОРИЮ =====
+        function openCategory(name, icon) {
+            // Прячем главную
+            document.getElementById('page-main').classList.add('hidden');
+
+            // Показываем страницу категории
+            const pageCat = document.getElementById('page-category');
+            pageCat.classList.add('visible');
+
+            // Устанавливаем шапку
+            document.getElementById('catHeaderIcon').src = icon;
+            document.getElementById('catHeaderTitle').textContent = name;
+
+            // Очищаем или показываем заглушку
+            const container = document.getElementById('categoryProducts');
+            container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
         }
 
+        // ===== ЗАКРЫТЬ КАТЕГОРИЮ =====
+        function closeCategory() {
+            document.getElementById('page-main').classList.remove('hidden');
+            document.getElementById('page-category').classList.remove('visible');
+        }
+
+        // ===== КНОПКА "ПРЕДЛОЖЕНИЯ" =====
         function openMore() {
             tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
         }
     </script>
 
 </body>
-</html>
+                </html>
