@@ -945,7 +945,21 @@
             </div>
         </div>
 
-        <!-- ===== БЛОК ПОКУПКИ TG STARS ===== -->
+        <!-- Фильтры -->
+        <div class="filters" id="filtersContainer">
+            <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
+        </div>
+
+        <!-- Поиск -->
+        <div class="search-wrapper">
+            <svg class="icon-search" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
+        </div>
+
+        <!-- ===== БЛОК ПОКУПКИ TG STARS (ПОД ПОИСКОМ) ===== -->
         <div class="stars-block" id="starsBlock">
 
             <div class="stars-title">
@@ -1008,20 +1022,6 @@
 
         </div>
 
-        <!-- Фильтры -->
-        <div class="filters" id="filtersContainer">
-            <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
-        </div>
-
-        <!-- Поиск -->
-        <div class="search-wrapper">
-            <svg class="icon-search" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
-        </div>
-
         <!-- Товары -->
         <div class="category-products" id="categoryProducts">
             <div class="empty-products">Товаров пока нет</div>
@@ -1029,8 +1029,8 @@
 
     </div>
 
-            </div>
-                <!-- ============================================================
+    </div>
+        <!-- ============================================================
     ЧАСТЬ 5: JAVASCRIPT
     ============================================================ -->
     <script>
@@ -1384,4 +1384,4 @@
     </script>
 
 </body>
-</html>
+    </html>
