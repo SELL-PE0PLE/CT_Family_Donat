@@ -338,8 +338,8 @@
         text-overflow: ellipsis;
         line-height: 1.2;
     }
-        </style>
-            <style>
+    </style>
+        <style>
         /* ============================================================
                    ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
                    ============================================================ */
@@ -384,6 +384,58 @@
 
 
         /* ============================================================
+                   ЧАСТЬ 3: ИКОНКИ ДЛЯ STARS И ROBUX (КАРТИНКИ)
+                   ============================================================ */
+
+        /* Stars */
+        .stars-title-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .stars-field-img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .stars-rate-img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* Robux (белый через инверсию) */
+        .robux-title-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: invert(1) brightness(2);
+        }
+
+        .robux-field-img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: invert(1) brightness(2);
+        }
+
+        .robux-rate-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: invert(1) brightness(2);
+        }
+
+
+        /* ============================================================
                    ЧАСТЬ 3: БЛОК ПОКУПКИ TG STARS (ОРАНЖЕВЫЙ)
                    ============================================================ */
         .stars-block {
@@ -409,13 +461,6 @@
             color: #ffffff;
             margin-bottom: 16px;
             letter-spacing: 0.2px;
-        }
-
-        .stars-title svg {
-            width: 28px;
-            height: 28px;
-            fill: #f59e0b;
-            flex-shrink: 0;
         }
 
         .stars-row {
@@ -470,13 +515,6 @@
             font-weight: 500;
         }
 
-        .stars-field-star {
-            width: 20px;
-            height: 20px;
-            fill: #f59e0b;
-            flex-shrink: 0;
-        }
-
         .stars-hint {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 500;
@@ -500,12 +538,6 @@
             font-weight: 700;
             font-size: 20px;
             color: #ffffff;
-        }
-
-        .stars-rate svg {
-            width: 22px;
-            height: 22px;
-            fill: #f59e0b;
         }
 
         .stars-rate-pill {
@@ -574,22 +606,6 @@
             letter-spacing: 0.2px;
         }
 
-        .robux-title-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            background: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-family: 'DynaPuff', cursive;
-            font-weight: 800;
-            font-size: 15px;
-            color: #ffffff;
-            padding-bottom: 2px;
-        }
-
         .robux-row {
             display: flex;
             gap: 10px;
@@ -642,22 +658,6 @@
             font-weight: 500;
         }
 
-        .robux-field-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 6px;
-            background: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-family: 'DynaPuff', cursive;
-            font-weight: 800;
-            font-size: 13px;
-            color: #ffffff;
-            padding-bottom: 2px;
-        }
-
         .robux-hint {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 500;
@@ -681,22 +681,6 @@
             font-weight: 700;
             font-size: 20px;
             color: #ffffff;
-        }
-
-        .robux-rate-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 7px;
-            background: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-family: 'DynaPuff', cursive;
-            font-weight: 800;
-            font-size: 13px;
-            color: #ffffff;
-            padding-bottom: 2px;
         }
 
         .robux-rate-pill {
@@ -933,7 +917,7 @@
             .stars-title {
                 font-size: 18px;
             }
-            .stars-title svg {
+            .stars-title-img {
                 width: 24px;
                 height: 24px;
             }
@@ -954,10 +938,9 @@
             .robux-title {
                 font-size: 18px;
             }
-            .robux-title-icon {
+            .robux-title-img {
                 width: 24px;
                 height: 24px;
-                font-size: 13px;
             }
             .robux-field-input {
                 font-size: 16px;
@@ -1057,9 +1040,10 @@
             }
         }
     </style>
-</head
-  <div class="app">
-<div class="app">
+</head>
+<body>
+    <div class="app">
+        <div class="app">
 
     <!-- ============================================================
     ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
@@ -1178,9 +1162,7 @@
         <div class="stars-block" id="starsBlock">
 
             <div class="stars-title">
-                <svg viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
+                <img class="stars-title-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
                 Пополнить ТГ Звёзды
             </div>
 
@@ -1214,9 +1196,7 @@
                                oninput="onAmountInput()"
                                onblur="onAmountBlur()"
                                onfocus="setActiveField('amount')">
-                        <svg class="stars-field-star" viewBox="0 0 24 24">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg>
+                        <img class="stars-field-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
                     </div>
                 </div>
 
@@ -1225,9 +1205,7 @@
             <div class="stars-hint" id="starsHint">от 50 до 1500</div>
 
             <div class="stars-rate">
-                <svg viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
+                <img class="stars-rate-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
                 <span>1</span>
                 <span>=</span>
                 <span class="stars-rate-pill">1,39 ₽</span>
@@ -1242,7 +1220,7 @@
         <div class="robux-block" id="robuxBlock">
 
             <div class="robux-title">
-                <div class="robux-title-icon">R$</div>
+                <img class="robux-title-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
                 Пополнить Robux
             </div>
 
@@ -1276,7 +1254,7 @@
                                oninput="onRobuxAmountInput()"
                                onblur="onRobuxAmountBlur()"
                                onfocus="setActiveRobuxField('amount')">
-                        <div class="robux-field-icon">R$</div>
+                        <img class="robux-field-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
                     </div>
                 </div>
 
@@ -1285,7 +1263,7 @@
             <div class="robux-hint" id="robuxHint">от 50 до 1500</div>
 
             <div class="robux-rate">
-                <div class="robux-rate-icon">R$</div>
+                <img class="robux-rate-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
                 <span>1</span>
                 <span>=</span>
                 <span class="robux-rate-pill">1,25 ₽</span>
@@ -1303,8 +1281,8 @@
 
     </div>
 
-</div>
-    <!-- ============================================================
+                </div>
+                    <!-- ============================================================
     ЧАСТЬ 5: JAVASCRIPT
     ============================================================ -->
     <script>
