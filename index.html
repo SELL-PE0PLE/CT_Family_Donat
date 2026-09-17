@@ -338,8 +338,8 @@
         text-overflow: ellipsis;
         line-height: 1.2;
     }
-    </style>
-        <style>
+        </style>
+            <style>
         /* ============================================================
                    ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
                    ============================================================ */
@@ -384,7 +384,7 @@
 
 
         /* ============================================================
-                   ЧАСТЬ 3: БЛОК ПОКУПКИ TG STARS
+                   ЧАСТЬ 3: БЛОК ПОКУПКИ TG STARS (ОРАНЖЕВЫЙ)
                    ============================================================ */
         .stars-block {
             background: #1a1a1a;
@@ -418,7 +418,6 @@
             flex-shrink: 0;
         }
 
-        /* Ряд с двумя полями */
         .stars-row {
             display: flex;
             gap: 10px;
@@ -478,7 +477,6 @@
             flex-shrink: 0;
         }
 
-        /* Подсказка от 50 до 1500 */
         .stars-hint {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 500;
@@ -493,7 +491,6 @@
             color: #ef4444;
         }
 
-        /* Курс */
         .stars-rate {
             display: flex;
             align-items: center;
@@ -521,7 +518,6 @@
             border-radius: 12px;
         }
 
-        /* Кнопка оплаты */
         .stars-pay-btn {
             width: 100%;
             padding: 18px;
@@ -544,6 +540,197 @@
 
         .stars-pay-btn:disabled {
             background: linear-gradient(135deg, #7c2d12, #b45309);
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 3: БЛОК ПОКУПКИ ROBUX (СИНИЙ)
+                   ============================================================ */
+        .robux-block {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 18px 16px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: none;
+        }
+
+        .robux-block.visible {
+            display: block;
+        }
+
+        .robux-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: 0.2px;
+        }
+
+        .robux-title-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'DynaPuff', cursive;
+            font-weight: 800;
+            font-size: 15px;
+            color: #ffffff;
+            padding-bottom: 2px;
+        }
+
+        .robux-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .robux-field {
+            flex: 1;
+            background: #141414;
+            border-radius: 14px;
+            padding: 10px 14px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.15s;
+            min-width: 0;
+        }
+
+        .robux-field.active {
+            border-color: #2563eb;
+        }
+
+        .robux-field-label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #8888aa;
+            margin-bottom: 2px;
+        }
+
+        .robux-field-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .robux-field-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            width: 100%;
+            padding: 0;
+            min-width: 0;
+        }
+
+        .robux-field-input::placeholder {
+            color: #555577;
+            font-weight: 500;
+        }
+
+        .robux-field-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'DynaPuff', cursive;
+            font-weight: 800;
+            font-size: 13px;
+            color: #ffffff;
+            padding-bottom: 2px;
+        }
+
+        .robux-hint {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            color: #2563eb;
+            text-align: right;
+            padding-right: 4px;
+            margin-bottom: 14px;
+        }
+
+        .robux-hint.error {
+            color: #ef4444;
+        }
+
+        .robux-rate {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .robux-rate-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 7px;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'DynaPuff', cursive;
+            font-weight: 800;
+            font-size: 13px;
+            color: #ffffff;
+            padding-bottom: 2px;
+        }
+
+        .robux-rate-pill {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 5px 16px;
+            border-radius: 12px;
+        }
+
+        .robux-pay-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .robux-pay-btn:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .robux-pay-btn:disabled {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
@@ -764,6 +951,28 @@
                 font-size: 16px;
                 padding: 16px;
             }
+            .robux-title {
+                font-size: 18px;
+            }
+            .robux-title-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 13px;
+            }
+            .robux-field-input {
+                font-size: 16px;
+            }
+            .robux-rate {
+                font-size: 17px;
+            }
+            .robux-rate-pill {
+                font-size: 15px;
+                padding: 4px 12px;
+            }
+            .robux-pay-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
         }
 
         @media (max-height: 700px) {
@@ -839,12 +1048,18 @@
                 font-size: 16px;
                 padding: 16px;
             }
+            .robux-title {
+                font-size: 18px;
+            }
+            .robux-pay-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
         }
     </style>
-</head>
-<body>
-        <div class="app">
-            <div class="app">
+</head
+  <div class="app">
+<div class="app">
 
     <!-- ============================================================
     ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
@@ -863,7 +1078,7 @@
                 <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
                     <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
                     <div class="category-name">Telegram</div>
-                    <div class="category-count">0 товаров</div>
+                    <div class="category-count">30 товаров</div>
                 </div>
 
                 <!-- Brawl Stars -->
@@ -877,7 +1092,7 @@
                 <div class="category-card" onclick="openCategory('Roblox', 'https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg')">
                     <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
                     <div class="category-name">Roblox</div>
-                    <div class="category-count">0 товаров</div>
+                    <div class="category-count">30 товаров</div>
                 </div>
 
                 <!-- Clash Royale -->
@@ -959,7 +1174,7 @@
             <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
         </div>
 
-        <!-- ===== БЛОК ПОКУПКИ TG STARS (ПОД ПОИСКОМ) ===== -->
+        <!-- ===== БЛОК ПОКУПКИ TG STARS ===== -->
         <div class="stars-block" id="starsBlock">
 
             <div class="stars-title">
@@ -1022,6 +1237,65 @@
 
         </div>
 
+
+        <!-- ===== БЛОК ПОКУПКИ ROBUX ===== -->
+        <div class="robux-block" id="robuxBlock">
+
+            <div class="robux-title">
+                <div class="robux-title-icon">R$</div>
+                Пополнить Robux
+            </div>
+
+            <div class="robux-row">
+
+                <!-- Поле username -->
+                <div class="robux-field" id="robuxUsernameField">
+                    <div class="robux-field-label">Имя пользователя</div>
+                    <div class="robux-field-input-wrap">
+                        <input class="robux-field-input"
+                               id="robuxUsername"
+                               type="text"
+                               placeholder="username"
+                               autocomplete="off"
+                               oninput="onRobuxUsernameInput()"
+                               onfocus="setActiveRobuxField('username')"
+                               onblur="unsetActiveRobuxField()">
+                    </div>
+                </div>
+
+                <!-- Поле количества -->
+                <div class="robux-field" id="robuxAmountField">
+                    <div class="robux-field-label">Количество</div>
+                    <div class="robux-field-input-wrap">
+                        <input class="robux-field-input"
+                               id="robuxAmount"
+                               type="text"
+                               inputmode="numeric"
+                               placeholder="0"
+                               autocomplete="off"
+                               oninput="onRobuxAmountInput()"
+                               onblur="onRobuxAmountBlur()"
+                               onfocus="setActiveRobuxField('amount')">
+                        <div class="robux-field-icon">R$</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="robux-hint" id="robuxHint">от 50 до 1500</div>
+
+            <div class="robux-rate">
+                <div class="robux-rate-icon">R$</div>
+                <span>1</span>
+                <span>=</span>
+                <span class="robux-rate-pill">1,25 ₽</span>
+            </div>
+
+            <button class="robux-pay-btn" id="robuxPayBtn" onclick="payRobux()" disabled>Оплатить</button>
+
+        </div>
+
+
         <!-- Товары -->
         <div class="category-products" id="categoryProducts">
             <div class="empty-products">Товаров пока нет</div>
@@ -1029,8 +1303,8 @@
 
     </div>
 
-    </div>
-        <!-- ============================================================
+</div>
+    <!-- ============================================================
     ЧАСТЬ 5: JAVASCRIPT
     ============================================================ -->
     <script>
@@ -1047,11 +1321,19 @@
         // ============================================================
         // ЧАСТЬ 5: КОНСТАНТЫ
         // ============================================================
-        const STARS_SELLER = 'https://t.me/Dinis_xru_xru';
-        const STARS_RATE = 1.39;         // 1 ⭐ = 1.39 ₽
+        const SELLER_LINK = 'https://t.me/Dinis_xru_xru';
+
+        // Stars
+        const STARS_RATE = 1.39;
         const STARS_MIN = 50;
         const STARS_MAX = 1500;
         const STARS_STEP = 50;
+
+        // Robux
+        const ROBUX_RATE = 1.25;
+        const ROBUX_MIN = 50;
+        const ROBUX_MAX = 1500;
+        const ROBUX_STEP = 50;
 
 
         // ============================================================
@@ -1073,7 +1355,7 @@
         const filtersData = {
             'Telegram': ['Premium', 'Stars', 'Другое'],
             'Brawl Stars': ['Пропуски', 'Гемы'],
-            'Roblox': ['Робуксы', 'Подписки'],
+            'Roblox': ['Robux', 'Подписки'],
             'Clash Royale': ['Пропуски', 'Гемы'],
             'Clash of Clans': ['Пропуски', 'Гемы'],
             'Standoff 2': ['Пропуски', 'Gold']
@@ -1113,11 +1395,13 @@
 
             document.getElementById('searchInput').value = '';
 
-            // Сброс блока Stars
+            // Сброс блоков
             resetStarsForm();
+            resetRobuxForm();
 
-            // Обновить видимость блока Stars
+            // Обновить видимость
             updateStarsVisibility();
+            updateRobuxVisibility();
 
             renderProducts(products);
 
@@ -1147,18 +1431,31 @@
                 el.classList.toggle('active', el.dataset.filter === filter);
             });
             updateStarsVisibility();
+            updateRobuxVisibility();
             filterProducts();
         }
 
 
         // ============================================================
         // ЧАСТЬ 5: ПОКАЗ/СКРЫТИЕ БЛОКА STARS
-        // Показываем только в Telegram → «Все» или «Stars»
+        // Telegram → «Все» или «Stars»
         // ============================================================
         function updateStarsVisibility() {
             const block = document.getElementById('starsBlock');
             const show = (currentCategory === 'Telegram') &&
                          (currentFilter === 'all' || currentFilter === 'Stars');
+            block.classList.toggle('visible', show);
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: ПОКАЗ/СКРЫТИЕ БЛОКА ROBUX
+        // Roblox → «Все» или «Robux»
+        // ============================================================
+        function updateRobuxVisibility() {
+            const block = document.getElementById('robuxBlock');
+            const show = (currentCategory === 'Roblox') &&
+                         (currentFilter === 'all' || currentFilter === 'Robux');
             block.classList.toggle('visible', show);
         }
 
@@ -1177,7 +1474,20 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ПОДСВЕТКА АКТИВНОГО ПОЛЯ
+        // ЧАСТЬ 5: СБРОС ФОРМЫ ROBUX
+        // ============================================================
+        function resetRobuxForm() {
+            document.getElementById('robuxUsername').value = '';
+            document.getElementById('robuxAmount').value = '';
+            document.getElementById('robuxHint').textContent = 'от 50 до 1500';
+            document.getElementById('robuxHint').classList.remove('error');
+            document.getElementById('robuxPayBtn').disabled = true;
+            document.getElementById('robuxPayBtn').textContent = 'Оплатить';
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: STARS — АКТИВНОЕ ПОЛЕ
         // ============================================================
         function setActiveField(field) {
             if (field === 'username') {
@@ -1196,19 +1506,33 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: USERNAME — только @ и латиница/цифры/_
+        // ЧАСТЬ 5: ROBUX — АКТИВНОЕ ПОЛЕ
+        // ============================================================
+        function setActiveRobuxField(field) {
+            if (field === 'username') {
+                document.getElementById('robuxUsernameField').classList.add('active');
+                document.getElementById('robuxAmountField').classList.remove('active');
+            } else {
+                document.getElementById('robuxAmountField').classList.add('active');
+                document.getElementById('robuxUsernameField').classList.remove('active');
+            }
+        }
+
+        function unsetActiveRobuxField() {
+            document.getElementById('robuxUsernameField').classList.remove('active');
+            document.getElementById('robuxAmountField').classList.remove('active');
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: STARS — USERNAME (@ + латиница/цифры/_)
         // ============================================================
         function onUsernameInput() {
             const input = document.getElementById('starsUsername');
             let v = input.value;
 
-            // Убираем все @ в начале, чтобы добавить один
             v = v.replace(/^@+/, '');
-
-            // Только латиница, цифры, подчёркивание
             v = v.replace(/[^a-zA-Z0-9_]/g, '');
-
-            // Ограничим длину username (Telegram: 5-32 символа)
             v = v.substring(0, 32);
 
             input.value = v ? '@' + v : '';
@@ -1218,11 +1542,26 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: AMOUNT — только цифры, кратные 50, 50–1500
+        // ЧАСТЬ 5: ROBUX — USERNAME (латиница/цифры/_, без @)
+        // ============================================================
+        function onRobuxUsernameInput() {
+            const input = document.getElementById('robuxUsername');
+            let v = input.value;
+
+            v = v.replace(/[^a-zA-Z0-9_]/g, '');
+            v = v.substring(0, 20);
+
+            input.value = v;
+
+            validateRobuxForm();
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: STARS — AMOUNT
         // ============================================================
         function onAmountInput() {
             const input = document.getElementById('starsAmount');
-            // Только цифры
             input.value = input.value.replace(/\D/g, '').substring(0, 4);
             validateStarsForm();
         }
@@ -1232,7 +1571,6 @@
             const hint = document.getElementById('starsHint');
             let num = parseInt(input.value, 10);
 
-            // Если пусто — не трогаем
             if (isNaN(num) || num === 0) {
                 hint.textContent = 'от 50 до 1500';
                 hint.classList.remove('error');
@@ -1241,10 +1579,7 @@
                 return;
             }
 
-            // Округляем до ближайшего 50
             num = Math.round(num / STARS_STEP) * STARS_STEP;
-
-            // Границы
             if (num < STARS_MIN) num = STARS_MIN;
             if (num > STARS_MAX) num = STARS_MAX;
 
@@ -1258,7 +1593,42 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ВАЛИДАЦИЯ И РАСЧЁТ ЦЕНЫ
+        // ЧАСТЬ 5: ROBUX — AMOUNT
+        // ============================================================
+        function onRobuxAmountInput() {
+            const input = document.getElementById('robuxAmount');
+            input.value = input.value.replace(/\D/g, '').substring(0, 4);
+            validateRobuxForm();
+        }
+
+        function onRobuxAmountBlur() {
+            const input = document.getElementById('robuxAmount');
+            const hint = document.getElementById('robuxHint');
+            let num = parseInt(input.value, 10);
+
+            if (isNaN(num) || num === 0) {
+                hint.textContent = 'от 50 до 1500';
+                hint.classList.remove('error');
+                unsetActiveRobuxField();
+                validateRobuxForm();
+                return;
+            }
+
+            num = Math.round(num / ROBUX_STEP) * ROBUX_STEP;
+            if (num < ROBUX_MIN) num = ROBUX_MIN;
+            if (num > ROBUX_MAX) num = ROBUX_MAX;
+
+            input.value = num;
+            hint.textContent = 'от 50 до 1500';
+            hint.classList.remove('error');
+
+            unsetActiveRobuxField();
+            validateRobuxForm();
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: STARS — ВАЛИДАЦИЯ
         // ============================================================
         function validateStarsForm() {
             const username = document.getElementById('starsUsername').value;
@@ -1267,10 +1637,7 @@
             const hint = document.getElementById('starsHint');
             const btn = document.getElementById('starsPayBtn');
 
-            // Проверка username (минимум 5 символов после @)
             const usernameOk = username.length >= 6 && /^@[a-zA-Z0-9_]{5,32}$/.test(username);
-
-            // Проверка количества
             const amountOk = !isNaN(amount) &&
                              amount >= STARS_MIN &&
                              amount <= STARS_MAX &&
@@ -1278,7 +1645,6 @@
 
             const allOk = usernameOk && amountOk;
 
-            // Подсказка
             if (amountRaw && !amountOk) {
                 hint.textContent = 'введите число от 50 до 1500, кратное 50';
                 hint.classList.add('error');
@@ -1287,7 +1653,6 @@
                 hint.classList.remove('error');
             }
 
-            // Кнопка
             btn.disabled = !allOk;
             if (allOk) {
                 const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
@@ -1299,14 +1664,49 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: КНОПКА ОПЛАТЫ — открывает чат с продавцом
+        // ЧАСТЬ 5: ROBUX — ВАЛИДАЦИЯ
+        // ============================================================
+        function validateRobuxForm() {
+            const username = document.getElementById('robuxUsername').value;
+            const amountRaw = document.getElementById('robuxAmount').value;
+            const amount = parseInt(amountRaw, 10);
+            const hint = document.getElementById('robuxHint');
+            const btn = document.getElementById('robuxPayBtn');
+
+            const usernameOk = /^[a-zA-Z0-9_]{3,20}$/.test(username);
+            const amountOk = !isNaN(amount) &&
+                             amount >= ROBUX_MIN &&
+                             amount <= ROBUX_MAX &&
+                             amount % ROBUX_STEP === 0;
+
+            const allOk = usernameOk && amountOk;
+
+            if (amountRaw && !amountOk) {
+                hint.textContent = 'введите число от 50 до 1500, кратное 50';
+                hint.classList.add('error');
+            } else {
+                hint.textContent = 'от 50 до 1500';
+                hint.classList.remove('error');
+            }
+
+            btn.disabled = !allOk;
+            if (allOk) {
+                const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
+                btn.textContent = `Оплатить — ${total} ₽`;
+            } else {
+                btn.textContent = 'Оплатить';
+            }
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: STARS — ОПЛАТА
         // ============================================================
         function payStars() {
             const username = document.getElementById('starsUsername').value;
             const amount = parseInt(document.getElementById('starsAmount').value, 10);
             const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
 
-            // Отправляем данные в бота
             tg.sendData(JSON.stringify({
                 action: 'buy_stars',
                 username: username,
@@ -1315,8 +1715,27 @@
                 rate: STARS_RATE
             }));
 
-            // Открываем чат с продавцом
-            tg.openLink(STARS_SELLER);
+            tg.openLink(SELLER_LINK);
+        }
+
+
+        // ============================================================
+        // ЧАСТЬ 5: ROBUX — ОПЛАТА
+        // ============================================================
+        function payRobux() {
+            const username = document.getElementById('robuxUsername').value;
+            const amount = parseInt(document.getElementById('robuxAmount').value, 10);
+            const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
+
+            tg.sendData(JSON.stringify({
+                action: 'buy_robux',
+                username: username,
+                amount: amount,
+                total: total,
+                rate: ROBUX_RATE
+            }));
+
+            tg.openLink(SELLER_LINK);
         }
 
 
@@ -1384,4 +1803,4 @@
     </script>
 
 </body>
-    </html>
+</html>
