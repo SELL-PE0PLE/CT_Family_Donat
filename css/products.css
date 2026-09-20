@@ -1,5 +1,6 @@
 /* ============================================================
    PRODUCTS: горизонтальные карточки, 2 в ряд
+   Картинка слева (contain), цена справа (всегда видна)
    ============================================================ */
 
 .category-products {
@@ -15,7 +16,9 @@
     overflow: visible !important;
 }
 
-/* КАРТОЧКА — ГОРИЗОНТАЛЬНАЯ */
+/* ============================================================
+   КАРТОЧКА — ГОРИЗОНТАЛЬНАЯ
+   ============================================================ */
 .product-card {
     background: #1f1f1f;
     border-radius: 16px;
@@ -30,17 +33,19 @@
     min-height: 90px;
 }
 
+/* Картинка — слева, CONTAIN (целиком) */
 .product-img {
     width: 70px;
     height: 70px;
     border-radius: 10px;
-    object-fit: cover;
-    background: #141414;
+    object-fit: contain;             /* ← целиком */
+    background: transparent;
     flex-shrink: 0;
     display: block;
     margin-bottom: 0;
 }
 
+/* Инфо — справа */
 .product-info {
     flex: 1;
     min-width: 0;
@@ -55,6 +60,7 @@
     display: none;
 }
 
+/* Цена — всегда видна */
 .product-price {
     font-weight: 800;
     font-size: 13px;
