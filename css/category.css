@@ -1,23 +1,27 @@
 /* ============================================================
-   CATEGORY: страница категории (шапка, фильтры, поиск, товары)
+   CATEGORY: страница категории
+   Шапка + фильтры + поиск — фиксированы
+   Контент (Stars/Robux + товары) — листается отдельно
    ============================================================ */
 
 #page-category {
     display: none;
     padding-top: 8px;
+    /* Высота экрана минус padding body */
+    height: calc(100vh - 110px);
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #page-category.visible {
-    display: block;
+    display: flex;
 }
 
 /* ============================================================
-   ФИКСИРОВАННАЯ ВЕРХНЯЯ ЧАСТЬ (шапка + фильтры + поиск)
+   ВЕРХНЯЯ ЧАСТЬ (не листается)
    ============================================================ */
 .category-fixed-top {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    flex-shrink: 0;
     background: #0a0a0a;
     padding-bottom: 12px;
     margin-bottom: 8px;
@@ -127,18 +131,33 @@
 }
 
 /* ============================================================
-   ПУЗЫРЬ ДЛЯ КОНТЕНТА (Stars/Robux + товары)
+   ПУЗЫРЬ С КОНТЕНТОМ (листается внутри)
    ============================================================ */
 .category-content-bubble {
+    flex: 1;
+    min-height: 0;
     background: #141414;
     border-radius: 22px;
     padding: 14px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    min-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    /* Скрываем скроллбар */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-content-bubble::-webkit-scrollbar {
+    display: none;
 }
 
 /* Адаптив */
 @media (max-width: 380px) {
+    #page-category {
+        height: calc(100vh - 100px);
+    }
     .category-header-wrapper { padding: 10px 14px; border-radius: 18px; margin-bottom: 12px; }
     .category-header-icon { width: 40px; height: 40px; }
     .category-header-title { font-size: 20px; }
