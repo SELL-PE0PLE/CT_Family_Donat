@@ -748,27 +748,27 @@
         .search-box:focus {
             border-color: rgba(255, 255, 255, 0.15);
         }
-
             /* ============================================================
            ЧАСТЬ 3: ТОВАРЫ (ПЛИТКИ 2 В РЯД)
            ============================================================ */
 .category-products {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 12px;
 }
 
 .product-card {
     background: #1f1f1f;
-    border-radius: 14px;
-    padding: 10px;
+    border-radius: 16px;
+    padding: 10px 10px 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     border: 1px solid rgba(255, 255, 255, 0.04);
     cursor: pointer;
     transition: all 0.12s ease;
     overflow: hidden;
+    aspect-ratio: 1 / 1.15;  /* ← фиксируем пропорции */
 }
 
 .product-card:active {
@@ -778,46 +778,34 @@
 
 .product-img {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
+    flex: 1;                 /* ← картинка занимает всё место сверху */
+    min-height: 0;
+    border-radius: 12px;
     object-fit: cover;
     background: #141414;
     margin-bottom: 8px;
+    display: block;
 }
 
 .product-info {
     width: 100%;
     text-align: center;
+    flex-shrink: 0;          /* ← цена не сжимается */
 }
 
-.product-name {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    color: #f0f0f0;
-    line-height: 1.2;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
+/* Скрываем название и описание */
+.product-name,
 .product-desc {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 400;
-    font-size: 11px;
-    color: #8888aa;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none;
 }
 
 .product-price {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
-    font-size: 15px;
-    color: #d5d5dd;
+    font-size: 17px;
+    color: #ff3b30;          /* ← КРАСНАЯ ЦЕНА */
+    letter-spacing: 0.2px;
+    line-height: 1.2;
 }
 
 .empty-products {
