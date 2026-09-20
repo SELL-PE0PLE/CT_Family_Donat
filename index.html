@@ -348,421 +348,417 @@
         line-height: 1.2;
     }
     </style>
+    <style>
+    /* ============================================================
+               ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
+               ============================================================ */
+    .filters {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-chip {
+        flex: 0 0 auto;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: #1f1f1f;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #8888aa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.12s ease;
+        white-space: nowrap;
+    }
+
+    .filter-chip:active {
+        transform: scale(0.94);
+    }
+
+    .filter-chip.active {
+        background: #2481cc;
+        color: #ffffff;
+        border-color: #2481cc;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 3: ИКОНКИ ДЛЯ STARS И ROBUX
+               ============================================================ */
+    .stars-title-img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .stars-field-img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .stars-rate-img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .robux-title-img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+        filter: invert(1) brightness(2);
+    }
+
+    .robux-field-img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        flex-shrink: 0;
+        filter: invert(1) brightness(2);
+    }
+
+    .robux-rate-img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        flex-shrink: 0;
+        filter: invert(1) brightness(2);
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 3: БЛОК ПОКУПКИ STARS (ОРАНЖЕВЫЙ)
+               ============================================================ */
+    .stars-block {
+        background: #1a1a1a;
+        border-radius: 20px;
+        padding: 18px 16px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: none;
+    }
+
+    .stars-block.visible {
+        display: block;
+    }
+
+    .stars-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #ffffff;
+        margin-bottom: 16px;
+        letter-spacing: 0.2px;
+    }
+
+    .stars-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .stars-field {
+        flex: 1;
+        background: #141414;
+        border-radius: 14px;
+        padding: 10px 14px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: border-color 0.15s;
+        min-width: 0;
+    }
+
+    .stars-field.active {
+        border-color: #f59e0b;
+    }
+
+    .stars-field-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        color: #8888aa;
+        margin-bottom: 2px;
+    }
+
+    .stars-field-input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .stars-field-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        width: 100%;
+        padding: 0;
+        min-width: 0;
+    }
+
+    .stars-field-input::placeholder {
+        color: #555577;
+        font-weight: 500;
+    }
+
+    .stars-hint {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: #f59e0b;
+        text-align: right;
+        padding-right: 4px;
+        margin-bottom: 14px;
+    }
+
+    .stars-hint.error {
+        color: #ef4444;
+    }
+
+    .stars-rate {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #ffffff;
+    }
+
+    .stars-rate-pill {
+        background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        color: #1a1a1a;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        padding: 5px 16px;
+        border-radius: 12px;
+    }
+
+    .stars-pay-btn {
+        width: 100%;
+        padding: 18px;
+        border-radius: 14px;
+        border: none;
+        background: linear-gradient(135deg, #b45309, #f59e0b);
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .stars-pay-btn:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .stars-pay-btn:disabled {
+        background: linear-gradient(135deg, #7c2d12, #b45309);
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
         <style>
+    /* ============================================================
+               ЧАСТЬ 4: БЛОК ПОКУПКИ ROBUX (СИНИЙ)
+               ============================================================ */
+    .robux-block {
+        background: #1a1a1a;
+        border-radius: 20px;
+        padding: 18px 16px;
+        margin-bottom: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: none;
+    }
+
+    .robux-block.visible {
+        display: block;
+    }
+
+    .robux-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        color: #ffffff;
+        margin-bottom: 16px;
+        letter-spacing: 0.2px;
+    }
+
+    .robux-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .robux-field {
+        flex: 1;
+        background: #141414;
+        border-radius: 14px;
+        padding: 10px 14px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: border-color 0.15s;
+        min-width: 0;
+    }
+
+    .robux-field.active {
+        border-color: #2563eb;
+    }
+
+    .robux-field-label {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        color: #8888aa;
+        margin-bottom: 2px;
+    }
+
+    .robux-field-input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .robux-field-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        width: 100%;
+        padding: 0;
+        min-width: 0;
+    }
+
+    .robux-field-input::placeholder {
+        color: #555577;
+        font-weight: 500;
+    }
+
+    .robux-hint {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: #2563eb;
+        text-align: right;
+        padding-right: 4px;
+        margin-bottom: 14px;
+    }
+
+    .robux-hint.error {
+        color: #ef4444;
+    }
+
+    .robux-rate {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #ffffff;
+    }
+
+    .robux-rate-pill {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        padding: 5px 16px;
+        border-radius: 12px;
+    }
+
+    .robux-pay-btn {
+        width: 100%;
+        padding: 18px;
+        border-radius: 14px;
+        border: none;
+        background: linear-gradient(135deg, #1e40af, #3b82f6);
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        letter-spacing: 0.3px;
+    }
+
+    .robux-pay-btn:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
+    .robux-pay-btn:disabled {
+        background: linear-gradient(135deg, #1e3a8a, #1e40af);
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+
+    /* ============================================================
+               ЧАСТЬ 4: ПОИСК
+               ============================================================ */
+    .search-wrapper {
+        position: relative;
+        margin-bottom: 16px;
+    }
+
+    .search-box {
+        width: 100%;
+        padding: 14px 18px 14px 44px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #1a1a1a;
+        color: #ffffff;
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+        min-height: 52px;
+    }
+
+    .search-box::placeholder {
+        color: #555577;
+    }
+
+    .search-box:focus {
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+</style>
+    <style>
         /* ============================================================
-                   ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
-                   ============================================================ */
-        .filters {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 14px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .filters::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter-chip {
-            flex: 0 0 auto;
-            padding: 8px 20px;
-            border-radius: 20px;
-            background: #1f1f1f;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: #8888aa;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.12s ease;
-            white-space: nowrap;
-        }
-
-        .filter-chip:active {
-            transform: scale(0.94);
-        }
-
-        .filter-chip.active {
-            background: #2481cc;
-            color: #ffffff;
-            border-color: #2481cc;
-        }
-
-
-        /* ============================================================
-                   ЧАСТЬ 3: ИКОНКИ ДЛЯ STARS И ROBUX (КАРТИНКИ)
-                   ============================================================ */
-
-        /* Stars */
-        .stars-title-img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .stars-field-img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .stars-rate-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        /* Robux (белый через инверсию) */
-        .robux-title-img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-            flex-shrink: 0;
-            filter: invert(1) brightness(2);
-        }
-
-        .robux-field-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-            flex-shrink: 0;
-            filter: invert(1) brightness(2);
-        }
-
-        .robux-rate-img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            flex-shrink: 0;
-            filter: invert(1) brightness(2);
-        }
-
-
-        /* ============================================================
-                   ЧАСТЬ 3: БЛОК ПОКУПКИ STARS (ОРАНЖЕВЫЙ)
-                   ============================================================ */
-        .stars-block {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 18px 16px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            display: none;
-        }
-
-        .stars-block.visible {
-            display: block;
-        }
-
-        .stars-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 22px;
-            color: #ffffff;
-            margin-bottom: 16px;
-            letter-spacing: 0.2px;
-        }
-
-        .stars-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .stars-field {
-            flex: 1;
-            background: #141414;
-            border-radius: 14px;
-            padding: 10px 14px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.15s;
-            min-width: 0;
-        }
-
-        .stars-field.active {
-            border-color: #f59e0b;
-        }
-
-        .stars-field-label {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 400;
-            font-size: 12px;
-            color: #8888aa;
-            margin-bottom: 2px;
-        }
-
-        .stars-field-input-wrap {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .stars-field-input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-            width: 100%;
-            padding: 0;
-            min-width: 0;
-        }
-
-        .stars-field-input::placeholder {
-            color: #555577;
-            font-weight: 500;
-        }
-
-        .stars-hint {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            color: #f59e0b;
-            text-align: right;
-            padding-right: 4px;
-            margin-bottom: 14px;
-        }
-
-        .stars-hint.error {
-            color: #ef4444;
-        }
-
-        .stars-rate {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #ffffff;
-        }
-
-        .stars-rate-pill {
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            color: #1a1a1a;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 17px;
-            padding: 5px 16px;
-            border-radius: 12px;
-        }
-
-        .stars-pay-btn {
-            width: 100%;
-            padding: 18px;
-            border-radius: 14px;
-            border: none;
-            background: linear-gradient(135deg, #b45309, #f59e0b);
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .stars-pay-btn:active {
-            transform: scale(0.98);
-            opacity: 0.9;
-        }
-
-        .stars-pay-btn:disabled {
-            background: linear-gradient(135deg, #7c2d12, #b45309);
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-
-        /* ============================================================
-                   ЧАСТЬ 3: БЛОК ПОКУПКИ ROBUX (СИНИЙ)
-                   ============================================================ */
-        .robux-block {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 18px 16px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            display: none;
-        }
-
-        .robux-block.visible {
-            display: block;
-        }
-
-        .robux-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 22px;
-            color: #ffffff;
-            margin-bottom: 16px;
-            letter-spacing: 0.2px;
-        }
-
-        .robux-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .robux-field {
-            flex: 1;
-            background: #141414;
-            border-radius: 14px;
-            padding: 10px 14px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: border-color 0.15s;
-            min-width: 0;
-        }
-
-        .robux-field.active {
-            border-color: #2563eb;
-        }
-
-        .robux-field-label {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 400;
-            font-size: 12px;
-            color: #8888aa;
-            margin-bottom: 2px;
-        }
-
-        .robux-field-input-wrap {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .robux-field-input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 600;
-            font-size: 18px;
-            width: 100%;
-            padding: 0;
-            min-width: 0;
-        }
-
-        .robux-field-input::placeholder {
-            color: #555577;
-            font-weight: 500;
-        }
-
-        .robux-hint {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            color: #2563eb;
-            text-align: right;
-            padding-right: 4px;
-            margin-bottom: 14px;
-        }
-
-        .robux-hint.error {
-            color: #ef4444;
-        }
-
-        .robux-rate {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: #ffffff;
-        }
-
-        .robux-rate-pill {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 17px;
-            padding: 5px 16px;
-            border-radius: 12px;
-        }
-
-        .robux-pay-btn {
-            width: 100%;
-            padding: 18px;
-            border-radius: 14px;
-            border: none;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            letter-spacing: 0.3px;
-        }
-
-        .robux-pay-btn:active {
-            transform: scale(0.98);
-            opacity: 0.9;
-        }
-
-        .robux-pay-btn:disabled {
-            background: linear-gradient(135deg, #1e3a8a, #1e40af);
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-
-        /* ============================================================
-                   ЧАСТЬ 3: ПОИСК
-                   ============================================================ */
-        .search-wrapper {
-            position: relative;
-            margin-bottom: 16px;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 14px 18px 14px 44px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: #1a1a1a;
-            color: #ffffff;
-            font-size: 16px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            outline: none;
-            transition: border-color 0.2s;
-            min-height: 52px;
-        }
-
-        .search-box::placeholder {
-            color: #555577;
-        }
-
-        .search-box:focus {
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-
-        /* ============================================================
-                   ЧАСТЬ 3: ТОВАРЫ (ПЛИТКИ 2 В РЯД)
+                   ЧАСТЬ 5: ТОВАРЫ (ПЛИТКИ 2 В РЯД)
                    ============================================================ */
         .category-products {
             display: grid;
@@ -780,6 +776,7 @@
             border: 1px solid rgba(255, 255, 255, 0.04);
             overflow: hidden;
             min-height: 240px;
+            cursor: pointer;
         }
 
         .product-img {
@@ -805,7 +802,6 @@
             display: none;
         }
 
-        /* ===== КНОПКА-ЦЕНА ===== */
         .product-price {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 800;
@@ -817,19 +813,10 @@
             border-radius: 12px;
             background: linear-gradient(135deg, #ff2e63 0%, #ff5f8f 100%);
             box-shadow: 0 6px 18px rgba(255, 46, 99, 0.45);
-            cursor: pointer;
-            transition: all 0.12s ease;
             text-align: center;
             white-space: nowrap;
             width: 100%;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            border: none;
-        }
-
-        .product-price:active {
-            transform: scale(0.96);
-            box-shadow: 0 3px 10px rgba(255, 46, 99, 0.6);
         }
 
         .empty-products {
@@ -843,7 +830,201 @@
 
 
         /* ============================================================
-                   ЧАСТЬ 3: АДАПТИВ
+                   ЧАСТЬ 5: ГОРИЗОНТАЛЬНАЯ ЛЕНТА (ДЛЯ PREMIUM)
+                   ============================================================ */
+        .category-products.horizontal {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 6px;
+        }
+
+        .category-products.horizontal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-products.horizontal .product-card {
+            flex: 0 0 auto;
+            width: 200px;
+            min-height: auto;
+        }
+
+        .category-products.horizontal .product-img {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+        }
+
+        .category-products.horizontal .product-price {
+            display: none;
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 5: МОДАЛЬНОЕ ОКНО ТОВАРА
+                   ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.visible {
+            display: flex;
+        }
+
+        .modal {
+            background: #141414;
+            border-radius: 24px;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+            animation: modalIn 0.2s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #1f1f1f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            padding-bottom: 4px;
+            transition: all 0.12s ease;
+            z-index: 10;
+        }
+
+        .modal-close:active {
+            transform: scale(0.92);
+            background: #2a2a2a;
+        }
+
+        .modal-img {
+            width: 100%;
+            border-radius: 16px;
+            object-fit: contain;
+            background: transparent;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .modal-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .modal-price {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            color: #ff2e63;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 14px rgba(255, 46, 99, 0.45);
+        }
+
+        .modal-buy-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, #ff2e63 0%, #ff5f8f 100%);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            box-shadow: 0 6px 18px rgba(255, 46, 99, 0.45);
+            letter-spacing: 0.4px;
+        }
+
+        .modal-buy-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 3px 10px rgba(255, 46, 99, 0.6);
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 5: ОПЦИИ В МОДАЛКЕ
+                   ============================================================ */
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .modal-option {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: none;
+            background: linear-gradient(135deg, #ff2e63 0%, #ff5f8f 100%);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            box-shadow: 0 6px 18px rgba(255, 46, 99, 0.45);
+            letter-spacing: 0.3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .modal-option:active {
+            transform: scale(0.97);
+            box-shadow: 0 3px 10px rgba(255, 46, 99, 0.6);
+        }
+
+        .modal-option-label {
+            flex: 1;
+        }
+
+        .modal-option-price {
+            flex-shrink: 0;
+            font-weight: 800;
+        }
+
+
+        /* ============================================================
+                   ЧАСТЬ 5: АДАПТИВ
                    ============================================================ */
         @media (max-width: 380px) {
             body {
@@ -932,6 +1113,9 @@
                 font-size: 14px;
                 padding: 10px 18px;
             }
+            .category-products.horizontal .product-card {
+                width: 160px;
+            }
             .stars-title {
                 font-size: 18px;
             }
@@ -973,6 +1157,24 @@
             .robux-pay-btn {
                 font-size: 16px;
                 padding: 16px;
+            }
+            .modal {
+                padding: 16px;
+                border-radius: 20px;
+            }
+            .modal-title {
+                font-size: 18px;
+            }
+            .modal-price {
+                font-size: 22px;
+            }
+            .modal-buy-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
+            .modal-option {
+                font-size: 14px;
+                padding: 12px 14px;
             }
         }
 
@@ -1059,11 +1261,11 @@
         }
     </style>
 </head>
-
+<body>
     <div class="app">
 
     <!-- ============================================================
-    ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
+    ЧАСТЬ 6: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
     ============================================================ -->
     <div id="page-main">
 
@@ -1147,7 +1349,7 @@
 
 
     <!-- ============================================================
-    ЧАСТЬ 4: СТРАНИЦА КАТЕГОРИИ (РАЗМЕТКА)
+    ЧАСТЬ 6: СТРАНИЦА КАТЕГОРИИ (РАЗМЕТКА)
     ============================================================ -->
     <div id="page-category">
 
@@ -1183,7 +1385,6 @@
 
             <div class="stars-row">
 
-                <!-- Поле username -->
                 <div class="stars-field" id="starsUsernameField">
                     <div class="stars-field-label">Имя пользователя</div>
                     <div class="stars-field-input-wrap">
@@ -1198,7 +1399,6 @@
                     </div>
                 </div>
 
-                <!-- Поле количества -->
                 <div class="stars-field" id="starsAmountField">
                     <div class="stars-field-label">Количество</div>
                     <div class="stars-field-input-wrap">
@@ -1241,7 +1441,6 @@
 
             <div class="robux-row">
 
-                <!-- Поле username -->
                 <div class="robux-field" id="robuxUsernameField">
                     <div class="robux-field-label">Имя пользователя</div>
                     <div class="robux-field-input-wrap">
@@ -1256,7 +1455,6 @@
                     </div>
                 </div>
 
-                <!-- Поле количества -->
                 <div class="robux-field" id="robuxAmountField">
                     <div class="robux-field-label">Количество</div>
                     <div class="robux-field-input-wrap">
@@ -1296,13 +1494,28 @@
 
     </div>
 
+
+    <!-- ============================================================
+    ЧАСТЬ 6: МОДАЛЬНОЕ ОКНО ТОВАРА
+    ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <img class="modal-img" id="modalImg" src="" alt="">
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-price" id="modalPrice"></div>
+            <button class="modal-buy-btn" id="modalBuyBtn" onclick="buyFromModal()">Купить</button>
+            <div class="modal-options" id="modalOptions"></div>
+        </div>
+    </div>
+
     </div>
     <!-- ============================================================
-ЧАСТЬ 5: JAVASCRIPT — ДАННЫЕ И НАСТРОЙКИ
+ЧАСТЬ 7: JAVASCRIPT — ДАННЫЕ И НАСТРОЙКИ
 ============================================================ -->
 <script>
     // ============================================================
-    // ЧАСТЬ 5: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
+    // ЧАСТЬ 7: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
     // ============================================================
     const tg = window.Telegram.WebApp;
     tg.expand();
@@ -1310,17 +1523,15 @@
 
 
     // ============================================================
-    // ЧАСТЬ 5: КОНСТАНТЫ
+    // ЧАСТЬ 7: КОНСТАНТЫ
     // ============================================================
     const SELLER_LINK = 'https://t.me/Dinis_xru_xru';
 
-    // Stars
     const STARS_RATE = 1.39;
     const STARS_MIN = 50;
     const STARS_MAX = 1500;
     const STARS_STEP = 50;
 
-    // Robux
     const ROBUX_RATE = 1.25;
     const ROBUX_MIN = 50;
     const ROBUX_MAX = 1500;
@@ -1328,44 +1539,63 @@
 
 
     // ============================================================
-    // ЧАСТЬ 5: ДАННЫЕ ТОВАРОВ
+    // ЧАСТЬ 7: ДАННЫЕ ТОВАРОВ
     // ============================================================
     const productsData = {
         'Telegram': [
             {
-                name: 'Premium',
+                name: 'Telegram Premium',
                 desc: '',
                 price: '',
                 filter: 'Premium',
-                img: 'https://i.ibb.co/RkLvqms5/IMG-20260920-224429-549.jpg'
+                img: 'https://i.ibb.co/RkLvqms5/IMG-20260920-224429-549.jpg',
+                options: [
+                    { label: 'Без входа', price: '265 ₽' },
+                    { label: 'Со входом', price: '250 ₽' }
+                ]
             },
             {
-                name: 'Premium',
+                name: 'Telegram Premium',
                 desc: '',
                 price: '',
                 filter: 'Premium',
-                img: 'https://i.ibb.co/8LhQLbYT/IMG-20260920-224550-595.jpg'
+                img: 'https://i.ibb.co/8LhQLbYT/IMG-20260920-224550-595.jpg',
+                options: [
+                    { label: '🎁 Подарком', price: '950 ₽' }
+                ]
             },
             {
-                name: 'Premium',
+                name: 'Telegram Premium',
                 desc: '',
                 price: '',
                 filter: 'Premium',
-                img: 'https://i.ibb.co/xqcQX4Hc/IMG-20260920-224740-600.jpg'
+                img: 'https://i.ibb.co/xqcQX4Hc/IMG-20260920-224740-600.jpg',
+                options: [
+                    { label: '🎁 Подарком', price: '1150 ₽' }
+                ]
             },
             {
-                name: 'Premium',
+                name: 'Telegram Premium',
                 desc: '',
                 price: '',
                 filter: 'Premium',
-                img: 'https://i.ibb.co/B55rkbc4/IMG-20260920-224844-835.jpg'
+                img: 'https://i.ibb.co/B55rkbc4/IMG-20260920-224844-835.jpg',
+                options: [
+                    { label: '✈️ Без входа', price: '1700 ₽' },
+                    { label: '✈️ Со входом', price: '1650 ₽' },
+                    { label: '🎁 Подарком', price: '2050 ₽' }
+                ]
             },
             {
-                name: 'Premium',
+                name: 'Telegram Premium',
                 desc: '',
                 price: '',
                 filter: 'Premium',
-                img: 'https://i.ibb.co/1fRbCc0B/IMG-20260920-225006-007.jpg'
+                img: 'https://i.ibb.co/1fRbCc0B/IMG-20260920-225006-007.jpg',
+                options: [
+                    { label: '✈️ Без входа', price: '2750 ₽' },
+                    { label: '✈️ Со входом', price: '2700 ₽' }
+                ]
             }
         ],
         'Brawl Stars': [],
@@ -1406,7 +1636,7 @@
 
 
     // ============================================================
-    // ЧАСТЬ 5: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
+    // ЧАСТЬ 7: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
     // ============================================================
     const filtersData = {
         'Telegram': ['Stars', 'Premium', 'Другое'],
@@ -1419,399 +1649,408 @@
 
 
     // ============================================================
-    // ЧАСТЬ 5: ПЕРЕМЕННЫЕ СОСТОЯНИЯ
+    // ЧАСТЬ 7: ПЕРЕМЕННЫЕ СОСТОЯНИЯ
     // ============================================================
     let currentCategory = '';
     let currentFilter = 'all';
     let currentProducts = [];
+                </script>
+                <!-- ============================================================
+ЧАСТЬ 8: JAVASCRIPT — ОСНОВНАЯ ЛОГИКА
+============================================================ -->
+<script>
+    // ============================================================
+    // ЧАСТЬ 8: ОТКРЫТЬ КАТЕГОРИЮ
+    // ============================================================
+    function openCategory(name, icon) {
+        currentCategory = name;
+        currentFilter = 'all';
+
+        document.getElementById('page-main').classList.add('hidden');
+        document.getElementById('page-category').classList.add('visible');
+
+        document.getElementById('catHeaderIcon').src = icon;
+        document.getElementById('catHeaderTitle').textContent = name;
+
+        const products = productsData[name] || [];
+        currentProducts = products;
+
+        const filters = filtersData[name] || [];
+        const container = document.getElementById('filtersContainer');
+
+        let html = `<div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>`;
+        filters.forEach(filter => {
+            html += `<div class="filter-chip" data-filter="${filter}" onclick="setFilter('${filter}')">${filter}</div>`;
+        });
+        container.innerHTML = html;
+
+        document.getElementById('searchInput').value = '';
+
+        resetStarsForm();
+        resetRobuxForm();
+        updateStarsVisibility();
+        updateRobuxVisibility();
+        updateProductsLayout();
+
+        renderProducts(products);
+
+        tg.BackButton.show();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ЗАКРЫТЬ КАТЕГОРИЮ
+    // ============================================================
+    function closeCategory() {
+        document.getElementById('page-main').classList.remove('hidden');
+        document.getElementById('page-category').classList.remove('visible');
+        currentCategory = '';
+        currentProducts = [];
+
+        tg.BackButton.hide();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: УСТАНОВИТЬ ФИЛЬТР
+    // ============================================================
+    function setFilter(filter) {
+        currentFilter = filter;
+        document.querySelectorAll('.filter-chip').forEach(el => {
+            el.classList.toggle('active', el.dataset.filter === filter);
+        });
+        updateStarsVisibility();
+        updateRobuxVisibility();
+        updateProductsLayout();
+        filterProducts();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ПОКАЗ/СКРЫТИЕ БЛОКА STARS
+    // ============================================================
+    function updateStarsVisibility() {
+        const block = document.getElementById('starsBlock');
+        const show = (currentCategory === 'Telegram') &&
+                     (currentFilter === 'all' || currentFilter === 'Stars');
+        block.classList.toggle('visible', show);
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ПОКАЗ/СКРЫТИЕ БЛОКА ROBUX
+    // ============================================================
+    function updateRobuxVisibility() {
+        const block = document.getElementById('robuxBlock');
+        const show = (currentCategory === 'Roblox') &&
+                     (currentFilter === 'all' || currentFilter === 'Robux');
+        block.classList.toggle('visible', show);
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ОБНОВЛЕНИЕ ВИДА ТОВАРОВ (ГОРИЗОНТАЛЬНО/СЕТКА)
+    // ============================================================
+    function updateProductsLayout() {
+        const container = document.getElementById('categoryProducts');
+        const isHorizontal = (currentCategory === 'Telegram' && currentFilter === 'Premium');
+        container.classList.toggle('horizontal', isHorizontal);
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: СБРОС ФОРМЫ STARS
+    // ============================================================
+    function resetStarsForm() {
+        document.getElementById('starsUsername').value = '';
+        document.getElementById('starsAmount').value = '';
+        document.getElementById('starsHint').textContent = 'от 50 до 1500';
+        document.getElementById('starsHint').classList.remove('error');
+        document.getElementById('starsPayBtn').disabled = true;
+        document.getElementById('starsPayBtn').textContent = 'Оплатить';
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: СБРОС ФОРМЫ ROBUX
+    // ============================================================
+    function resetRobuxForm() {
+        document.getElementById('robuxUsername').value = '';
+        document.getElementById('robuxAmount').value = '';
+        document.getElementById('robuxHint').textContent = 'от 50 до 1500';
+        document.getElementById('robuxHint').classList.remove('error');
+        document.getElementById('robuxPayBtn').disabled = true;
+        document.getElementById('robuxPayBtn').textContent = 'Оплатить';
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: STARS — АКТИВНОЕ ПОЛЕ
+    // ============================================================
+    function setActiveField(field) {
+        if (field === 'username') {
+            document.getElementById('starsUsernameField').classList.add('active');
+            document.getElementById('starsAmountField').classList.remove('active');
+        } else {
+            document.getElementById('starsAmountField').classList.add('active');
+            document.getElementById('starsUsernameField').classList.remove('active');
+        }
+    }
+
+    function unsetActiveField() {
+        document.getElementById('starsUsernameField').classList.remove('active');
+        document.getElementById('starsAmountField').classList.remove('active');
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ROBUX — АКТИВНОЕ ПОЛЕ
+    // ============================================================
+    function setActiveRobuxField(field) {
+        if (field === 'username') {
+            document.getElementById('robuxUsernameField').classList.add('active');
+            document.getElementById('robuxAmountField').classList.remove('active');
+        } else {
+            document.getElementById('robuxAmountField').classList.add('active');
+            document.getElementById('robuxUsernameField').classList.remove('active');
+        }
+    }
+
+    function unsetActiveRobuxField() {
+        document.getElementById('robuxUsernameField').classList.remove('active');
+        document.getElementById('robuxAmountField').classList.remove('active');
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: STARS — USERNAME
+    // ============================================================
+    function onUsernameInput() {
+        const input = document.getElementById('starsUsername');
+        let v = input.value;
+
+        v = v.replace(/^@+/, '');
+        v = v.replace(/[^a-zA-Z0-9_]/g, '');
+        v = v.substring(0, 32);
+
+        input.value = v ? '@' + v : '';
+
+        validateStarsForm();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ROBUX — USERNAME
+    // ============================================================
+    function onRobuxUsernameInput() {
+        const input = document.getElementById('robuxUsername');
+        let v = input.value;
+
+        v = v.replace(/[^a-zA-Z0-9_]/g, '');
+        v = v.substring(0, 20);
+
+        input.value = v;
+
+        validateRobuxForm();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: STARS — AMOUNT
+    // ============================================================
+    function onAmountInput() {
+        const input = document.getElementById('starsAmount');
+        input.value = input.value.replace(/\D/g, '').substring(0, 4);
+        validateStarsForm();
+    }
+
+    function onAmountBlur() {
+        const input = document.getElementById('starsAmount');
+        const hint = document.getElementById('starsHint');
+        let num = parseInt(input.value, 10);
+
+        if (isNaN(num) || num === 0) {
+            hint.textContent = 'от 50 до 1500';
+            hint.classList.remove('error');
+            unsetActiveField();
+            validateStarsForm();
+            return;
+        }
+
+        num = Math.round(num / STARS_STEP) * STARS_STEP;
+        if (num < STARS_MIN) num = STARS_MIN;
+        if (num > STARS_MAX) num = STARS_MAX;
+
+        input.value = num;
+        hint.textContent = 'от 50 до 1500';
+        hint.classList.remove('error');
+
+        unsetActiveField();
+        validateStarsForm();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ROBUX — AMOUNT
+    // ============================================================
+    function onRobuxAmountInput() {
+        const input = document.getElementById('robuxAmount');
+        input.value = input.value.replace(/\D/g, '').substring(0, 4);
+        validateRobuxForm();
+    }
+
+    function onRobuxAmountBlur() {
+        const input = document.getElementById('robuxAmount');
+        const hint = document.getElementById('robuxHint');
+        let num = parseInt(input.value, 10);
+
+        if (isNaN(num) || num === 0) {
+            hint.textContent = 'от 50 до 1500';
+            hint.classList.remove('error');
+            unsetActiveRobuxField();
+            validateRobuxForm();
+            return;
+        }
+
+        num = Math.round(num / ROBUX_STEP) * ROBUX_STEP;
+        if (num < ROBUX_MIN) num = ROBUX_MIN;
+        if (num > ROBUX_MAX) num = ROBUX_MAX;
+
+        input.value = num;
+        hint.textContent = 'от 50 до 1500';
+        hint.classList.remove('error');
+
+        unsetActiveRobuxField();
+        validateRobuxForm();
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: STARS — ВАЛИДАЦИЯ
+    // ============================================================
+    function validateStarsForm() {
+        const username = document.getElementById('starsUsername').value;
+        const amountRaw = document.getElementById('starsAmount').value;
+        const amount = parseInt(amountRaw, 10);
+        const hint = document.getElementById('starsHint');
+        const btn = document.getElementById('starsPayBtn');
+
+        const usernameOk = username.length >= 6 && /^@[a-zA-Z0-9_]{5,32}$/.test(username);
+        const amountOk = !isNaN(amount) &&
+                         amount >= STARS_MIN &&
+                         amount <= STARS_MAX &&
+                         amount % STARS_STEP === 0;
+
+        const allOk = usernameOk && amountOk;
+
+        if (amountRaw && !amountOk) {
+            hint.textContent = 'введите число от 50 до 1500, кратное 50';
+            hint.classList.add('error');
+        } else {
+            hint.textContent = 'от 50 до 1500';
+            hint.classList.remove('error');
+        }
+
+        btn.disabled = !allOk;
+        if (allOk) {
+            const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
+            btn.textContent = `Оплатить — ${total} ₽`;
+        } else {
+            btn.textContent = 'Оплатить';
+        }
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ROBUX — ВАЛИДАЦИЯ
+    // ============================================================
+    function validateRobuxForm() {
+        const username = document.getElementById('robuxUsername').value;
+        const amountRaw = document.getElementById('robuxAmount').value;
+        const amount = parseInt(amountRaw, 10);
+        const hint = document.getElementById('robuxHint');
+        const btn = document.getElementById('robuxPayBtn');
+
+        const usernameOk = /^[a-zA-Z0-9_]{3,20}$/.test(username);
+        const amountOk = !isNaN(amount) &&
+                         amount >= ROBUX_MIN &&
+                         amount <= ROBUX_MAX &&
+                         amount % ROBUX_STEP === 0;
+
+        const allOk = usernameOk && amountOk;
+
+        if (amountRaw && !amountOk) {
+            hint.textContent = 'введите число от 50 до 1500, кратное 50';
+            hint.classList.add('error');
+        } else {
+            hint.textContent = 'от 50 до 1500';
+            hint.classList.remove('error');
+        }
+
+        btn.disabled = !allOk;
+        if (allOk) {
+            const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
+            btn.textContent = `Оплатить — ${total} ₽`;
+        } else {
+            btn.textContent = 'Оплатить';
+        }
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: STARS — ОПЛАТА
+    // ============================================================
+    function payStars() {
+        const username = document.getElementById('starsUsername').value;
+        const amount = parseInt(document.getElementById('starsAmount').value, 10);
+        const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
+
+        tg.sendData(JSON.stringify({
+            action: 'buy_stars',
+            username: username,
+            amount: amount,
+            total: total,
+            rate: STARS_RATE
+        }));
+
+        tg.openLink(SELLER_LINK);
+    }
+
+
+    // ============================================================
+    // ЧАСТЬ 8: ROBUX — ОПЛАТА
+    // ============================================================
+    function payRobux() {
+        const username = document.getElementById('robuxUsername').value;
+        const amount = parseInt(document.getElementById('robuxAmount').value, 10);
+        const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
+
+        tg.sendData(JSON.stringify({
+            action: 'buy_robux',
+            username: username,
+            amount: amount,
+            total: total,
+            rate: ROBUX_RATE
+        }));
+
+        tg.openLink(SELLER_LINK);
+    }
 </script>
     <!-- ============================================================
-    ЧАСТЬ 6: JAVASCRIPT — ЛОГИКА И ФУНКЦИИ
+    ЧАСТЬ 9: JAVASCRIPT — ОТРИСОВКА И МОДАЛКА
     ============================================================ -->
     <script>
         // ============================================================
-        // ЧАСТЬ 6: ОТКРЫТЬ КАТЕГОРИЮ
-        // ============================================================
-        function openCategory(name, icon) {
-            currentCategory = name;
-            currentFilter = 'all';
-
-            document.getElementById('page-main').classList.add('hidden');
-            document.getElementById('page-category').classList.add('visible');
-
-            document.getElementById('catHeaderIcon').src = icon;
-            document.getElementById('catHeaderTitle').textContent = name;
-
-            const products = productsData[name] || [];
-            currentProducts = products;
-
-            // === ОБНОВЛЯЕМ ФИЛЬТРЫ ===
-            const filters = filtersData[name] || [];
-            const container = document.getElementById('filtersContainer');
-
-            let html = `<div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>`;
-            filters.forEach(filter => {
-                html += `<div class="filter-chip" data-filter="${filter}" onclick="setFilter('${filter}')">${filter}</div>`;
-            });
-            container.innerHTML = html;
-
-            document.getElementById('searchInput').value = '';
-
-            // Сброс блоков
-            resetStarsForm();
-            resetRobuxForm();
-
-            // Обновить видимость
-            updateStarsVisibility();
-            updateRobuxVisibility();
-
-            renderProducts(products);
-
-            tg.BackButton.show();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ЗАКРЫТЬ КАТЕГОРИЮ
-        // ============================================================
-        function closeCategory() {
-            document.getElementById('page-main').classList.remove('hidden');
-            document.getElementById('page-category').classList.remove('visible');
-            currentCategory = '';
-            currentProducts = [];
-
-            tg.BackButton.hide();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: УСТАНОВИТЬ ФИЛЬТР
-        // ============================================================
-        function setFilter(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-chip').forEach(el => {
-                el.classList.toggle('active', el.dataset.filter === filter);
-            });
-            updateStarsVisibility();
-            updateRobuxVisibility();
-            filterProducts();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ПОКАЗ/СКРЫТИЕ БЛОКА STARS
-        // ============================================================
-        function updateStarsVisibility() {
-            const block = document.getElementById('starsBlock');
-            const show = (currentCategory === 'Telegram') &&
-                         (currentFilter === 'all' || currentFilter === 'Stars');
-            block.classList.toggle('visible', show);
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ПОКАЗ/СКРЫТИЕ БЛОКА ROBUX
-        // ============================================================
-        function updateRobuxVisibility() {
-            const block = document.getElementById('robuxBlock');
-            const show = (currentCategory === 'Roblox') &&
-                         (currentFilter === 'all' || currentFilter === 'Robux');
-            block.classList.toggle('visible', show);
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: СБРОС ФОРМЫ STARS
-        // ============================================================
-        function resetStarsForm() {
-            document.getElementById('starsUsername').value = '';
-            document.getElementById('starsAmount').value = '';
-            document.getElementById('starsHint').textContent = 'от 50 до 1500';
-            document.getElementById('starsHint').classList.remove('error');
-            document.getElementById('starsPayBtn').disabled = true;
-            document.getElementById('starsPayBtn').textContent = 'Оплатить';
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: СБРОС ФОРМЫ ROBUX
-        // ============================================================
-        function resetRobuxForm() {
-            document.getElementById('robuxUsername').value = '';
-            document.getElementById('robuxAmount').value = '';
-            document.getElementById('robuxHint').textContent = 'от 50 до 1500';
-            document.getElementById('robuxHint').classList.remove('error');
-            document.getElementById('robuxPayBtn').disabled = true;
-            document.getElementById('robuxPayBtn').textContent = 'Оплатить';
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: STARS — АКТИВНОЕ ПОЛЕ
-        // ============================================================
-        function setActiveField(field) {
-            if (field === 'username') {
-                document.getElementById('starsUsernameField').classList.add('active');
-                document.getElementById('starsAmountField').classList.remove('active');
-            } else {
-                document.getElementById('starsAmountField').classList.add('active');
-                document.getElementById('starsUsernameField').classList.remove('active');
-            }
-        }
-
-        function unsetActiveField() {
-            document.getElementById('starsUsernameField').classList.remove('active');
-            document.getElementById('starsAmountField').classList.remove('active');
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ROBUX — АКТИВНОЕ ПОЛЕ
-        // ============================================================
-        function setActiveRobuxField(field) {
-            if (field === 'username') {
-                document.getElementById('robuxUsernameField').classList.add('active');
-                document.getElementById('robuxAmountField').classList.remove('active');
-            } else {
-                document.getElementById('robuxAmountField').classList.add('active');
-                document.getElementById('robuxUsernameField').classList.remove('active');
-            }
-        }
-
-        function unsetActiveRobuxField() {
-            document.getElementById('robuxUsernameField').classList.remove('active');
-            document.getElementById('robuxAmountField').classList.remove('active');
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: STARS — USERNAME
-        // ============================================================
-        function onUsernameInput() {
-            const input = document.getElementById('starsUsername');
-            let v = input.value;
-
-            v = v.replace(/^@+/, '');
-            v = v.replace(/[^a-zA-Z0-9_]/g, '');
-            v = v.substring(0, 32);
-
-            input.value = v ? '@' + v : '';
-
-            validateStarsForm();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ROBUX — USERNAME
-        // ============================================================
-        function onRobuxUsernameInput() {
-            const input = document.getElementById('robuxUsername');
-            let v = input.value;
-
-            v = v.replace(/[^a-zA-Z0-9_]/g, '');
-            v = v.substring(0, 20);
-
-            input.value = v;
-
-            validateRobuxForm();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: STARS — AMOUNT
-        // ============================================================
-        function onAmountInput() {
-            const input = document.getElementById('starsAmount');
-            input.value = input.value.replace(/\D/g, '').substring(0, 4);
-            validateStarsForm();
-        }
-
-        function onAmountBlur() {
-            const input = document.getElementById('starsAmount');
-            const hint = document.getElementById('starsHint');
-            let num = parseInt(input.value, 10);
-
-            if (isNaN(num) || num === 0) {
-                hint.textContent = 'от 50 до 1500';
-                hint.classList.remove('error');
-                unsetActiveField();
-                validateStarsForm();
-                return;
-            }
-
-            num = Math.round(num / STARS_STEP) * STARS_STEP;
-            if (num < STARS_MIN) num = STARS_MIN;
-            if (num > STARS_MAX) num = STARS_MAX;
-
-            input.value = num;
-            hint.textContent = 'от 50 до 1500';
-            hint.classList.remove('error');
-
-            unsetActiveField();
-            validateStarsForm();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ROBUX — AMOUNT
-        // ============================================================
-        function onRobuxAmountInput() {
-            const input = document.getElementById('robuxAmount');
-            input.value = input.value.replace(/\D/g, '').substring(0, 4);
-            validateRobuxForm();
-        }
-
-        function onRobuxAmountBlur() {
-            const input = document.getElementById('robuxAmount');
-            const hint = document.getElementById('robuxHint');
-            let num = parseInt(input.value, 10);
-
-            if (isNaN(num) || num === 0) {
-                hint.textContent = 'от 50 до 1500';
-                hint.classList.remove('error');
-                unsetActiveRobuxField();
-                validateRobuxForm();
-                return;
-            }
-
-            num = Math.round(num / ROBUX_STEP) * ROBUX_STEP;
-            if (num < ROBUX_MIN) num = ROBUX_MIN;
-            if (num > ROBUX_MAX) num = ROBUX_MAX;
-
-            input.value = num;
-            hint.textContent = 'от 50 до 1500';
-            hint.classList.remove('error');
-
-            unsetActiveRobuxField();
-            validateRobuxForm();
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: STARS — ВАЛИДАЦИЯ
-        // ============================================================
-        function validateStarsForm() {
-            const username = document.getElementById('starsUsername').value;
-            const amountRaw = document.getElementById('starsAmount').value;
-            const amount = parseInt(amountRaw, 10);
-            const hint = document.getElementById('starsHint');
-            const btn = document.getElementById('starsPayBtn');
-
-            const usernameOk = username.length >= 6 && /^@[a-zA-Z0-9_]{5,32}$/.test(username);
-            const amountOk = !isNaN(amount) &&
-                             amount >= STARS_MIN &&
-                             amount <= STARS_MAX &&
-                             amount % STARS_STEP === 0;
-
-            const allOk = usernameOk && amountOk;
-
-            if (amountRaw && !amountOk) {
-                hint.textContent = 'введите число от 50 до 1500, кратное 50';
-                hint.classList.add('error');
-            } else {
-                hint.textContent = 'от 50 до 1500';
-                hint.classList.remove('error');
-            }
-
-            btn.disabled = !allOk;
-            if (allOk) {
-                const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
-                btn.textContent = `Оплатить — ${total} ₽`;
-            } else {
-                btn.textContent = 'Оплатить';
-            }
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ROBUX — ВАЛИДАЦИЯ
-        // ============================================================
-        function validateRobuxForm() {
-            const username = document.getElementById('robuxUsername').value;
-            const amountRaw = document.getElementById('robuxAmount').value;
-            const amount = parseInt(amountRaw, 10);
-            const hint = document.getElementById('robuxHint');
-            const btn = document.getElementById('robuxPayBtn');
-
-            const usernameOk = /^[a-zA-Z0-9_]{3,20}$/.test(username);
-            const amountOk = !isNaN(amount) &&
-                             amount >= ROBUX_MIN &&
-                             amount <= ROBUX_MAX &&
-                             amount % ROBUX_STEP === 0;
-
-            const allOk = usernameOk && amountOk;
-
-            if (amountRaw && !amountOk) {
-                hint.textContent = 'введите число от 50 до 1500, кратное 50';
-                hint.classList.add('error');
-            } else {
-                hint.textContent = 'от 50 до 1500';
-                hint.classList.remove('error');
-            }
-
-            btn.disabled = !allOk;
-            if (allOk) {
-                const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
-                btn.textContent = `Оплатить — ${total} ₽`;
-            } else {
-                btn.textContent = 'Оплатить';
-            }
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: STARS — ОПЛАТА
-        // ============================================================
-        function payStars() {
-            const username = document.getElementById('starsUsername').value;
-            const amount = parseInt(document.getElementById('starsAmount').value, 10);
-            const total = (amount * STARS_RATE).toFixed(2).replace('.', ',');
-
-            tg.sendData(JSON.stringify({
-                action: 'buy_stars',
-                username: username,
-                amount: amount,
-                total: total,
-                rate: STARS_RATE
-            }));
-
-            tg.openLink(SELLER_LINK);
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ROBUX — ОПЛАТА
-        // ============================================================
-        function payRobux() {
-            const username = document.getElementById('robuxUsername').value;
-            const amount = parseInt(document.getElementById('robuxAmount').value, 10);
-            const total = (amount * ROBUX_RATE).toFixed(2).replace('.', ',');
-
-            tg.sendData(JSON.stringify({
-                action: 'buy_robux',
-                username: username,
-                amount: amount,
-                total: total,
-                rate: ROBUX_RATE
-            }));
-
-            tg.openLink(SELLER_LINK);
-        }
-
-
-        // ============================================================
-        // ЧАСТЬ 6: ПОИСК + ФИЛЬТРАЦИЯ ТОВАРОВ
+        // ЧАСТЬ 9: ПОИСК + ФИЛЬТРАЦИЯ ТОВАРОВ
         // ============================================================
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             let filtered = currentProducts;
 
-            // Фильтр по категории
             if (currentFilter && currentFilter !== 'all') {
                 filtered = filtered.filter(p => p.filter === currentFilter);
             }
 
-            // Поиск по названию
             if (query) {
                 filtered = filtered.filter(p =>
                     p.name.toLowerCase().includes(query)
@@ -1823,16 +2062,14 @@
 
 
         // ============================================================
-        // ЧАСТЬ 6: ОТРИСОВКА ТОВАРОВ
+        // ЧАСТЬ 9: ОТРИСОВКА ТОВАРОВ
         // ============================================================
         function renderProducts(products) {
             const container = document.getElementById('categoryProducts');
 
-            // === СКРЫВАЕМ ЗАГЛУШКУ В STARS И ROBUX ===
             const hideEmpty = (currentCategory === 'Telegram' && currentFilter === 'Stars') ||
                               (currentCategory === 'Roblox' && currentFilter === 'Robux');
 
-            // Если товаров нет
             if (!products || products.length === 0) {
                 if (hideEmpty) {
                     container.innerHTML = '';
@@ -1842,18 +2079,15 @@
                 return;
             }
 
-            // Если товары есть — рендерим
-            container.innerHTML = products.map(p => {
+            container.innerHTML = products.map((p, i) => {
                 const hasPrice = p.price && p.price.trim() !== '';
 
                 return `
-                    <div class="product-card">
+                    <div class="product-card" onclick="openProductModal(${i})">
                         <img class="product-img" src="${p.img || document.getElementById('catHeaderIcon').src}" alt="${p.name}">
                         ${hasPrice ? `
                             <div class="product-info">
-                                <button class="product-price" onclick="buyProduct('${p.name}', '${p.price}')">
-                                    ${p.price}
-                                </button>
+                                <div class="product-price">${p.price}</div>
                             </div>
                         ` : ''}
                     </div>
@@ -1863,13 +2097,87 @@
 
 
         // ============================================================
-        // ЧАСТЬ 6: КУПИТЬ ТОВАР — ОТКРЫВАЕТ ЧАТ С ПРОДАВЦОМ
+        // ЧАСТЬ 9: МОДАЛЬНОЕ ОКНО ТОВАРА
         // ============================================================
-        function buyProduct(name, price) {
+        let modalProduct = null;
+
+        function openProductModal(index) {
+            const visible = currentProducts.filter(p => {
+                if (currentFilter && currentFilter !== 'all') {
+                    return p.filter === currentFilter;
+                }
+                return true;
+            });
+
+            const p = visible[index];
+            if (!p) return;
+
+            modalProduct = p;
+
+            document.getElementById('modalImg').src = p.img || document.getElementById('catHeaderIcon').src;
+            document.getElementById('modalTitle').textContent = p.name || 'Товар';
+
+            const priceEl = document.getElementById('modalPrice');
+            const buyBtn = document.getElementById('modalBuyBtn');
+            const optionsEl = document.getElementById('modalOptions');
+
+            if (p.options && p.options.length > 0) {
+                priceEl.style.display = 'none';
+                buyBtn.style.display = 'none';
+
+                optionsEl.innerHTML = p.options.map((opt, i) => `
+                    <button class="modal-option" onclick="buyOption(${i})">
+                        <span class="modal-option-label">${opt.label}</span>
+                        <span class="modal-option-price">${opt.price}</span>
+                    </button>
+                `).join('');
+            } else {
+                optionsEl.innerHTML = '';
+
+                if (p.price) {
+                    priceEl.textContent = p.price;
+                    priceEl.style.display = 'block';
+                    buyBtn.style.display = 'block';
+                } else {
+                    priceEl.style.display = 'none';
+                    buyBtn.style.display = 'none';
+                }
+            }
+
+            document.getElementById('modalOverlay').classList.add('visible');
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('modalOverlay').classList.remove('visible');
+            modalProduct = null;
+        }
+
+        function buyFromModal() {
+            if (!modalProduct) return;
+
             tg.sendData(JSON.stringify({
                 action: 'buy',
-                product: name,
-                price: price,
+                product: modalProduct.name,
+                price: modalProduct.price || '',
+                category: currentCategory,
+                filter: currentFilter
+            }));
+
+            tg.openLink(SELLER_LINK);
+        }
+
+        function buyOption(optionIndex) {
+            if (!modalProduct || !modalProduct.options) return;
+
+            const opt = modalProduct.options[optionIndex];
+            if (!opt) return;
+
+            tg.sendData(JSON.stringify({
+                action: 'buy',
+                product: modalProduct.name,
+                option: opt.label,
+                price: opt.price,
                 category: currentCategory,
                 filter: currentFilter
             }));
@@ -1879,7 +2187,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 6: КНОПКА "ПРЕДЛОЖЕНИЯ"
+        // ЧАСТЬ 9: КНОПКА "ПРЕДЛОЖЕНИЯ"
         // ============================================================
         function openMore() {
             tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
@@ -1887,7 +2195,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 6: ЗАПРЕТ КОНТЕКСТНОГО МЕНЮ НА ВСЕХ КАРТИНКАХ
+        // ЧАСТЬ 9: ЗАПРЕТ КОНТЕКСТНОГО МЕНЮ НА КАРТИНКАХ
         // ============================================================
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') {
@@ -1897,13 +2205,13 @@
 
         document.addEventListener('touchstart', function(e) {
             if (e.target.tagName === 'IMG') {
-                e.target.style.webkitTouchCancel = 'none';
+                e.target.style.webkitTouchCallout = 'none';
             }
         }, { passive: true });
 
 
         // ============================================================
-        // ЧАСТЬ 6: ПОДКЛЮЧЕНИЕ КНОПКИ "НАЗАД"
+        // ЧАСТЬ 9: ПОДКЛЮЧЕНИЕ КНОПКИ "НАЗАД"
         // ============================================================
         tg.BackButton.onClick(closeCategory);
     </script>
