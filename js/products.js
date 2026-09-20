@@ -2,6 +2,12 @@
    PRODUCTS: отрисовка товаров, фильтрация, поиск
    ============================================================ */
 
+// Заглушка — ничего не делает (оставлено, чтобы main.js не падал)
+function updateProductsLayout() {
+    // ничего не делаем — все категории сеткой 2×2
+}
+
+// Поиск + фильтрация
 function filterProducts() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
     let filtered = currentProducts;
@@ -19,9 +25,11 @@ function filterProducts() {
     renderProducts(filtered);
 }
 
+// Отрисовка товаров
 function renderProducts(products) {
     const container = document.getElementById('categoryProducts');
 
+    // Скрываем заглушку в Stars/Robux и во «Все» для этих категорий
     const hideEmpty =
         (currentCategory === 'Telegram' && (currentFilter === 'all' || currentFilter === 'Stars')) ||
         (currentCategory === 'Roblox' && (currentFilter === 'all' || currentFilter === 'Robux'));
