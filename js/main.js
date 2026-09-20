@@ -1,5 +1,5 @@
 /* ============================================================
-   MAIN: открытие/закрытие категории
+   MAIN
    ============================================================ */
 
 function openCategory(name, icon) {
@@ -26,16 +26,13 @@ function openCategory(name, icon) {
 
     document.getElementById('searchInput').value = '';
 
-    const starsBlock = document.getElementById('starsBlock');
-    const robuxBlock = document.getElementById('robuxBlock');
+    document.getElementById('starsBlock').classList.remove('visible');
+    document.getElementById('robuxBlock').classList.remove('visible');
+    document.getElementById('starsBlock').style.display = 'none';
+    document.getElementById('robuxBlock').style.display = 'none';
 
-    starsBlock.classList.remove('visible');
-    robuxBlock.classList.remove('visible');
-    starsBlock.style.display = 'none';
-    robuxBlock.style.display = 'none';
-
-    try { resetStarsForm(); } catch(e) {}
-    try { resetRobuxForm(); } catch(e) {}
+    try { resetStarsForm(); } catch(e) { console.warn(e); }
+    try { resetRobuxForm(); } catch(e) { console.warn(e); }
 
     updateStarsVisibility();
     updateRobuxVisibility();
@@ -88,6 +85,7 @@ document.addEventListener('touchstart', function(e) {
 
 tg.BackButton.onClick(function() {
     const modalOpen = document.getElementById('modalOverlay').classList.contains('visible');
+
     if (modalOpen) {
         closeModal();
     } else {
