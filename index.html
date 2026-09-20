@@ -1079,7 +1079,7 @@
                 <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
                     <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
                     <div class="category-name">Telegram</div>
-                    <div class="category-count">30 товаров</div>
+                    <div class="category-count">35 товаров</div>
                 </div>
 
                 <!-- Brawl Stars -->
@@ -1331,7 +1331,43 @@
     // ЧАСТЬ 5: ДАННЫЕ ТОВАРОВ
     // ============================================================
     const productsData = {
-        'Telegram': [],
+        'Telegram': [
+            {
+                name: 'Premium',
+                desc: '',
+                price: '',
+                filter: 'Premium',
+                img: 'https://i.ibb.co/RkLvqms5/IMG-20260920-224429-549.jpg'
+            },
+            {
+                name: 'Premium',
+                desc: '',
+                price: '',
+                filter: 'Premium',
+                img: 'https://i.ibb.co/8LhQLbYT/IMG-20260920-224550-595.jpg'
+            },
+            {
+                name: 'Premium',
+                desc: '',
+                price: '',
+                filter: 'Premium',
+                img: 'https://i.ibb.co/xqcQX4Hc/IMG-20260920-224740-600.jpg'
+            },
+            {
+                name: 'Premium',
+                desc: '',
+                price: '',
+                filter: 'Premium',
+                img: 'https://i.ibb.co/B55rkbc4/IMG-20260920-224844-835.jpg'
+            },
+            {
+                name: 'Premium',
+                desc: '',
+                price: '',
+                filter: 'Premium',
+                img: 'https://i.ibb.co/1fRbCc0B/IMG-20260920-225006-007.jpg'
+            }
+        ],
         'Brawl Stars': [],
         'Roblox': [],
         'Clash Royale': [],
@@ -1373,12 +1409,12 @@
     // ЧАСТЬ 5: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
     // ============================================================
     const filtersData = {
-        'Telegram': ['Premium', 'Stars', 'Другое'],
-        'Brawl Stars': ['Gems', 'Passes'],
-        'Roblox': ['Robux'],
-        'Clash Royale': ['Gems', 'Passes'],
-        'Clash of Clans': ['Gems', 'Passes'],
-        'Standoff 2': ['Gold', 'Gold Passes']
+        'Telegram': ['Stars', 'Premium', 'Другое'],
+        'Brawl Stars': ['Gems', 'Passes', 'Другое'],
+        'Roblox': ['Robux', 'Другое'],
+        'Clash Royale': ['Gems', 'Passes', 'Другое'],
+        'Clash of Clans': ['Gems', 'Passes', 'Другое'],
+        'Standoff 2': ['Gold', 'Gold Passes', 'Другое']
     };
 
 
@@ -1792,21 +1828,37 @@
         function renderProducts(products) {
             const container = document.getElementById('categoryProducts');
 
+            // === СКРЫВАЕМ ЗАГЛУШКУ В STARS И ROBUX ===
+            const hideEmpty = (currentCategory === 'Telegram' && currentFilter === 'Stars') ||
+                              (currentCategory === 'Roblox' && currentFilter === 'Robux');
+
+            // Если товаров нет
             if (!products || products.length === 0) {
-                container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
+                if (hideEmpty) {
+                    container.innerHTML = '';
+                } else {
+                    container.innerHTML = `<div class="empty-products">Товаров пока нет</div>`;
+                }
                 return;
             }
 
-            container.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <img class="product-img" src="${p.img || document.getElementById('catHeaderIcon').src}" alt="${p.name}">
-                    <div class="product-info">
-                        <button class="product-price" onclick="buyProduct('${p.name}', '${p.price}')">
-                            ${p.price}
-                        </button>
+            // Если товары есть — рендерим
+            container.innerHTML = products.map(p => {
+                const hasPrice = p.price && p.price.trim() !== '';
+
+                return `
+                    <div class="product-card">
+                        <img class="product-img" src="${p.img || document.getElementById('catHeaderIcon').src}" alt="${p.name}">
+                        ${hasPrice ? `
+                            <div class="product-info">
+                                <button class="product-price" onclick="buyProduct('${p.name}', '${p.price}')">
+                                    ${p.price}
+                                </button>
+                            </div>
+                        ` : ''}
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
 
@@ -1845,7 +1897,7 @@
 
         document.addEventListener('touchstart', function(e) {
             if (e.target.tagName === 'IMG') {
-                e.target.style.webkitTouchCallout = 'none';
+                e.target.style.webkitTouchCancel = 'none';
             }
         }, { passive: true });
 
