@@ -1,15 +1,12 @@
 /* ============================================================
-   ROBUX: блок пополнения Roblox Robux
+   ROBUX
    ============================================================ */
 
-.robux-title-img,
-.robux-field-img,
-.robux-rate-img {
+.robux-title-img, .robux-field-img, .robux-rate-img {
     object-fit: contain;
     flex-shrink: 0;
     filter: invert(1) brightness(2);
 }
-
 .robux-title-img { width: 28px; height: 28px; }
 .robux-field-img { width: 22px; height: 22px; }
 .robux-rate-img { width: 24px; height: 24px; }
@@ -23,9 +20,7 @@
     display: none;
 }
 
-.robux-block.visible {
-    display: block;
-}
+.robux-block.visible { display: block; }
 
 .robux-title {
     display: flex;
@@ -54,9 +49,7 @@
     min-width: 0;
 }
 
-.robux-field.active {
-    border-color: #2563eb;
-}
+.robux-field.active { border-color: #2563eb; }
 
 .robux-field-label {
     font-weight: 400;
@@ -84,10 +77,7 @@
     font-family: inherit;
 }
 
-.robux-field-input::placeholder {
-    color: #555577;
-    font-weight: 500;
-}
+.robux-field-input::placeholder { color: #555577; font-weight: 500; }
 
 .robux-hint {
     font-weight: 500;
@@ -98,9 +88,7 @@
     margin-bottom: 14px;
 }
 
-.robux-hint.error {
-    color: #ef4444;
-}
+.robux-hint.error { color: #ef4444; }
 
 .robux-rate {
     display: flex;
@@ -136,10 +124,7 @@
     font-family: inherit;
 }
 
-.robux-pay-btn:active {
-    transform: scale(0.98);
-    opacity: 0.9;
-}
+.robux-pay-btn:active { transform: scale(0.98); opacity: 0.9; }
 
 .robux-pay-btn:disabled {
     background: linear-gradient(135deg, #1e3a8a, #1e40af);
