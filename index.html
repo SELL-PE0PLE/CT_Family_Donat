@@ -756,7 +756,7 @@
         border-color: rgba(255, 255, 255, 0.15);
     }
 </style>
-    <style>
+        <style>
         /* ============================================================
                    ЧАСТЬ 5: ТОВАРЫ (ПЛИТКИ 2 В РЯД)
                    ============================================================ */
@@ -872,10 +872,11 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             display: none;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             z-index: 1000;
             padding: 20px;
+            overflow-y: auto;
         }
 
         .modal-overlay.visible {
@@ -888,43 +889,15 @@
             padding: 20px;
             max-width: 400px;
             width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+            margin: auto;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-            position: relative;
             animation: modalIn 0.2s ease;
         }
 
         @keyframes modalIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #1f1f1f;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #ffffff;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            padding-bottom: 4px;
-            transition: all 0.12s ease;
-            z-index: 10;
-        }
-
-        .modal-close:active {
-            transform: scale(0.92);
-            background: #2a2a2a;
         }
 
         .modal-img {
@@ -941,8 +914,22 @@
             font-weight: 700;
             font-size: 22px;
             color: #ffffff;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-align: center;
+        }
+
+        .modal-desc {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #9999aa;
+            text-align: center;
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        .modal-desc:empty {
+            display: none;
         }
 
         .modal-price {
@@ -989,7 +976,7 @@
 
         .modal-option {
             width: 100%;
-            padding: 14px 18px;
+            padding: 16px 18px;
             border-radius: 14px;
             border: none;
             background: linear-gradient(135deg, #ff2e63 0%, #ff5f8f 100%);
@@ -1165,6 +1152,9 @@
             .modal-title {
                 font-size: 18px;
             }
+            .modal-desc {
+                font-size: 13px;
+            }
             .modal-price {
                 font-size: 22px;
             }
@@ -1174,7 +1164,7 @@
             }
             .modal-option {
                 font-size: 14px;
-                padding: 12px 14px;
+                padding: 14px;
             }
         }
 
@@ -1262,7 +1252,7 @@
     </style>
 </head>
 <body>
-    <div class="app">
+<div class="app">
 
     <!-- ============================================================
     ЧАСТЬ 6: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
@@ -1496,21 +1486,21 @@
 
 
     <!-- ============================================================
-    ЧАСТЬ 6: МОДАЛЬНОЕ ОКНО ТОВАРА
+    ЧАСТЬ 6: МОДАЛЬНОЕ ОКНО ТОВАРА (БЕЗ КРЕСТИКА)
     ============================================================ -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-        <div class="modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
             <img class="modal-img" id="modalImg" src="" alt="">
             <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-desc" id="modalDesc"></div>
             <div class="modal-price" id="modalPrice"></div>
             <button class="modal-buy-btn" id="modalBuyBtn" onclick="buyFromModal()">Купить</button>
             <div class="modal-options" id="modalOptions"></div>
         </div>
     </div>
 
-    </div>
-    <!-- ============================================================
+</div>
+<!-- ============================================================
 ЧАСТЬ 7: JAVASCRIPT — ДАННЫЕ И НАСТРОЙКИ
 ============================================================ -->
 <script>
@@ -1545,7 +1535,7 @@
         'Telegram': [
             {
                 name: 'Telegram Premium',
-                desc: '',
+                desc: 'Подписка Telegram Premium на 1 месяц',
                 price: '',
                 filter: 'Premium',
                 img: 'https://i.ibb.co/RkLvqms5/IMG-20260920-224429-549.jpg',
@@ -1556,7 +1546,7 @@
             },
             {
                 name: 'Telegram Premium',
-                desc: '',
+                desc: 'Подписка Telegram Premium на 3 месяца',
                 price: '',
                 filter: 'Premium',
                 img: 'https://i.ibb.co/8LhQLbYT/IMG-20260920-224550-595.jpg',
@@ -1566,7 +1556,7 @@
             },
             {
                 name: 'Telegram Premium',
-                desc: '',
+                desc: 'Подписка Telegram Premium на 6 месяцев',
                 price: '',
                 filter: 'Premium',
                 img: 'https://i.ibb.co/xqcQX4Hc/IMG-20260920-224740-600.jpg',
@@ -1576,7 +1566,7 @@
             },
             {
                 name: 'Telegram Premium',
-                desc: '',
+                desc: 'Подписка Telegram Premium на 12 месяцев',
                 price: '',
                 filter: 'Premium',
                 img: 'https://i.ibb.co/B55rkbc4/IMG-20260920-224844-835.jpg',
@@ -1588,7 +1578,7 @@
             },
             {
                 name: 'Telegram Premium',
-                desc: '',
+                desc: 'Подписка Telegram Premium на 24 месяца',
                 price: '',
                 filter: 'Premium',
                 img: 'https://i.ibb.co/1fRbCc0B/IMG-20260920-225006-007.jpg',
@@ -1605,28 +1595,28 @@
         'Standoff 2': [
             {
                 name: 'Gold',
-                desc: '',
+                desc: 'Игровая валюта Standoff 2',
                 price: '110 ₽',
                 filter: 'Gold',
                 img: 'https://i.ibb.co/rfLd3s61/Picsart-26-09-20-15-32-39-663.png'
             },
             {
                 name: 'Gold',
-                desc: '',
+                desc: 'Игровая валюта Standoff 2',
                 price: '500 ₽',
                 filter: 'Gold',
                 img: 'https://i.ibb.co/DDBFZT5L/Picsart-26-09-20-15-33-04-921.png'
             },
             {
                 name: 'Gold',
-                desc: '',
+                desc: 'Игровая валюта Standoff 2',
                 price: '820 ₽',
                 filter: 'Gold',
                 img: 'https://i.ibb.co/HpNB0jbG/Picsart-26-09-20-15-33-25-009.png'
             },
             {
                 name: 'Gold',
-                desc: '',
+                desc: 'Игровая валюта Standoff 2',
                 price: '1800 ₽',
                 filter: 'Gold',
                 img: 'https://i.ibb.co/JRCyhbLk/Picsart-26-09-20-15-33-56-538.png'
@@ -1654,8 +1644,8 @@
     let currentCategory = '';
     let currentFilter = 'all';
     let currentProducts = [];
-                </script>
-                <!-- ============================================================
+</script>
+<!-- ============================================================
 ЧАСТЬ 8: JAVASCRIPT — ОСНОВНАЯ ЛОГИКА
 ============================================================ -->
 <script>
@@ -1675,6 +1665,7 @@
         const products = productsData[name] || [];
         currentProducts = products;
 
+        // === ОБНОВЛЯЕМ ФИЛЬТРЫ ===
         const filters = filtersData[name] || [];
         const container = document.getElementById('filtersContainer');
 
@@ -1686,11 +1677,20 @@
 
         document.getElementById('searchInput').value = '';
 
+        // === ПРИНУДИТЕЛЬНО СКРЫВАЕМ ОБА БЛОКА ===
+        document.getElementById('starsBlock').classList.remove('visible');
+        document.getElementById('robuxBlock').classList.remove('visible');
+
+        // === СБРАСЫВАЕМ ГОРИЗОНТАЛЬНУЮ ЛЕНТУ ===
+        document.getElementById('categoryProducts').classList.remove('horizontal');
+
+        // === СБРОС ФОРМ ===
         resetStarsForm();
         resetRobuxForm();
+
+        // === ПОКАЗЫВАЕМ НУЖНЫЕ БЛОКИ ===
         updateStarsVisibility();
         updateRobuxVisibility();
-        updateProductsLayout();
 
         renderProducts(products);
 
@@ -1707,6 +1707,9 @@
         currentCategory = '';
         currentProducts = [];
 
+        // Скрываем модалку, если открыта
+        document.getElementById('modalOverlay').classList.remove('visible');
+
         tg.BackButton.hide();
     }
 
@@ -1719,6 +1722,10 @@
         document.querySelectorAll('.filter-chip').forEach(el => {
             el.classList.toggle('active', el.dataset.filter === filter);
         });
+
+        // === ЯВНО СБРАСЫВАЕМ ГОРИЗОНТАЛЬНУЮ ЛЕНТУ ===
+        document.getElementById('categoryProducts').classList.remove('horizontal');
+
         updateStarsVisibility();
         updateRobuxVisibility();
         updateProductsLayout();
@@ -1754,7 +1761,12 @@
     function updateProductsLayout() {
         const container = document.getElementById('categoryProducts');
         const isHorizontal = (currentCategory === 'Telegram' && currentFilter === 'Premium');
-        container.classList.toggle('horizontal', isHorizontal);
+
+        if (isHorizontal) {
+            container.classList.add('horizontal');
+        } else {
+            container.classList.remove('horizontal');
+        }
     }
 
 
@@ -2116,6 +2128,7 @@
 
             document.getElementById('modalImg').src = p.img || document.getElementById('catHeaderIcon').src;
             document.getElementById('modalTitle').textContent = p.name || 'Товар';
+            document.getElementById('modalDesc').textContent = p.desc || '';
 
             const priceEl = document.getElementById('modalPrice');
             const buyBtn = document.getElementById('modalBuyBtn');
@@ -2147,8 +2160,7 @@
             document.getElementById('modalOverlay').classList.add('visible');
         }
 
-        function closeModal(event) {
-            if (event && event.target !== event.currentTarget) return;
+        function closeModal() {
             document.getElementById('modalOverlay').classList.remove('visible');
             modalProduct = null;
         }
@@ -2212,8 +2224,18 @@
 
         // ============================================================
         // ЧАСТЬ 9: ПОДКЛЮЧЕНИЕ КНОПКИ "НАЗАД"
+        // Логика: если модалка открыта → закрываем модалку
+        //         иначе → закрываем категорию
         // ============================================================
-        tg.BackButton.onClick(closeCategory);
+        tg.BackButton.onClick(function() {
+            const modalOpen = document.getElementById('modalOverlay').classList.contains('visible');
+
+            if (modalOpen) {
+                closeModal();
+            } else {
+                closeCategory();
+            }
+        });
     </script>
 
 </body>
