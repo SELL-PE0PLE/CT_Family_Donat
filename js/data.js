@@ -1,8 +1,7 @@
 /* ============================================================
-   DATA: товары и фильтры
+   DATA
    ============================================================ */
 
-// ТОВАРЫ
 const productsData = {
     'Telegram': [
         {
@@ -96,7 +95,6 @@ const productsData = {
     ]
 };
 
-// ФИЛЬТРЫ
 const filtersData = {
     'Telegram': ['Stars', 'Premium', 'Другое'],
     'Brawl Stars': ['Gems', 'Passes', 'Другое'],
@@ -106,7 +104,6 @@ const filtersData = {
     'Standoff 2': ['Gold', 'Gold Passes', 'Другое']
 };
 
-// СОСТОЯНИЕ
 let currentCategory = '';
 let currentFilter = 'all';
 let currentProducts = [];
