@@ -1,5 +1,5 @@
 /* ============================================================
-   PRODUCTS: 1 в ряд, картинка по центру, компактно
+   PRODUCTS: 1 в ряд, компактно
    ============================================================ */
 
 .category-products {
@@ -18,12 +18,12 @@
 }
 
 /* ============================================================
-   КАРТОЧКА — 1 в ряд, компактная
+   КАРТОЧКА — 1 в ряд, компактная, без пустоты
    ============================================================ */
 .product-card {
     background: #1f1f1f;
-    border-radius: 16px;
-    padding: 12px;
+    border-radius: 14px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,19 +34,19 @@
     width: 100%;
 }
 
-/* Картинка — по центру, компактная */
+/* Картинка — по центру, компактная, без пустоты */
 .product-img {
     width: 100%;
     max-width: 140px;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    height: auto;
+    aspect-ratio: auto;
+    border-radius: 10px;
     object-fit: contain;
     background: transparent;
     display: block;
     margin: 0 auto;
 }
 
-/* Инфо скрыто */
 .product-info,
 .product-name,
 .product-desc,
@@ -63,8 +63,8 @@
 
 @media (max-width: 380px) {
     .product-card {
-        padding: 10px;
-        border-radius: 14px;
+        padding: 6px;
+        border-radius: 12px;
     }
     .product-img {
         max-width: 120px;
