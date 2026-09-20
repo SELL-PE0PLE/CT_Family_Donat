@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CT FAMILY Shop</title>
 
-    <!-- Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-    <!-- Шрифт DynaPuff -->
     <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@700;800&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/category.css">
@@ -24,9 +20,7 @@
 
     <div class="app">
 
-        <!-- ============================================================
-             ГЛАВНАЯ СТРАНИЦА
-             ============================================================ -->
+        <!-- ГЛАВНАЯ -->
         <div id="page-main">
 
             <div class="brand">
@@ -37,49 +31,42 @@
             <div class="category-wrapper">
                 <div class="category-scroll">
 
-                    <!-- Telegram -->
                     <div class="category-card" onclick="openCategory('Telegram', 'https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png')">
                         <img class="category-icon" src="https://i.ibb.co/xQvRq6x/telegram-6896827-1280.png" alt="Telegram">
                         <div class="category-name">Telegram</div>
                         <div class="category-count">35 товаров</div>
                     </div>
 
-                    <!-- Brawl Stars -->
                     <div class="category-card" onclick="openCategory('Brawl Stars', 'https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg')">
                         <img class="category-icon" src="https://i.ibb.co/FqypsfFr/IMG-20260827-204903-770.jpg" alt="Brawl Stars">
                         <div class="category-name">Brawl Stars</div>
                         <div class="category-count">0 товаров</div>
                     </div>
 
-                    <!-- Roblox -->
                     <div class="category-card" onclick="openCategory('Roblox', 'https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg')">
                         <img class="category-icon" src="https://i.ibb.co/vCCGRqBs/IMG-20260827-205156-738.jpg" alt="Roblox">
                         <div class="category-name">Roblox</div>
                         <div class="category-count">30 товаров</div>
                     </div>
 
-                    <!-- Clash Royale -->
                     <div class="category-card" onclick="openCategory('Clash Royale', 'https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg')">
                         <img class="category-icon" src="https://i.ibb.co/G4DbyWJj/IMG-20260827-205425-705.jpg" alt="Clash Royale">
                         <div class="category-name">Clash Royale</div>
                         <div class="category-count">0 товаров</div>
                     </div>
 
-                    <!-- Clash of Clans -->
                     <div class="category-card" onclick="openCategory('Clash of Clans', 'https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg')">
                         <img class="category-icon" src="https://i.ibb.co/svzv5TtD/IMG-20260827-205458-315.jpg" alt="Clash of Clans">
                         <div class="category-name">Clash of Clans</div>
                         <div class="category-count">0 товаров</div>
                     </div>
 
-                    <!-- Standoff 2 -->
                     <div class="category-card" onclick="openCategory('Standoff 2', 'https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg')">
                         <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
                         <div class="category-name">Standoff 2</div>
                         <div class="category-count">4 товара</div>
                     </div>
 
-                    <!-- Ещё / Предложения -->
                     <div class="category-card more" onclick="openMore()">
                         <div class="more-icon">
                             <svg class="icon-plus" viewBox="0 0 24 24">
@@ -94,7 +81,6 @@
                 </div>
             </div>
 
-            <!-- Популярное -->
             <div class="popular-section">
                 <div class="popular-title">
                     <img class="popular-title-img" src="https://i.ibb.co/4gTtPQnD/Picsart-26-09-17-20-11-03-846.png" alt="Popular">
@@ -108,15 +94,11 @@
         </div>
 
 
-        <!-- ============================================================
-             СТРАНИЦА КАТЕГОРИИ
-             ============================================================ -->
+        <!-- КАТЕГОРИЯ -->
         <div id="page-category">
 
-            <!-- ВЕРХ (фиксирован) -->
             <div class="category-fixed-top">
 
-                <!-- Шапка -->
                 <div class="category-header-wrapper">
                     <div class="category-header-info">
                         <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
@@ -124,12 +106,10 @@
                     </div>
                 </div>
 
-                <!-- Фильтры -->
                 <div class="filters" id="filtersContainer">
                     <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
                 </div>
 
-                <!-- Поиск -->
                 <div class="search-wrapper">
                     <svg class="icon-search" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8" />
@@ -141,10 +121,8 @@
             </div>
 
 
-            <!-- ПУЗЫРЬ (листается) -->
             <div class="category-content-bubble">
 
-                <!-- БЛОК STARS -->
                 <div class="stars-block" id="starsBlock">
                     <div class="stars-title">
                         <img class="stars-title-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
@@ -180,7 +158,6 @@
                     <button class="stars-pay-btn" id="starsPayBtn" onclick="payStars()" disabled>Оплатить</button>
                 </div>
 
-                <!-- БЛОК ROBUX -->
                 <div class="robux-block" id="robuxBlock">
                     <div class="robux-title">
                         <img class="robux-title-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
@@ -216,7 +193,6 @@
                     <button class="robux-pay-btn" id="robuxPayBtn" onclick="payRobux()" disabled>Оплатить</button>
                 </div>
 
-                <!-- Товары -->
                 <div class="category-products" id="categoryProducts">
                     <div class="empty-products">Товаров пока нет</div>
                 </div>
@@ -226,9 +202,7 @@
         </div>
 
 
-        <!-- ============================================================
-             МОДАЛЬНОЕ ОКНО ТОВАРА
-             ============================================================ -->
+        <!-- МОДАЛКА -->
         <div class="modal-overlay" id="modalOverlay">
             <div class="modal">
                 <img class="modal-img" id="modalImg" src="" alt="">
@@ -248,7 +222,6 @@
 
     </div>
 
-    <!-- JavaScript -->
     <script src="js/config.js"></script>
     <script src="js/data.js"></script>
     <script src="js/stars.js"></script>
@@ -258,4 +231,4 @@
     <script src="js/main.js"></script>
 
 </body>
-                                    </html>
+                        </html>
