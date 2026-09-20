@@ -1,15 +1,15 @@
 /* ============================================================
-   CATEGORY: страница категории
-   Верхняя часть фиксирована, контент листается внутри пузыря
+   CATEGORY
+   Верх — НИКОГДА не двигается. Листается ТОЛЬКО пузырь.
    ============================================================ */
 
 #page-category {
     display: none;
-    padding-top: 8px;
     flex: 1;
     min-height: 0;
     flex-direction: column;
     overflow: hidden;
+    height: 100%;
 }
 
 #page-category.visible {
@@ -17,13 +17,15 @@
 }
 
 /* ============================================================
-   ВЕРХНЯЯ ЧАСТЬ (не листается)
+   ВЕРХ (фиксирован, никогда не двигается)
    ============================================================ */
 .category-fixed-top {
     flex-shrink: 0;
+    flex-grow: 0;
     background: #0a0a0a;
     padding-bottom: 12px;
     margin-bottom: 8px;
+    overflow: hidden;
 }
 
 /* Шапка категории */
@@ -130,7 +132,7 @@
 }
 
 /* ============================================================
-   ПУЗЫРЬ С КОНТЕНТОМ (листается только внутри)
+   ПУЗЫРЬ — ЕДИНСТВЕННОЕ, ЧТО ЛИСТАЕТСЯ
    ============================================================ */
 .category-content-bubble {
     flex: 1;
@@ -144,7 +146,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    overscroll-behavior: contain;    /* ← НЕ ПРОКРУЧИВАЕТ РОДИТЕЛЯ */
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .category-content-bubble::-webkit-scrollbar {
@@ -168,4 +171,4 @@
     .filter-chip { font-size: 12px; padding: 6px 16px; }
     .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
     .icon-search { width: 18px; height: 18px; left: 12px; }
-                  }
+}
