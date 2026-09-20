@@ -2,12 +2,6 @@
    PRODUCTS: отрисовка товаров, фильтрация, поиск
    ============================================================ */
 
-// Обновление вида (больше не нужно, но оставляем для совместимости)
-function updateProductsLayout() {
-    // Ничего не делаем — все карточки одинаковые
-}
-
-// Поиск + фильтрация
 function filterProducts() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
     let filtered = currentProducts;
@@ -25,7 +19,6 @@ function filterProducts() {
     renderProducts(filtered);
 }
 
-// Отрисовка товаров
 function renderProducts(products) {
     const container = document.getElementById('categoryProducts');
 
@@ -44,7 +37,6 @@ function renderProducts(products) {
 
     container.innerHTML = products.map((p, i) => {
         const hasPrice = p.price && p.price.trim() !== '';
-        const hasOptions = p.options && p.options.length > 0;
 
         return `
             <div class="product-card" onclick="openProductModal(${i})">
@@ -52,11 +44,6 @@ function renderProducts(products) {
                 ${hasPrice ? `
                     <div class="product-info">
                         <div class="product-price">${p.price}</div>
-                    </div>
-                ` : ''}
-                ${hasOptions && !hasPrice ? `
-                    <div class="product-info">
-                        <div class="product-price">Купить</div>
                     </div>
                 ` : ''}
             </div>
