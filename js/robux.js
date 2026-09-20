@@ -1,8 +1,7 @@
 /* ============================================================
-   ROBUX: логика пополнения Roblox Robux
+   ROBUX
    ============================================================ */
 
-// Показ/скрытие блока Robux
 function updateRobuxVisibility() {
     const block = document.getElementById('robuxBlock');
     const show = (currentCategory === 'Roblox') &&
@@ -17,7 +16,6 @@ function updateRobuxVisibility() {
     }
 }
 
-// Сброс формы
 function resetRobuxForm() {
     const username = document.getElementById('robuxUsername');
     const amount = document.getElementById('robuxAmount');
@@ -26,17 +24,10 @@ function resetRobuxForm() {
 
     if (username) username.value = '';
     if (amount) amount.value = '';
-    if (hint) {
-        hint.textContent = 'от 50 до 1500';
-        hint.classList.remove('error');
-    }
-    if (btn) {
-        btn.disabled = true;
-        btn.textContent = 'Оплатить';
-    }
+    if (hint) { hint.textContent = 'от 50 до 1500'; hint.classList.remove('error'); }
+    if (btn) { btn.disabled = true; btn.textContent = 'Оплатить'; }
 }
 
-// Активное поле
 function setActiveRobuxField(field) {
     if (field === 'username') {
         document.getElementById('robuxUsernameField').classList.add('active');
@@ -52,20 +43,15 @@ function unsetActiveRobuxField() {
     document.getElementById('robuxAmountField').classList.remove('active');
 }
 
-// Username
 function onRobuxUsernameInput() {
     const input = document.getElementById('robuxUsername');
     let v = input.value;
-
     v = v.replace(/[^a-zA-Z0-9_]/g, '');
     v = v.substring(0, 20);
-
     input.value = v;
-
     validateRobuxForm();
 }
 
-// Amount
 function onRobuxAmountInput() {
     const input = document.getElementById('robuxAmount');
     input.value = input.value.replace(/\D/g, '').substring(0, 4);
@@ -92,12 +78,10 @@ function onRobuxAmountBlur() {
     input.value = num;
     hint.textContent = 'от 50 до 1500';
     hint.classList.remove('error');
-
     unsetActiveRobuxField();
     validateRobuxForm();
 }
 
-// Валидация
 function validateRobuxForm() {
     const username = document.getElementById('robuxUsername').value;
     const amountRaw = document.getElementById('robuxAmount').value;
@@ -106,11 +90,7 @@ function validateRobuxForm() {
     const btn = document.getElementById('robuxPayBtn');
 
     const usernameOk = /^[a-zA-Z0-9_]{3,20}$/.test(username);
-    const amountOk = !isNaN(amount) &&
-                     amount >= ROBUX_MIN &&
-                     amount <= ROBUX_MAX &&
-                     amount % ROBUX_STEP === 0;
-
+    const amountOk = !isNaN(amount) && amount >= ROBUX_MIN && amount <= ROBUX_MAX && amount % ROBUX_STEP === 0;
     const allOk = usernameOk && amountOk;
 
     if (amountRaw && !amountOk) {
@@ -130,7 +110,6 @@ function validateRobuxForm() {
     }
 }
 
-// Оплата
 function payRobux() {
     const username = document.getElementById('robuxUsername').value;
     const amount = parseInt(document.getElementById('robuxAmount').value, 10);
