@@ -227,6 +227,17 @@
         color: #ffffff;
         letter-spacing: 0.5px;
         margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    .popular-title-img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
     }
 
     .popular-placeholder {
@@ -249,19 +260,6 @@
     /* ============================================================
                ЧАСТЬ 2: ИКОНКИ (SVG)
                ============================================================ */
-    .icon-star {
-        width: 22px;
-        height: 22px;
-        stroke: #f59e0b;
-        stroke-width: 2;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 4px;
-    }
-
     .icon-search {
         width: 20px;
         height: 20px;
@@ -338,8 +336,8 @@
         text-overflow: ellipsis;
         line-height: 1.2;
     }
-    </style>
-        <style>
+        </style>
+            <style>
         /* ============================================================
                    ЧАСТЬ 3: ФИЛЬТРЫ (ТАБЛЕТКИ)
                    ============================================================ */
@@ -436,7 +434,7 @@
 
 
         /* ============================================================
-                   ЧАСТЬ 3: БЛОК ПОКУПКИ TG STARS (ОРАНЖЕВЫЙ)
+                   ЧАСТЬ 3: БЛОК ПОКУПКИ STARS (ОРАНЖЕВЫЙ)
                    ============================================================ */
         .stars-block {
             background: #1a1a1a;
@@ -876,6 +874,10 @@
             .popular-title {
                 font-size: 18px;
             }
+            .popular-title-img {
+                width: 20px;
+                height: 20px;
+            }
             .category-header-wrapper {
                 padding: 10px 14px;
                 border-radius: 18px;
@@ -1043,7 +1045,6 @@
 </head>
 <body>
     <div class="app">
-        <div class="app">
 
     <!-- ============================================================
     ЧАСТЬ 4: ГЛАВНАЯ СТРАНИЦА (РАЗМЕТКА)
@@ -1097,7 +1098,7 @@
                 <div class="category-card" onclick="openCategory('Standoff 2', 'https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg')">
                     <img class="category-icon" src="https://i.ibb.co/TxVCySY3/IMG-20260827-205336-497.jpg" alt="Standoff 2">
                     <div class="category-name">Standoff 2</div>
-                    <div class="category-count">0 товаров</div>
+                    <div class="category-count">4 товара</div>
                 </div>
 
                 <!-- Ещё / Предложения -->
@@ -1118,9 +1119,7 @@
         <!-- Популярное -->
         <div class="popular-section">
             <div class="popular-title">
-                <svg class="icon-star" viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
+                <img class="popular-title-img" src="https://i.ibb.co/4gTtPQnD/Picsart-26-09-17-20-11-03-846.png" alt="Popular">
                 Популярное
             </div>
             <div class="popular-placeholder">
@@ -1158,12 +1157,12 @@
             <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
         </div>
 
-        <!-- ===== БЛОК ПОКУПКИ TG STARS ===== -->
+        <!-- ===== БЛОК ПОКУПКИ STARS ===== -->
         <div class="stars-block" id="starsBlock">
 
             <div class="stars-title">
                 <img class="stars-title-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
-                Пополнить ТГ Звёзды
+                Пополнить Stars
             </div>
 
             <div class="stars-row">
@@ -1281,72 +1280,107 @@
 
     </div>
 
-                </div>
-                    <!-- ============================================================
-    ЧАСТЬ 5: JAVASCRIPT
+    </div>
+    <!-- ============================================================
+ЧАСТЬ 5: JAVASCRIPT — ДАННЫЕ И НАСТРОЙКИ
+============================================================ -->
+<script>
+    // ============================================================
+    // ЧАСТЬ 5: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
+    // ============================================================
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+    tg.requestFullscreen();
+
+    tg.BackButton.onClick(closeCategory);
+
+
+    // ============================================================
+    // ЧАСТЬ 5: КОНСТАНТЫ
+    // ============================================================
+    const SELLER_LINK = 'https://t.me/Dinis_xru_xru';
+
+    // Stars
+    const STARS_RATE = 1.39;
+    const STARS_MIN = 50;
+    const STARS_MAX = 1500;
+    const STARS_STEP = 50;
+
+    // Robux
+    const ROBUX_RATE = 1.25;
+    const ROBUX_MIN = 50;
+    const ROBUX_MAX = 1500;
+    const ROBUX_STEP = 50;
+
+
+    // ============================================================
+    // ЧАСТЬ 5: ДАННЫЕ ТОВАРОВ
+    // ============================================================
+    const productsData = {
+        'Telegram': [],
+        'Brawl Stars': [],
+        'Roblox': [],
+        'Clash Royale': [],
+        'Clash of Clans': [],
+        'Standoff 2': [
+            {
+                name: 'Gold',
+                desc: '',
+                price: '110 ₽',
+                filter: 'Gold',
+                img: 'https://i.ibb.co/rfLd3s61/Picsart-26-09-20-15-32-39-663.png'
+            },
+            {
+                name: 'Gold',
+                desc: '',
+                price: '500 ₽',
+                filter: 'Gold',
+                img: 'https://i.ibb.co/DDBFZT5L/Picsart-26-09-20-15-33-04-921.png'
+            },
+            {
+                name: 'Gold',
+                desc: '',
+                price: '820 ₽',
+                filter: 'Gold',
+                img: 'https://i.ibb.co/HpNB0jbG/Picsart-26-09-20-15-33-25-009.png'
+            },
+            {
+                name: 'Gold',
+                desc: '',
+                price: '1800 ₽',
+                filter: 'Gold',
+                img: 'https://i.ibb.co/JRCyhbLk/Picsart-26-09-20-15-33-56-538.png'
+            }
+        ]
+    };
+
+
+    // ============================================================
+    // ЧАСТЬ 5: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
+    // ============================================================
+    const filtersData = {
+        'Telegram': ['Premium', 'Stars', 'Другое'],
+        'Brawl Stars': ['Пропуски', 'Гемы'],
+        'Roblox': ['Robux', 'Подписки'],
+        'Clash Royale': ['Пропуски', 'Гемы'],
+        'Clash of Clans': ['Пропуски', 'Гемы'],
+        'Standoff 2': ['Gold']
+    };
+
+
+    // ============================================================
+    // ЧАСТЬ 5: ПЕРЕМЕННЫЕ СОСТОЯНИЯ
+    // ============================================================
+    let currentCategory = '';
+    let currentFilter = 'all';
+    let currentProducts = [];
+</script>
+    <!-- ============================================================
+    ЧАСТЬ 6: JAVASCRIPT — ЛОГИКА И ФУНКЦИИ
     ============================================================ -->
     <script>
         // ============================================================
-        // ЧАСТЬ 5: ИНИЦИАЛИЗАЦИЯ TELEGRAM WEB APP
-        // ============================================================
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-        tg.requestFullscreen();
-
-        tg.BackButton.onClick(closeCategory);
-
-
-        // ============================================================
-        // ЧАСТЬ 5: КОНСТАНТЫ
-        // ============================================================
-        const SELLER_LINK = 'https://t.me/Dinis_xru_xru';
-
-        // Stars
-        const STARS_RATE = 1.39;
-        const STARS_MIN = 50;
-        const STARS_MAX = 1500;
-        const STARS_STEP = 50;
-
-        // Robux
-        const ROBUX_RATE = 1.25;
-        const ROBUX_MIN = 50;
-        const ROBUX_MAX = 1500;
-        const ROBUX_STEP = 50;
-
-
-        // ============================================================
-        // ЧАСТЬ 5: ДАННЫЕ ТОВАРОВ (ПУСТО)
-        // ============================================================
-        const productsData = {
-            'Telegram': [],
-            'Brawl Stars': [],
-            'Roblox': [],
-            'Clash Royale': [],
-            'Clash of Clans': [],
-            'Standoff 2': []
-        };
-
-
-        // ============================================================
-        // ЧАСТЬ 5: ДАННЫЕ ФИЛЬТРОВ ДЛЯ КАТЕГОРИЙ
-        // ============================================================
-        const filtersData = {
-            'Telegram': ['Premium', 'Stars', 'Другое'],
-            'Brawl Stars': ['Пропуски', 'Гемы'],
-            'Roblox': ['Robux', 'Подписки'],
-            'Clash Royale': ['Пропуски', 'Гемы'],
-            'Clash of Clans': ['Пропуски', 'Гемы'],
-            'Standoff 2': ['Пропуски', 'Gold']
-        };
-
-
-        let currentCategory = '';
-        let currentFilter = 'all';
-        let currentProducts = [];
-
-
-        // ============================================================
-        // ЧАСТЬ 5: ОТКРЫТЬ КАТЕГОРИЮ
+        // ЧАСТЬ 6: ОТКРЫТЬ КАТЕГОРИЮ
         // ============================================================
         function openCategory(name, icon) {
             currentCategory = name;
@@ -1388,7 +1422,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ЗАКРЫТЬ КАТЕГОРИЮ
+        // ЧАСТЬ 6: ЗАКРЫТЬ КАТЕГОРИЮ
         // ============================================================
         function closeCategory() {
             document.getElementById('page-main').classList.remove('hidden');
@@ -1401,7 +1435,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: УСТАНОВИТЬ ФИЛЬТР
+        // ЧАСТЬ 6: УСТАНОВИТЬ ФИЛЬТР
         // ============================================================
         function setFilter(filter) {
             currentFilter = filter;
@@ -1415,8 +1449,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ПОКАЗ/СКРЫТИЕ БЛОКА STARS
-        // Telegram → «Все» или «Stars»
+        // ЧАСТЬ 6: ПОКАЗ/СКРЫТИЕ БЛОКА STARS
         // ============================================================
         function updateStarsVisibility() {
             const block = document.getElementById('starsBlock');
@@ -1427,8 +1460,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ПОКАЗ/СКРЫТИЕ БЛОКА ROBUX
-        // Roblox → «Все» или «Robux»
+        // ЧАСТЬ 6: ПОКАЗ/СКРЫТИЕ БЛОКА ROBUX
         // ============================================================
         function updateRobuxVisibility() {
             const block = document.getElementById('robuxBlock');
@@ -1439,7 +1471,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: СБРОС ФОРМЫ STARS
+        // ЧАСТЬ 6: СБРОС ФОРМЫ STARS
         // ============================================================
         function resetStarsForm() {
             document.getElementById('starsUsername').value = '';
@@ -1452,7 +1484,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: СБРОС ФОРМЫ ROBUX
+        // ЧАСТЬ 6: СБРОС ФОРМЫ ROBUX
         // ============================================================
         function resetRobuxForm() {
             document.getElementById('robuxUsername').value = '';
@@ -1465,7 +1497,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: STARS — АКТИВНОЕ ПОЛЕ
+        // ЧАСТЬ 6: STARS — АКТИВНОЕ ПОЛЕ
         // ============================================================
         function setActiveField(field) {
             if (field === 'username') {
@@ -1484,7 +1516,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ROBUX — АКТИВНОЕ ПОЛЕ
+        // ЧАСТЬ 6: ROBUX — АКТИВНОЕ ПОЛЕ
         // ============================================================
         function setActiveRobuxField(field) {
             if (field === 'username') {
@@ -1503,7 +1535,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: STARS — USERNAME (@ + латиница/цифры/_)
+        // ЧАСТЬ 6: STARS — USERNAME
         // ============================================================
         function onUsernameInput() {
             const input = document.getElementById('starsUsername');
@@ -1520,7 +1552,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ROBUX — USERNAME (латиница/цифры/_, без @)
+        // ЧАСТЬ 6: ROBUX — USERNAME
         // ============================================================
         function onRobuxUsernameInput() {
             const input = document.getElementById('robuxUsername');
@@ -1536,7 +1568,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: STARS — AMOUNT
+        // ЧАСТЬ 6: STARS — AMOUNT
         // ============================================================
         function onAmountInput() {
             const input = document.getElementById('starsAmount');
@@ -1571,7 +1603,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ROBUX — AMOUNT
+        // ЧАСТЬ 6: ROBUX — AMOUNT
         // ============================================================
         function onRobuxAmountInput() {
             const input = document.getElementById('robuxAmount');
@@ -1606,7 +1638,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: STARS — ВАЛИДАЦИЯ
+        // ЧАСТЬ 6: STARS — ВАЛИДАЦИЯ
         // ============================================================
         function validateStarsForm() {
             const username = document.getElementById('starsUsername').value;
@@ -1642,7 +1674,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ROBUX — ВАЛИДАЦИЯ
+        // ЧАСТЬ 6: ROBUX — ВАЛИДАЦИЯ
         // ============================================================
         function validateRobuxForm() {
             const username = document.getElementById('robuxUsername').value;
@@ -1678,7 +1710,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: STARS — ОПЛАТА
+        // ЧАСТЬ 6: STARS — ОПЛАТА
         // ============================================================
         function payStars() {
             const username = document.getElementById('starsUsername').value;
@@ -1698,7 +1730,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ROBUX — ОПЛАТА
+        // ЧАСТЬ 6: ROBUX — ОПЛАТА
         // ============================================================
         function payRobux() {
             const username = document.getElementById('robuxUsername').value;
@@ -1718,12 +1750,18 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ПОИСК + ФИЛЬТРАЦИЯ ТОВАРОВ
+        // ЧАСТЬ 6: ПОИСК + ФИЛЬТРАЦИЯ ТОВАРОВ
         // ============================================================
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             let filtered = currentProducts;
 
+            // Фильтр по категории
+            if (currentFilter && currentFilter !== 'all') {
+                filtered = filtered.filter(p => p.filter === currentFilter);
+            }
+
+            // Поиск по названию
             if (query) {
                 filtered = filtered.filter(p =>
                     p.name.toLowerCase().includes(query)
@@ -1735,7 +1773,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: ОТРИСОВКА ТОВАРОВ
+        // ЧАСТЬ 6: ОТРИСОВКА ТОВАРОВ
         // ============================================================
         function renderProducts(products) {
             const container = document.getElementById('categoryProducts');
@@ -1747,7 +1785,7 @@
 
             container.innerHTML = products.map(p => `
                 <div class="product-card" onclick="buyProduct('${p.name}', '${p.price}')">
-                    <img class="product-img" src="${document.getElementById('catHeaderIcon').src}" alt="${p.name}">
+                    <img class="product-img" src="${p.img || document.getElementById('catHeaderIcon').src}" alt="${p.name}">
                     <div class="product-info">
                         <div class="product-name">${p.name}</div>
                         <div class="product-desc">${p.desc}</div>
@@ -1759,7 +1797,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: КУПИТЬ ОБЫЧНЫЙ ТОВАР
+        // ЧАСТЬ 6: КУПИТЬ ОБЫЧНЫЙ ТОВАР
         // ============================================================
         function buyProduct(name, price) {
             tg.sendData(JSON.stringify({
@@ -1773,7 +1811,7 @@
 
 
         // ============================================================
-        // ЧАСТЬ 5: КНОПКА "ПРЕДЛОЖЕНИЯ"
+        // ЧАСТЬ 6: КНОПКА "ПРЕДЛОЖЕНИЯ"
         // ============================================================
         function openMore() {
             tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
