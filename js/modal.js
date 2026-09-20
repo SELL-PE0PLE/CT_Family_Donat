@@ -1,11 +1,10 @@
 /* ============================================================
-   MODAL: модальное окно товара
+   MODAL
    ============================================================ */
 
 let modalProduct = null;
 let modalSelectedOption = -1;
 
-// Открыть модалку
 function openProductModal(index) {
     const visible = currentProducts.filter(p => {
         if (currentFilter && currentFilter !== 'all') {
@@ -28,7 +27,6 @@ function openProductModal(index) {
     const optionsEl = document.getElementById('modalOptions');
     const buyBtn = document.getElementById('modalBuyBtn');
 
-    // Если есть options
     if (p.options && p.options.length > 0) {
         optionsWrap.style.display = 'block';
 
@@ -52,7 +50,6 @@ function openProductModal(index) {
     document.getElementById('modalOverlay').classList.add('visible');
 }
 
-// Выбор способа
 function selectOption(index) {
     if (!modalProduct || !modalProduct.options) return;
 
@@ -72,14 +69,12 @@ function selectOption(index) {
     buyBtn.textContent = opt.price;
 }
 
-// Закрыть модалку
 function closeModal() {
     document.getElementById('modalOverlay').classList.remove('visible');
     modalProduct = null;
     modalSelectedOption = -1;
 }
 
-// Купить
 function buyFromModal() {
     if (!modalProduct) return;
 
