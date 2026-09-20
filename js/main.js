@@ -1,8 +1,7 @@
 /* ============================================================
-   MAIN: открытие/закрытие категории, финал
+   MAIN: открытие/закрытие категории
    ============================================================ */
 
-// Открыть категорию
 function openCategory(name, icon) {
     currentCategory = name;
     currentFilter = 'all';
@@ -16,7 +15,6 @@ function openCategory(name, icon) {
     const products = productsData[name] || [];
     currentProducts = products;
 
-    // Фильтры
     const filters = filtersData[name] || [];
     const container = document.getElementById('filtersContainer');
 
@@ -28,7 +26,6 @@ function openCategory(name, icon) {
 
     document.getElementById('searchInput').value = '';
 
-    // Скрываем оба блока
     const starsBlock = document.getElementById('starsBlock');
     const robuxBlock = document.getElementById('robuxBlock');
 
@@ -37,14 +34,9 @@ function openCategory(name, icon) {
     starsBlock.style.display = 'none';
     robuxBlock.style.display = 'none';
 
-    // Убираем класс horizontal (больше не нужен)
-    document.getElementById('categoryProducts').classList.remove('horizontal');
+    try { resetStarsForm(); } catch(e) {}
+    try { resetRobuxForm(); } catch(e) {}
 
-    // Сброс форм
-    try { resetStarsForm(); } catch(e) { console.warn(e); }
-    try { resetRobuxForm(); } catch(e) { console.warn(e); }
-
-    // Показываем нужное
     updateStarsVisibility();
     updateRobuxVisibility();
 
@@ -53,7 +45,6 @@ function openCategory(name, icon) {
     tg.BackButton.show();
 }
 
-// Закрыть категорию
 function closeCategory() {
     document.getElementById('page-main').classList.remove('hidden');
     document.getElementById('page-category').classList.remove('visible');
@@ -70,7 +61,6 @@ function closeCategory() {
     tg.BackButton.hide();
 }
 
-// Установить фильтр
 function setFilter(filter) {
     currentFilter = filter;
     document.querySelectorAll('.filter-chip').forEach(el => {
@@ -82,16 +72,12 @@ function setFilter(filter) {
     filterProducts();
 }
 
-// Кнопка "Предложения"
 function openMore() {
     tg.openLink('https://t.me/CT_FAMILY_DONAT/20');
 }
 
-// Запрет контекстного меню на картинках
 document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
+    if (e.target.tagName === 'IMG') e.preventDefault();
 });
 
 document.addEventListener('touchstart', function(e) {
@@ -100,10 +86,8 @@ document.addEventListener('touchstart', function(e) {
     }
 }, { passive: true });
 
-// BackButton: если модалка открыта → закрывает модалку, иначе → категорию
 tg.BackButton.onClick(function() {
     const modalOpen = document.getElementById('modalOverlay').classList.contains('visible');
-
     if (modalOpen) {
         closeModal();
     } else {
