@@ -3,60 +3,52 @@
    ============================================================ */
 
 .category-products {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-    flex-direction: unset !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-/* Никаких отличий для Premium — всё одинаково */
+/* Premium — то же самое */
 .category-products.horizontal {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-/* ============================================================
-   КАРТОЧКА — ГОРИЗОНТАЛЬНАЯ
-   ============================================================ */
+/* Карточка — горизонтальная */
 .product-card {
     background: #1f1f1f;
     border-radius: 16px;
     padding: 10px;
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     overflow: hidden;
     cursor: pointer;
     min-height: 90px;
-    aspect-ratio: auto !important;
 }
 
-/* Картинка — слева, фиксированная */
+/* Картинка слева */
 .product-img {
-    width: 70px !important;
-    height: 70px !important;
-    aspect-ratio: auto !important;
+    width: 70px;
+    height: 70px;
     border-radius: 10px;
     object-fit: cover;
     background: #141414;
     flex-shrink: 0;
     display: block;
-    margin-bottom: 0 !important;
 }
 
-/* Инфо — справа */
+/* Инфо справа */
 .product-info {
     flex: 1;
     min-width: 0;
-    display: flex !important;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 0 !important;
-    padding: 0 !important;
 }
 
 .product-name,
@@ -77,12 +69,6 @@
     text-align: center;
     white-space: nowrap;
     user-select: none;
-    width: auto !important;
-}
-
-/* Скрыть кнопку-цену у Premium (там options) */
-.category-products.horizontal .product-price {
-    display: none;
 }
 
 .empty-products {
@@ -93,9 +79,6 @@
     font-size: 15px;
 }
 
-/* ============================================================
-   АДАПТИВ
-   ============================================================ */
 @media (max-width: 380px) {
     .product-card {
         padding: 8px;
@@ -104,8 +87,8 @@
         border-radius: 14px;
     }
     .product-img {
-        width: 60px !important;
-        height: 60px !important;
+        width: 60px;
+        height: 60px;
     }
     .product-price {
         font-size: 12px;
