@@ -1,8 +1,7 @@
 /* ============================================================
-   MAIN: главная страница (бренд, категории, популярное)
+   MAIN: главная страница
    ============================================================ */
 
-/* Главная страница */
 #page-main {
     display: block;
 }
@@ -11,7 +10,6 @@
     display: none;
 }
 
-/* Бренд */
 .brand {
     text-align: center;
     padding: 6px 0 20px;
@@ -36,7 +34,6 @@
     text-transform: uppercase;
 }
 
-/* Таблетка с категориями */
 .category-wrapper {
     background: #1a1a1a;
     border-radius: 28px;
@@ -59,7 +56,6 @@
     display: none;
 }
 
-/* Карточка категории */
 .category-card {
     flex: 0 0 auto;
     width: 88px;
@@ -106,7 +102,6 @@
     margin-top: 1px;
 }
 
-/* Кнопка "Предложения" */
 .category-card.more {
     background: #1a1a1a;
     border: 1px dashed rgba(255, 255, 255, 0.15);
@@ -146,7 +141,6 @@
     color: #555577;
 }
 
-/* Популярное */
 .popular-section {
     margin-top: 28px;
 }
@@ -185,7 +179,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Иконки SVG */
 .icon-search {
     width: 20px;
     height: 20px;
@@ -210,7 +203,6 @@
     stroke-linecap: round;
 }
 
-/* Адаптив */
 @media (max-width: 380px) {
     .brand-title { font-size: 44px; }
     .brand-sub { font-size: 22px; letter-spacing: 4px; }
