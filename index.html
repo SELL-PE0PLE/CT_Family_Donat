@@ -113,103 +113,114 @@
              ============================================================ -->
         <div id="page-category">
 
-            <!-- Шапка -->
-            <div class="category-header-wrapper">
-                <div class="category-header-info">
-                    <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
-                    <span class="category-header-title" id="catHeaderTitle">Категория</span>
-                </div>
-            </div>
+            <!-- ФИКСИРОВАННАЯ ВЕРХНЯЯ ЧАСТЬ (шапка + фильтры + поиск) -->
+            <div class="category-fixed-top">
 
-            <!-- Фильтры -->
-            <div class="filters" id="filtersContainer">
-                <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
-            </div>
-
-            <!-- Поиск -->
-            <div class="search-wrapper">
-                <svg class="icon-search" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
-            </div>
-
-            <!-- БЛОК STARS -->
-            <div class="stars-block" id="starsBlock">
-                <div class="stars-title">
-                    <img class="stars-title-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
-                    Пополнить Stars
-                </div>
-
-                <div class="stars-row">
-                    <div class="stars-field" id="starsUsernameField">
-                        <div class="stars-field-label">Имя пользователя</div>
-                        <div class="stars-field-input-wrap">
-                            <input class="stars-field-input" id="starsUsername" type="text" placeholder="@username" autocomplete="off" oninput="onUsernameInput()" onfocus="setActiveField('username')" onblur="unsetActiveField()">
-                        </div>
-                    </div>
-
-                    <div class="stars-field" id="starsAmountField">
-                        <div class="stars-field-label">Количество</div>
-                        <div class="stars-field-input-wrap">
-                            <input class="stars-field-input" id="starsAmount" type="text" inputmode="numeric" placeholder="0" autocomplete="off" oninput="onAmountInput()" onblur="onAmountBlur()" onfocus="setActiveField('amount')">
-                            <img class="stars-field-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
-                        </div>
+                <!-- Шапка -->
+                <div class="category-header-wrapper">
+                    <div class="category-header-info">
+                        <img class="category-header-icon" id="catHeaderIcon" src="" alt="">
+                        <span class="category-header-title" id="catHeaderTitle">Категория</span>
                     </div>
                 </div>
 
-                <div class="stars-hint" id="starsHint">от 50 до 1500</div>
-
-                <div class="stars-rate">
-                    <img class="stars-rate-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
-                    <span>1</span>
-                    <span>=</span>
-                    <span class="stars-rate-pill">1,39 ₽</span>
+                <!-- Фильтры -->
+                <div class="filters" id="filtersContainer">
+                    <div class="filter-chip active" data-filter="all" onclick="setFilter('all')">Все</div>
                 </div>
 
-                <button class="stars-pay-btn" id="starsPayBtn" onclick="payStars()" disabled>Оплатить</button>
+                <!-- Поиск -->
+                <div class="search-wrapper">
+                    <svg class="icon-search" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input class="search-box" id="searchInput" type="text" placeholder="Поиск по названию..." oninput="filterProducts()">
+                </div>
+
             </div>
 
-            <!-- БЛОК ROBUX -->
-            <div class="robux-block" id="robuxBlock">
-                <div class="robux-title">
-                    <img class="robux-title-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
-                    Пополнить Robux
-                </div>
 
-                <div class="robux-row">
-                    <div class="robux-field" id="robuxUsernameField">
-                        <div class="robux-field-label">Имя пользователя</div>
-                        <div class="robux-field-input-wrap">
-                            <input class="robux-field-input" id="robuxUsername" type="text" placeholder="username" autocomplete="off" oninput="onRobuxUsernameInput()" onfocus="setActiveRobuxField('username')" onblur="unsetActiveRobuxField()">
+            <!-- ПУЗЫРЬ С КОНТЕНТОМ (Stars/Robux + товары) -->
+            <div class="category-content-bubble">
+
+                <!-- БЛОК STARS -->
+                <div class="stars-block" id="starsBlock">
+                    <div class="stars-title">
+                        <img class="stars-title-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
+                        Пополнить Stars
+                    </div>
+
+                    <div class="stars-row">
+                        <div class="stars-field" id="starsUsernameField">
+                            <div class="stars-field-label">Имя пользователя</div>
+                            <div class="stars-field-input-wrap">
+                                <input class="stars-field-input" id="starsUsername" type="text" placeholder="@username" autocomplete="off" oninput="onUsernameInput()" onfocus="setActiveField('username')" onblur="unsetActiveField()">
+                            </div>
+                        </div>
+
+                        <div class="stars-field" id="starsAmountField">
+                            <div class="stars-field-label">Количество</div>
+                            <div class="stars-field-input-wrap">
+                                <input class="stars-field-input" id="starsAmount" type="text" inputmode="numeric" placeholder="0" autocomplete="off" oninput="onAmountInput()" onblur="onAmountBlur()" onfocus="setActiveField('amount')">
+                                <img class="stars-field-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="robux-field" id="robuxAmountField">
-                        <div class="robux-field-label">Количество</div>
-                        <div class="robux-field-input-wrap">
-                            <input class="robux-field-input" id="robuxAmount" type="text" inputmode="numeric" placeholder="0" autocomplete="off" oninput="onRobuxAmountInput()" onblur="onRobuxAmountBlur()" onfocus="setActiveRobuxField('amount')">
-                            <img class="robux-field-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
+                    <div class="stars-hint" id="starsHint">от 50 до 1500</div>
+
+                    <div class="stars-rate">
+                        <img class="stars-rate-img" src="https://i.ibb.co/4g0pCZdS/Picsart-26-09-17-19-35-16-866.png" alt="Star">
+                        <span>1</span>
+                        <span>=</span>
+                        <span class="stars-rate-pill">1,39 ₽</span>
+                    </div>
+
+                    <button class="stars-pay-btn" id="starsPayBtn" onclick="payStars()" disabled>Оплатить</button>
+                </div>
+
+                <!-- БЛОК ROBUX -->
+                <div class="robux-block" id="robuxBlock">
+                    <div class="robux-title">
+                        <img class="robux-title-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
+                        Пополнить Robux
+                    </div>
+
+                    <div class="robux-row">
+                        <div class="robux-field" id="robuxUsernameField">
+                            <div class="robux-field-label">Имя пользователя</div>
+                            <div class="robux-field-input-wrap">
+                                <input class="robux-field-input" id="robuxUsername" type="text" placeholder="username" autocomplete="off" oninput="onRobuxUsernameInput()" onfocus="setActiveRobuxField('username')" onblur="unsetActiveRobuxField()">
+                            </div>
+                        </div>
+
+                        <div class="robux-field" id="robuxAmountField">
+                            <div class="robux-field-label">Количество</div>
+                            <div class="robux-field-input-wrap">
+                                <input class="robux-field-input" id="robuxAmount" type="text" inputmode="numeric" placeholder="0" autocomplete="off" oninput="onRobuxAmountInput()" onblur="onRobuxAmountBlur()" onfocus="setActiveRobuxField('amount')">
+                                <img class="robux-field-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
+                            </div>
                         </div>
                     </div>
+
+                    <div class="robux-hint" id="robuxHint">от 50 до 1500</div>
+
+                    <div class="robux-rate">
+                        <img class="robux-rate-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
+                        <span>1</span>
+                        <span>=</span>
+                        <span class="robux-rate-pill">1,25 ₽</span>
+                    </div>
+
+                    <button class="robux-pay-btn" id="robuxPayBtn" onclick="payRobux()" disabled>Оплатить</button>
                 </div>
 
-                <div class="robux-hint" id="robuxHint">от 50 до 1500</div>
-
-                <div class="robux-rate">
-                    <img class="robux-rate-img" src="https://i.ibb.co/N2cyWr44/Roblox-player-icon-black-svg.png" alt="Robux">
-                    <span>1</span>
-                    <span>=</span>
-                    <span class="robux-rate-pill">1,25 ₽</span>
+                <!-- Товары -->
+                <div class="category-products" id="categoryProducts">
+                    <div class="empty-products">Товаров пока нет</div>
                 </div>
 
-                <button class="robux-pay-btn" id="robuxPayBtn" onclick="payRobux()" disabled>Оплатить</button>
-            </div>
-
-            <!-- Товары -->
-            <div class="category-products" id="categoryProducts">
-                <div class="empty-products">Товаров пока нет</div>
             </div>
 
         </div>
@@ -247,4 +258,4 @@
     <script src="js/main.js"></script>
 
 </body>
-                            </html>
+</html>
