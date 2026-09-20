@@ -48,7 +48,6 @@ img {
     pointer-events: none;
 }
 
-/* ГЛАВНАЯ — листается */
 #page-main {
     display: block;
     overflow-y: auto;
