@@ -1,5 +1,5 @@
 /* ============================================================
-   CATEGORY: страница категории (шапка, фильтры, поиск)
+   CATEGORY: страница категории (шапка, фильтры, поиск, товары)
    ============================================================ */
 
 #page-category {
@@ -9,6 +9,18 @@
 
 #page-category.visible {
     display: block;
+}
+
+/* ============================================================
+   ФИКСИРОВАННАЯ ВЕРХНЯЯ ЧАСТЬ (шапка + фильтры + поиск)
+   ============================================================ */
+.category-fixed-top {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #0a0a0a;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 /* Шапка категории */
@@ -89,7 +101,7 @@
 /* Поиск */
 .search-wrapper {
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 0;
 }
 
 .search-box {
@@ -114,18 +126,30 @@
     border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* ============================================================
+   ПУЗЫРЬ ДЛЯ КОНТЕНТА (Stars/Robux + товары)
+   ============================================================ */
+.category-content-bubble {
+    background: #141414;
+    border-radius: 22px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 200px;
+}
+
 /* Адаптив */
 @media (max-width: 380px) {
-    .category-header-wrapper { padding: 10px 14px; border-radius: 18px; }
+    .category-header-wrapper { padding: 10px 14px; border-radius: 18px; margin-bottom: 12px; }
     .category-header-icon { width: 40px; height: 40px; }
     .category-header-title { font-size: 20px; }
     .filter-chip { font-size: 12px; padding: 6px 16px; }
     .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
     .icon-search { width: 18px; height: 18px; left: 12px; }
+    .category-content-bubble { padding: 10px; border-radius: 18px; }
 }
 
 @media (max-height: 700px) {
-    .category-header-wrapper { padding: 10px 14px; }
+    .category-header-wrapper { padding: 10px 14px; margin-bottom: 12px; }
     .category-header-title { font-size: 20px; }
     .filter-chip { font-size: 12px; padding: 6px 16px; }
     .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
