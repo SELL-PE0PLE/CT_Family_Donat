@@ -36,8 +36,10 @@ function filterProducts() {
 function renderProducts(products) {
     const container = document.getElementById('categoryProducts');
 
-    const hideEmpty = (currentCategory === 'Telegram' && currentFilter === 'Stars') ||
-                      (currentCategory === 'Roblox' && currentFilter === 'Robux');
+    // Скрываем заглушку в Stars/Robux + во «Все» для этих категорий
+    const hideEmpty =
+        (currentCategory === 'Telegram' && (currentFilter === 'all' || currentFilter === 'Stars')) ||
+        (currentCategory === 'Roblox' && (currentFilter === 'all' || currentFilter === 'Robux'));
 
     if (!products || products.length === 0) {
         if (hideEmpty) {
