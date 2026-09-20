@@ -1,50 +1,48 @@
 /* ============================================================
-   PRODUCTS: 1 в ряд, компактно
+   PRODUCTS: 1 в ряд, карточка = обёртка вокруг картинки
    ============================================================ */
 
 .category-products {
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: none !important;
-    gap: 10px;
+    gap: 12px;
 }
 
 .category-products.horizontal {
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: none !important;
-    gap: 10px;
+    gap: 12px;
     overflow: visible !important;
 }
 
 /* ============================================================
-   КАРТОЧКА — 1 в ряд, компактная, без пустоты
+   КАРТОЧКА — обёртка, одинаковый размер для всех
    ============================================================ */
 .product-card {
     background: #1f1f1f;
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 8px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.04);
     overflow: hidden;
     cursor: pointer;
     width: 100%;
+    box-sizing: border-box;
 }
 
-/* Картинка — по центру, компактная, без пустоты */
+/* Картинка — одинаковая для всех, целиком */
 .product-img {
     width: 100%;
-    max-width: 140px;
-    height: auto;
-    aspect-ratio: auto;
-    border-radius: 10px;
-    object-fit: contain;
+    max-width: 100%;
+    height: 160px;                /* одинаковая высота для всех */
+    border-radius: 12px;
+    object-fit: contain;          /* целиком, без обрезки */
     background: transparent;
     display: block;
-    margin: 0 auto;
 }
 
 .product-info,
@@ -64,9 +62,9 @@
 @media (max-width: 380px) {
     .product-card {
         padding: 6px;
-        border-radius: 12px;
+        border-radius: 14px;
     }
     .product-img {
-        max-width: 120px;
+        height: 130px;
     }
 }
