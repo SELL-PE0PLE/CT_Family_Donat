@@ -1,8 +1,7 @@
 /* ============================================================
-   STARS: логика пополнения Telegram Stars
+   STARS
    ============================================================ */
 
-// Показ/скрытие блока Stars
 function updateStarsVisibility() {
     const block = document.getElementById('starsBlock');
     const show = (currentCategory === 'Telegram') &&
@@ -17,7 +16,6 @@ function updateStarsVisibility() {
     }
 }
 
-// Сброс формы
 function resetStarsForm() {
     const username = document.getElementById('starsUsername');
     const amount = document.getElementById('starsAmount');
@@ -26,17 +24,10 @@ function resetStarsForm() {
 
     if (username) username.value = '';
     if (amount) amount.value = '';
-    if (hint) {
-        hint.textContent = 'от 50 до 1500';
-        hint.classList.remove('error');
-    }
-    if (btn) {
-        btn.disabled = true;
-        btn.textContent = 'Оплатить';
-    }
+    if (hint) { hint.textContent = 'от 50 до 1500'; hint.classList.remove('error'); }
+    if (btn) { btn.disabled = true; btn.textContent = 'Оплатить'; }
 }
 
-// Активное поле
 function setActiveField(field) {
     if (field === 'username') {
         document.getElementById('starsUsernameField').classList.add('active');
@@ -52,21 +43,16 @@ function unsetActiveField() {
     document.getElementById('starsAmountField').classList.remove('active');
 }
 
-// Username
 function onUsernameInput() {
     const input = document.getElementById('starsUsername');
     let v = input.value;
-
     v = v.replace(/^@+/, '');
     v = v.replace(/[^a-zA-Z0-9_]/g, '');
     v = v.substring(0, 32);
-
     input.value = v ? '@' + v : '';
-
     validateStarsForm();
 }
 
-// Amount
 function onAmountInput() {
     const input = document.getElementById('starsAmount');
     input.value = input.value.replace(/\D/g, '').substring(0, 4);
@@ -93,12 +79,10 @@ function onAmountBlur() {
     input.value = num;
     hint.textContent = 'от 50 до 1500';
     hint.classList.remove('error');
-
     unsetActiveField();
     validateStarsForm();
 }
 
-// Валидация
 function validateStarsForm() {
     const username = document.getElementById('starsUsername').value;
     const amountRaw = document.getElementById('starsAmount').value;
@@ -107,11 +91,7 @@ function validateStarsForm() {
     const btn = document.getElementById('starsPayBtn');
 
     const usernameOk = username.length >= 6 && /^@[a-zA-Z0-9_]{5,32}$/.test(username);
-    const amountOk = !isNaN(amount) &&
-                     amount >= STARS_MIN &&
-                     amount <= STARS_MAX &&
-                     amount % STARS_STEP === 0;
-
+    const amountOk = !isNaN(amount) && amount >= STARS_MIN && amount <= STARS_MAX && amount % STARS_STEP === 0;
     const allOk = usernameOk && amountOk;
 
     if (amountRaw && !amountOk) {
@@ -131,7 +111,6 @@ function validateStarsForm() {
     }
 }
 
-// Оплата
 function payStars() {
     const username = document.getElementById('starsUsername').value;
     const amount = parseInt(document.getElementById('starsAmount').value, 10);
@@ -146,4 +125,4 @@ function payStars() {
     }));
 
     tg.openLink(SELLER_LINK);
-                                          }
+       }
