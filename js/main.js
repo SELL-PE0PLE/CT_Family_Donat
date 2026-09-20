@@ -28,13 +28,16 @@ function openCategory(name, icon) {
 
     document.getElementById('searchInput').value = '';
 
-    // Скрываем оба блока принудительно
-    document.getElementById('starsBlock').classList.remove('visible');
-    document.getElementById('robuxBlock').classList.remove('visible');
-    document.getElementById('starsBlock').style.display = 'none';
-    document.getElementById('robuxBlock').style.display = 'none';
+    // Скрываем оба блока
+    const starsBlock = document.getElementById('starsBlock');
+    const robuxBlock = document.getElementById('robuxBlock');
 
-    // Сбрасываем ленту
+    starsBlock.classList.remove('visible');
+    robuxBlock.classList.remove('visible');
+    starsBlock.style.display = 'none';
+    robuxBlock.style.display = 'none';
+
+    // Убираем класс horizontal (больше не нужен)
     document.getElementById('categoryProducts').classList.remove('horizontal');
 
     // Сброс форм
@@ -74,11 +77,8 @@ function setFilter(filter) {
         el.classList.toggle('active', el.dataset.filter === filter);
     });
 
-    document.getElementById('categoryProducts').classList.remove('horizontal');
-
     updateStarsVisibility();
     updateRobuxVisibility();
-    updateProductsLayout();
     filterProducts();
 }
 
