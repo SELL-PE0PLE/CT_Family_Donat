@@ -2,16 +2,9 @@
    PRODUCTS: отрисовка товаров, фильтрация, поиск
    ============================================================ */
 
-// Обновление вида (горизонтально/сетка)
+// Обновление вида (больше не нужно, но оставляем для совместимости)
 function updateProductsLayout() {
-    const container = document.getElementById('categoryProducts');
-    const isHorizontal = (currentCategory === 'Telegram' && currentFilter === 'Premium');
-
-    if (isHorizontal) {
-        container.classList.add('horizontal');
-    } else {
-        container.classList.remove('horizontal');
-    }
+    // Ничего не делаем — все карточки одинаковые
 }
 
 // Поиск + фильтрация
@@ -36,7 +29,6 @@ function filterProducts() {
 function renderProducts(products) {
     const container = document.getElementById('categoryProducts');
 
-    // Скрываем заглушку в Stars/Robux + во «Все» для этих категорий
     const hideEmpty =
         (currentCategory === 'Telegram' && (currentFilter === 'all' || currentFilter === 'Stars')) ||
         (currentCategory === 'Roblox' && (currentFilter === 'all' || currentFilter === 'Robux'));
@@ -52,6 +44,7 @@ function renderProducts(products) {
 
     container.innerHTML = products.map((p, i) => {
         const hasPrice = p.price && p.price.trim() !== '';
+        const hasOptions = p.options && p.options.length > 0;
 
         return `
             <div class="product-card" onclick="openProductModal(${i})">
@@ -59,6 +52,11 @@ function renderProducts(products) {
                 ${hasPrice ? `
                     <div class="product-info">
                         <div class="product-price">${p.price}</div>
+                    </div>
+                ` : ''}
+                ${hasOptions && !hasPrice ? `
+                    <div class="product-info">
+                        <div class="product-price">Купить</div>
                     </div>
                 ` : ''}
             </div>
