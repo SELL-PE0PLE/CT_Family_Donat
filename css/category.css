@@ -1,14 +1,13 @@
 /* ============================================================
    CATEGORY: страница категории
-   Шапка + фильтры + поиск — фиксированы
-   Контент (Stars/Robux + товары) — листается отдельно
+   Верхняя часть фиксирована, контент листается внутри пузыря
    ============================================================ */
 
 #page-category {
     display: none;
     padding-top: 8px;
-    /* Высота экрана минус padding body */
-    height: calc(100vh - 110px);
+    flex: 1;
+    min-height: 0;
     flex-direction: column;
     overflow: hidden;
 }
@@ -131,7 +130,7 @@
 }
 
 /* ============================================================
-   ПУЗЫРЬ С КОНТЕНТОМ (листается внутри)
+   ПУЗЫРЬ С КОНТЕНТОМ (листается только внутри)
    ============================================================ */
 .category-content-bubble {
     flex: 1;
@@ -143,10 +142,9 @@
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-
-    /* Скрываем скроллбар */
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overscroll-behavior: contain;    /* ← НЕ ПРОКРУЧИВАЕТ РОДИТЕЛЯ */
 }
 
 .category-content-bubble::-webkit-scrollbar {
@@ -155,9 +153,6 @@
 
 /* Адаптив */
 @media (max-width: 380px) {
-    #page-category {
-        height: calc(100vh - 100px);
-    }
     .category-header-wrapper { padding: 10px 14px; border-radius: 18px; margin-bottom: 12px; }
     .category-header-icon { width: 40px; height: 40px; }
     .category-header-title { font-size: 20px; }
@@ -173,4 +168,4 @@
     .filter-chip { font-size: 12px; padding: 6px 16px; }
     .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
     .icon-search { width: 18px; height: 18px; left: 12px; }
-}
+                  }
