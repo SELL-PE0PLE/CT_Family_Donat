@@ -1,174 +1,119 @@
 /* ============================================================
-   CATEGORY
-   Верх — НИКОГДА не двигается. Листается ТОЛЬКО пузырь.
+   PRODUCTS: товары (сетка 2×2 + горизонтальная лента Premium)
    ============================================================ */
 
-#page-category {
-    display: none;
-    flex: 1;
-    min-height: 0;
-    flex-direction: column;
-    overflow: hidden;
-    height: 100%;
-}
-
-#page-category.visible {
-    display: flex;
+/* ============================================================
+   ОБЫЧНАЯ СЕТКА (2 в ряд)
+   ============================================================ */
+.category-products {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 /* ============================================================
-   ВЕРХ (фиксирован, никогда не двигается)
+   PREMIUM: горизонтальная лента, 1 карточка в ряд
    ============================================================ */
-.category-fixed-top {
-    flex-shrink: 0;
-    flex-grow: 0;
-    background: #0a0a0a;
-    padding-bottom: 12px;
-    margin-bottom: 8px;
-    overflow: hidden;
-}
-
-/* Шапка категории */
-.category-header-wrapper {
-    background: #1a1a1a;
-    border-radius: 20px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.category-header-info {
-    display: flex;
-    align-items: center;
+.category-products.horizontal {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
     gap: 12px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding-bottom: 6px;
 }
 
-.category-header-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    object-fit: cover;
-    background: #141414;
-    flex-shrink: 0;
+.category-products.horizontal .product-card {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-height: auto;
 }
 
-.category-header-title {
-    font-weight: 700;
-    font-size: 24px;
-    color: #ffffff;
-    letter-spacing: 0.2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.2;
-}
-
-/* Фильтры */
-.filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 14px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.filters::-webkit-scrollbar {
-    display: none;
-}
-
-.filter-chip {
-    flex: 0 0 auto;
-    padding: 8px 20px;
-    border-radius: 20px;
-    background: #1f1f1f;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: #8888aa;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.12s ease;
-    white-space: nowrap;
-}
-
-.filter-chip:active {
-    transform: scale(0.94);
-}
-
-.filter-chip.active {
-    background: #2481cc;
-    color: #ffffff;
-    border-color: #2481cc;
-}
-
-/* Поиск */
-.search-wrapper {
-    position: relative;
-    margin-bottom: 0;
-}
-
-.search-box {
+.category-products.horizontal .product-img {
+    aspect-ratio: 1 / 1;
     width: 100%;
-    padding: 14px 18px 14px 44px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: #1a1a1a;
-    color: #ffffff;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.2s;
-    min-height: 52px;
-    font-family: inherit;
+    max-width: 100%;
 }
 
-.search-box::placeholder {
-    color: #555577;
-}
-
-.search-box:focus {
-    border-color: rgba(255, 255, 255, 0.15);
+.category-products.horizontal .product-price {
+    display: none;
 }
 
 /* ============================================================
-   ПУЗЫРЬ — ЕДИНСТВЕННОЕ, ЧТО ЛИСТАЕТСЯ
+   КАРТОЧКА ТОВАРА
    ============================================================ */
-.category-content-bubble {
-    flex: 1;
-    min-height: 0;
-    background: #141414;
-    border-radius: 22px;
-    padding: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    overscroll-behavior: contain;
-    touch-action: pan-y;
+.product-card {
+    background: #1f1f1f;
+    border-radius: 18px;
+    padding: 10px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    min-height: 240px;
+    cursor: pointer;
 }
 
-.category-content-bubble::-webkit-scrollbar {
+.product-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 12px;
+    background: transparent;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+
+.product-name,
+.product-desc {
     display: none;
 }
 
-/* Адаптив */
-@media (max-width: 380px) {
-    .category-header-wrapper { padding: 10px 14px; border-radius: 18px; margin-bottom: 12px; }
-    .category-header-icon { width: 40px; height: 40px; }
-    .category-header-title { font-size: 20px; }
-    .filter-chip { font-size: 12px; padding: 6px 16px; }
-    .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
-    .icon-search { width: 18px; height: 18px; left: 12px; }
-    .category-content-bubble { padding: 10px; border-radius: 18px; }
+.product-price {
+    font-weight: 800;
+    font-size: 16px;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff2e63 0%, #ff5f8f 100%);
+    box-shadow: 0 6px 18px rgba(255, 46, 99, 0.45);
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    user-select: none;
 }
 
-@media (max-height: 700px) {
-    .category-header-wrapper { padding: 10px 14px; margin-bottom: 12px; }
-    .category-header-title { font-size: 20px; }
-    .filter-chip { font-size: 12px; padding: 6px 16px; }
-    .search-box { font-size: 14px; padding: 12px 14px 12px 40px; min-height: 46px; }
-    .icon-search { width: 18px; height: 18px; left: 12px; }
+.empty-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #555577;
+    font-size: 15px;
+}
+
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
+@media (max-width: 380px) {
+    .product-card {
+        padding: 8px 8px 10px;
+        border-radius: 14px;
+        min-height: 210px;
+    }
+    .product-price {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
 }
