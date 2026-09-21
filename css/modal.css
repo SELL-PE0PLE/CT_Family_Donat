@@ -28,26 +28,27 @@
     width: 100%;
     max-width: 420px;
     margin: 0 auto;
-    padding: 100px 16px 40px;    /* ← отступ сверху увеличен */
+    padding: 100px 16px 40px;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 100%;
+    gap: 0;
 }
 
+/* Картинка — компактная, не растягивается */
 .modal-img {
     width: 100%;
-    max-width: 100%;
-    border-radius: 20px;
+    max-width: 220px;
+    height: auto;
+    border-radius: 16px;
     object-fit: contain;
     background: transparent;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     display: block;
 }
 
 .modal-title {
     font-weight: 700;
-    font-size: 26px;
+    font-size: 24px;
     color: #ffffff;
     margin-bottom: 8px;
     text-align: center;
@@ -143,12 +144,14 @@
     flex: 1;
 }
 
+/* Кнопка — прижата к низу, но с отступом */
 .modal-footer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: auto;
-    padding-top: 20px;
+    padding-top: 24px;
+    padding-bottom: 20px;
 }
 
 .modal-buy-btn {
@@ -183,6 +186,9 @@
 @media (max-width: 380px) {
     .modal {
         padding: 90px 12px 30px;
+    }
+    .modal-img {
+        max-width: 180px;
     }
     .modal-title { font-size: 22px; }
     .modal-desc { font-size: 14px; }
