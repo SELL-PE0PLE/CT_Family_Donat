@@ -1,6 +1,6 @@
 /* ============================================================
    MODAL: полноэкранное окно товара
-   Кнопка — всегда на одном уровне (по центру)
+   Кнопка — ниже середины, одинаковая для Premium и Gold
    ============================================================ */
 
 .modal-overlay {
@@ -152,12 +152,14 @@
     flex: 1;
 }
 
-/* Кнопка — ФИКСИРОВАНА по центру экрана снизу */
+/* ============================================================
+   КНОПКА — ФИКСИРОВАНА НИЖЕ СЕРЕДИНЫ ЭКРАНА
+   ============================================================ */
 .modal-footer {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 50vh;                 /* ← ровно посередине экрана */
+    top: 65vh;                    /* ← ниже середины (середина = 50vh) */
     width: 100%;
     max-width: 388px;
     padding: 0 16px;
@@ -165,7 +167,7 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
-    pointer-events: none;         /* чтобы не блокировала скролл */
+    pointer-events: none;
 }
 
 .modal-buy-btn {
@@ -182,7 +184,7 @@
     box-shadow: 0 6px 18px rgba(255, 46, 99, 0.45);
     letter-spacing: 0.4px;
     font-family: inherit;
-    pointer-events: auto;         /* кнопка кликабельна */
+    pointer-events: auto;
 }
 
 .modal-buy-btn:active {
@@ -212,5 +214,6 @@
     .modal-footer {
         max-width: 340px;
         padding: 0 12px;
+        top: 65vh;
     }
 }
