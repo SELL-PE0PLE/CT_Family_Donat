@@ -69,28 +69,28 @@ const productsData = {
             desc: 'Игровая валюта Standoff 2 — 100 Gold',
             price: '110 ₽',
             filter: 'Gold',
-            img: 'https://i.ibb.co/rfLd3s61/Picsart-26-09-20-15-32-39-663.png'
+            img: 'https://i.ibb.co/RT7PYTRM/Picsart-26-09-22-22-01-57-361.jpg'
         },
         {
             name: 'Gold',
             desc: 'Игровая валюта Standoff 2 — 500 Gold',
             price: '500 ₽',
             filter: 'Gold',
-            img: 'https://i.ibb.co/DDBFZT5L/Picsart-26-09-20-15-33-04-921.png'
+            img: 'https://i.ibb.co/qYJw4Wks/Picsart-26-09-23-00-02-28-285.jpg'
         },
         {
             name: 'Gold',
             desc: 'Игровая валюта Standoff 2 — 1000 Gold',
             price: '820 ₽',
             filter: 'Gold',
-            img: 'https://i.ibb.co/HpNB0jbG/Picsart-26-09-20-15-33-25-009.png'
+            img: 'https://i.ibb.co/jPNxpZ5c/Picsart-26-09-23-00-04-58-992.jpg'
         },
         {
             name: 'Gold',
             desc: 'Игровая валюта Standoff 2 — 3000 Gold',
             price: '1800 ₽',
             filter: 'Gold',
-            img: 'https://i.ibb.co/JRCyhbLk/Picsart-26-09-20-15-33-56-538.png'
+            img: 'https://i.ibb.co/qMwwF29t/Picsart-26-09-23-00-06-17-829.jpg'
         }
     ]
 };
