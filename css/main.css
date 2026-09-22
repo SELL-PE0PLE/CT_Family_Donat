@@ -10,6 +10,9 @@
     display: none;
 }
 
+/* ============================================================
+   БРЕНД
+   ============================================================ */
 .brand {
     text-align: center;
     padding: 6px 0 20px;
@@ -34,6 +37,104 @@
     text-transform: uppercase;
 }
 
+/* ============================================================
+   КАРТОЧКА ПРОДАВЦА + FAQ
+   ============================================================ */
+.seller-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.seller-card {
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 18px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.12s ease;
+    min-width: 0;
+}
+
+.seller-card:active {
+    background: #242424;
+}
+
+.seller-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #141414;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.seller-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    flex: 1;
+}
+
+.seller-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.seller-role {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8888aa;
+    margin-top: 2px;
+}
+
+.seller-stars {
+    font-size: 11px;
+    color: #fbbf24;
+    letter-spacing: 1px;
+    margin-top: 3px;
+}
+
+/* FAQ */
+.faq-card {
+    flex: 0 0 auto;
+    background: #1a1a1a;
+    border-radius: 18px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.12s ease;
+    min-width: 80px;
+}
+
+.faq-card:active {
+    background: #242424;
+}
+
+.faq-text {
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   КАТЕГОРИИ
+   ============================================================ */
 .category-wrapper {
     background: #1a1a1a;
     border-radius: 28px;
@@ -102,6 +203,7 @@
     margin-top: 1px;
 }
 
+/* Кнопка "Предложения" */
 .category-card.more {
     background: #1a1a1a;
     border: 1px dashed rgba(255, 255, 255, 0.15);
@@ -141,6 +243,9 @@
     color: #555577;
 }
 
+/* ============================================================
+   ПОПУЛЯРНОЕ
+   ============================================================ */
 .popular-section {
     margin-top: 28px;
 }
@@ -179,6 +284,9 @@
     letter-spacing: 0.5px;
 }
 
+/* ============================================================
+   ИКОНКИ
+   ============================================================ */
 .icon-search {
     width: 20px;
     height: 20px;
@@ -203,9 +311,19 @@
     stroke-linecap: round;
 }
 
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
 @media (max-width: 380px) {
     .brand-title { font-size: 44px; }
     .brand-sub { font-size: 22px; letter-spacing: 4px; }
+    .seller-card { padding: 10px 12px; gap: 10px; }
+    .seller-avatar { width: 42px; height: 42px; }
+    .seller-name { font-size: 14px; }
+    .seller-role { font-size: 11px; }
+    .seller-stars { font-size: 10px; }
+    .faq-card { padding: 10px 14px; min-width: 68px; }
+    .faq-text { font-size: 14px; }
     .category-wrapper { padding: 10px 10px 8px; border-radius: 22px; }
     .category-scroll { gap: 8px; }
     .category-card { width: 76px; min-height: 84px; padding: 10px 3px 8px; border-radius: 12px; }
@@ -222,6 +340,7 @@
 @media (max-height: 700px) {
     .brand-title { font-size: 44px; }
     .brand-sub { font-size: 22px; }
+    .seller-card { padding: 10px 12px; }
     .category-wrapper { padding: 10px 10px 8px; }
     .category-scroll { gap: 8px; }
     .category-card { width: 80px; min-height: 88px; padding: 10px 3px 8px; }
